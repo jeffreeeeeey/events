@@ -1,18 +1,18 @@
 //
-//  FirstViewController.m
+//  SecondViewController.m
 //  Events
 //
 //  Created by mac on 5/5/15.
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "MySpaceViewController.h"
 
-@interface FirstViewController ()
+@interface MySpaceViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation MySpaceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

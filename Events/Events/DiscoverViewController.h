@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscoverViewController : UITableViewController
+@interface DiscoverViewController : UIViewController
 
 
 @end

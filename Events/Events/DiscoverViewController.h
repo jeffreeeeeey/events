@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscoverViewController : UIViewController
+@interface DiscoverViewController : UIViewController 
 
+@property (weak, nonatomic) IBOutlet UITableView *topicsTable;
 
 @end
 

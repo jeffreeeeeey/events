@@ -8,9 +8,10 @@
 
 #import "DiscoverViewController.h"
 
-@interface DiscoverViewController () <NSURLSessionDataDelegate>
+@interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
-@property NSDictionary *jsonDic;
+@property (nonatomic)  NSDictionary *jsonDic;
+@property (nonatomic)  NSArray *topics;
 
 @end
 
@@ -20,13 +21,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self getTopics];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -35,12 +36,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return _topics.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topicCell" forIndexPath:indexPath];
+    
+    NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
+    NSString *title = [topicDic objectForKey:@"title"];
+    //NSLog(@"%@", title);
+    cell.textLabel.text = title;
     return cell;
 }
 
@@ -48,22 +54,34 @@
 
 - (void)getTopics
 {
+    __block NSDictionary *dic;
+    __block NSArray *array;
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
     NSURL *url = [NSURL URLWithString:@"http://mpc.issll.com/llzgmri/m/p/topic/getPlotTopicsByType?type=2&page=1&long=116.501426&lat=39.921523"];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
-            NSString *text = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-            //NSLog(@"Data = %@", text);
-            if ([NSJSONSerialization isValidJSONObject:text]) {
-                self.jsonDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                NSLog(@"json:%@", self.jsonDic);
-            } else {
-                NSLog(@"not valid");
-            }
+        if (data.length > 0 && error == nil) {
+            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            //NSLog(@"json:%@", dic);
+            array = [dic objectForKey:@"topics"];
+            NSLog(@"there are %d topics in array", (unsigned)array.count);
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.topics = array;
+                [self.topicsTable reloadData];
+                if ([[NSThread currentThread] isMainThread]){
+                    NSLog(@"In main thread--completion handler");
+                }
+                else{
+                    NSLog(@"Not in main thread--completion handler");
+                }
+            });
+            
+            [self.topicsTable reloadData];
+        } else {
+            NSLog(@"error:%@",error);
         }
     }];
     [dataTask resume];

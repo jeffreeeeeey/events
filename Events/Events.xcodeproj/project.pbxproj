@@ -18,6 +18,8 @@
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
 		047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91D01AF9B2B100631FCE /* MyEventsViewController.m */; };
+		048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */; };
+		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		047D91CD1AF9B09500631FCE /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventsViewController.h; sourceTree = "<group>"; };
 		047D91D01AF9B2B100631FCE /* MyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsViewController.m; sourceTree = "<group>"; };
+		0482829F1AFB5EA900249E24 /* TopicDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicDetailsViewController.h; sourceTree = "<group>"; };
+		048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicDetailsViewController.m; sourceTree = "<group>"; };
+		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		048282A31AFB5F7100249E24 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,19 +99,11 @@
 		041347C81AF8B0AF0015E38E /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				048282A61AFB5FD300249E24 /* Models */,
+				048282A51AFB5F8B00249E24 /* ViewControllers */,
 				041347CD1AF8B0AF0015E38E /* AppDelegate.h */,
 				041347CE1AF8B0AF0015E38E /* AppDelegate.m */,
-				041347D01AF8B0AF0015E38E /* DiscoverViewController.h */,
-				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
-				041347D31AF8B0AF0015E38E /* MySpaceViewController.h */,
-				041347D41AF8B0AF0015E38E /* MySpaceViewController.m */,
 				041347D61AF8B0AF0015E38E /* Main.storyboard */,
-				047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */,
-				047D91D01AF9B2B100631FCE /* MyEventsViewController.m */,
-				047D91CC1AF9B09500631FCE /* CreateEventViewController.h */,
-				047D91CD1AF9B09500631FCE /* CreateEventViewController.m */,
-				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
-				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
 				041347D91AF8B0AF0015E38E /* Images.xcassets */,
 				041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */,
 				041347C91AF8B0AF0015E38E /* Supporting Files */,
@@ -137,6 +135,34 @@
 				041347E71AF8B0AF0015E38E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				041347D01AF8B0AF0015E38E /* DiscoverViewController.h */,
+				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
+				041347D31AF8B0AF0015E38E /* MySpaceViewController.h */,
+				041347D41AF8B0AF0015E38E /* MySpaceViewController.m */,
+				0482829F1AFB5EA900249E24 /* TopicDetailsViewController.h */,
+				048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */,
+				047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */,
+				047D91D01AF9B2B100631FCE /* MyEventsViewController.m */,
+				047D91CC1AF9B09500631FCE /* CreateEventViewController.h */,
+				047D91CD1AF9B09500631FCE /* CreateEventViewController.m */,
+				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
+				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		048282A61AFB5FD300249E24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				048282A21AFB5F7100249E24 /* Event.h */,
+				048282A31AFB5F7100249E24 /* Event.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +268,8 @@
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,
+				048282A41AFB5F7100249E24 /* Event.m in Sources */,
+				048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,

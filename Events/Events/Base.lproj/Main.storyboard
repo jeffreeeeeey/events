@@ -75,16 +75,99 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VjR-QK-5cW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tW-SN-qL3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Wmz-tB-chQ" id="0CJ-le-o0g"/>
-                                </connections>
-                            </webView>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YO-BE-pLl">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="751"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Em-3d-WaV">
+                                                <rect key="frame" x="150" y="85" width="300" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="2JN-tz-rwl"/>
+                                                    <constraint firstAttribute="height" constant="300" id="L5U-Fw-vBK"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="开始时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIr-rV-b5f">
+                                                <rect key="frame" x="28" y="480" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="start time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHh-Ky-qZc">
+                                                <rect key="frame" x="139" y="480" width="433" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="结束时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIe-Gl-0XM">
+                                                <rect key="frame" x="28" y="520" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="end time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJ0-Lp-KbL">
+                                                <rect key="frame" x="139" y="520" width="433" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="报名截止" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zov-5R-1bX">
+                                                <rect key="frame" x="28" y="570" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="join end time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7D-dA-c1f" userLabel="closing date">
+                                                <rect key="frame" x="139" y="570" width="433" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="报名人数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-6z-Rx7">
+                                                <rect key="frame" x="28" y="611" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="man_count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLV-G4-VaE">
+                                                <rect key="frame" x="139" y="611" width="433" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="leading" secondItem="7YO-BE-pLl" secondAttribute="leading" constant="150" id="37V-sv-A2X"/>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="top" secondItem="7YO-BE-pLl" secondAttribute="top" constant="85" id="3tQ-gL-AJR"/>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="leading" secondItem="7YO-BE-pLl" secondAttribute="leading" constant="150" id="5x2-8T-PpY"/>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="top" secondItem="7YO-BE-pLl" secondAttribute="top" constant="85" id="7Ik-XC-7rZ"/>
+                                            <constraint firstItem="WIr-rV-b5f" firstAttribute="top" secondItem="7YO-BE-pLl" secondAttribute="top" constant="480" id="An6-LB-VIM"/>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="centerX" secondItem="7YO-BE-pLl" secondAttribute="centerX" id="NWD-RX-TTw"/>
+                                            <constraint firstAttribute="trailing" secondItem="AHh-Ky-qZc" secondAttribute="trailing" constant="28" id="UO3-md-JY1"/>
+                                            <constraint firstItem="AHh-Ky-qZc" firstAttribute="top" secondItem="0Em-3d-WaV" secondAttribute="bottom" constant="95" id="Ut9-RV-Gdy"/>
+                                            <constraint firstItem="AHh-Ky-qZc" firstAttribute="leading" secondItem="WIr-rV-b5f" secondAttribute="trailing" constant="43" id="fuG-Ol-k8S"/>
+                                            <constraint firstItem="0Em-3d-WaV" firstAttribute="top" secondItem="7YO-BE-pLl" secondAttribute="top" constant="85" id="u1G-Ni-VWN"/>
+                                            <constraint firstItem="WIr-rV-b5f" firstAttribute="leading" secondItem="7YO-BE-pLl" secondAttribute="leading" constant="28" id="w1o-Sh-opa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="closingDateLabel" destination="p7D-dA-c1f" id="iyI-Gh-NQM"/>
+                        <outlet property="endTimeLabel" destination="yJ0-Lp-KbL" id="IDW-Bz-vrP"/>
+                        <outlet property="eventImageView" destination="0Em-3d-WaV" id="vQk-Bo-gla"/>
+                        <outlet property="mainContentView" destination="7YO-BE-pLl" id="ckf-Fc-KpP"/>
+                        <outlet property="participantsCount" destination="RLV-G4-VaE" id="aeA-pi-25S"/>
+                        <outlet property="scrollView" destination="1tW-SN-qL3" id="XtY-Kb-cwk"/>
+                        <outlet property="startTimeLabel" destination="AHh-Ky-qZc" id="sb1-aP-jRw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSL-cI-1ku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

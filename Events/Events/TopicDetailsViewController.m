@@ -8,7 +8,16 @@
 
 #import "TopicDetailsViewController.h"
 
-@interface TopicDetailsViewController () <NSURLSessionDataDelegate>
+@interface TopicDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *mainContentView;
+
+@property (nonatomic) NSDictionary *eventDic;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *closingDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *participantsCount;
 
 @end
 
@@ -18,13 +27,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
-    [self getEventDetail:self.eventDic];
+    self.scrollView.contentSize = self.mainContentView.bounds.size;
+    
+    [self getEventDetail:self.topicDic];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    NSLog(@"appear");
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,14 +70,35 @@
             dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSLog(@"json:%@", dic);
             
-            /*
+            
             // Have to use dispatch_async to make it work. NSURLSession get data asynchronously
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.topics = array;
-                [self.topicsTable reloadData];
-                }
+                _eventDic = dic;
+                
+                NSDictionary *eventTopicDic = [dic valueForKey:@"topic"];
+                // Foundamental information are in activity dic
+                NSDictionary *activityDic = [eventTopicDic valueForKey:@"activity"];
+                
+                NSString *imageURLString = [activityDic valueForKey:@"image"];
+                NSLog(@"image url:%@", imageURLString);
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
+                _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
+                _eventImageView.image = image;
+                
+                
+                NSString *startTimeString = [activityDic valueForKey:@"startTime"];
+                NSLog(@"%@", startTimeString);
+                _startTimeLabel.text = startTimeString;
+                
+                NSString *endTimeString = [activityDic valueForKey:@"endTime"];
+                _endTimeLabel.text = endTimeString;
+                
+                NSString *closingDateString = [activityDic valueForKey:@"joinEndTime"];
+                _closingDateLabel.text = closingDateString;
+                
+                NSNumber *n = [activityDic valueForKey:@"man_count"];
+                _participantsCount.text = [NSString stringWithFormat:@"%@",n];
             });
-            */
 
         } else {
             NSLog(@"error:%@",error);

@@ -11,6 +11,6 @@
 
 @interface TopicDetailsViewController : UIViewController
 
-@property (nonatomic) NSDictionary *eventDic;
+@property (nonatomic) NSDictionary *topicDic;
 
 @end

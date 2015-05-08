@@ -62,9 +62,9 @@
     if ([[segue identifier] isEqualToString: @"showEventDetails"]) {
         
         NSIndexPath *indexPath = [self.topicsTable indexPathForSelectedRow];
-        NSDictionary *eventDic = [_topics objectAtIndex:indexPath.row];
+        NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
         TopicDetailsViewController *vc = segue.destinationViewController;
-        vc.eventDic = eventDic;
+        vc.topicDic = topicDic;
     }
 }
 

@@ -10,7 +10,7 @@
 
 @interface Event : NSObject
 
-@property (nonatomic, strong) NSNumber *id;
+@property (nonatomic, strong) NSNumber *topidID;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *plotID;
 @property (nonatomic, strong) NSString *plotName;

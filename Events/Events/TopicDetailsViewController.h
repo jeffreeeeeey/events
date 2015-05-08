@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
 @interface TopicDetailsViewController : UIViewController
+
+@property (nonatomic) NSDictionary *eventDic;
 
 @end

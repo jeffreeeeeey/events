@@ -7,6 +7,7 @@
 //
 
 #import "DiscoverViewController.h"
+#import "TopicDetailsViewController.h"
 
 @interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
@@ -50,6 +51,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //[self performSegueWithIdentifier:@"showEventDetails" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString: @"showEventDetails"]) {
+        
+        NSIndexPath *indexPath = [self.topicsTable indexPathForSelectedRow];
+        NSDictionary *eventDic = [_topics objectAtIndex:indexPath.row];
+        TopicDetailsViewController *vc = segue.destinationViewController;
+        vc.eventDic = eventDic;
+    }
+}
+
 #pragma mark - Network
 
 - (void)getTopics
@@ -64,7 +82,7 @@
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
             dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", dic);
+            //NSLog(@"json:%@", dic);
             array = [dic objectForKey:@"topics"];
             NSLog(@"there are %d topics in array", (unsigned)array.count);
             
@@ -72,15 +90,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.topics = array;
                 [self.topicsTable reloadData];
-                if ([[NSThread currentThread] isMainThread]){
-                    NSLog(@"In main thread--completion handler");
-                }
-                else{
-                    NSLog(@"Not in main thread--completion handler");
-                }
             });
             
-            [self.topicsTable reloadData];
+            //[self.topicsTable reloadData];
         } else {
             NSLog(@"error:%@",error);
         }

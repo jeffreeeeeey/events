@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MySpaceViewController : UIViewController
+@interface MySpaceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic) NSDictionary *user;
 
 @end
 

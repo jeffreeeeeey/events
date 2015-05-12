@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "User.h"
 
 @interface LoginViewController () <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
@@ -48,11 +49,14 @@
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
             dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", dic);
+            //NSLog(@"json:%@", dic);
             NSNumber *isSuccess = [dic valueForKey:@"isSuccess"];
             
             if ([isSuccess intValue] == 1) {
+                // Get the user information
                 NSDictionary *userDic = [dic valueForKey:@"user"];
+                [User setUser:userDic];
+                
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
                     
                     // Pass user dictionary by notification center

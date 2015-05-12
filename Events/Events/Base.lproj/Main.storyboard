@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -189,11 +189,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oEX-TB-ioS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oEX-TB-ioS">
                                 <rect key="frame" x="0.0" y="268" width="600" height="148"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="60G-LE-Udv" detailTextLabel="8uU-gR-gzR" style="IBUITableViewCellStyleValue1" id="Sy0-El-n6i">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="60G-LE-Udv" detailTextLabel="8uU-gR-gzR" style="IBUITableViewCellStyleValue1" id="Sy0-El-n6i">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sy0-El-n6i" id="Uo6-G3-LB4">
@@ -213,6 +213,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="t0K-ZK-zuO" kind="show" identifier="myEvents" id="Kch-Xs-10x"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -251,6 +254,8 @@
                             <constraint firstAttribute="centerX" secondItem="Ecr-No-gt4" secondAttribute="centerX" id="Uzc-79-gkn"/>
                             <constraint firstItem="Ecr-No-gt4" firstAttribute="top" secondItem="916-YZ-IGZ" secondAttribute="bottom" constant="8" id="eef-Jv-DQJ"/>
                             <constraint firstAttribute="centerX" secondItem="916-YZ-IGZ" secondAttribute="centerX" id="fUR-oh-UNb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oEX-TB-ioS" secondAttribute="trailing" constant="-16" id="jMa-Jq-msu"/>
+                            <constraint firstItem="oEX-TB-ioS" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="uD5-GU-Jos"/>
                             <constraint firstAttribute="centerX" secondItem="Ecr-No-gt4" secondAttribute="centerX" id="vhd-EG-qhD"/>
                             <constraint firstItem="ELW-Oc-hQr" firstAttribute="top" secondItem="Ecr-No-gt4" secondAttribute="bottom" constant="10" id="wyh-mT-HNS"/>
                             <constraint firstAttribute="centerX" secondItem="ELW-Oc-hQr" secondAttribute="centerX" id="xkc-Wr-lht"/>
@@ -259,6 +264,8 @@
                     <navigationItem key="navigationItem" title="我的" id="GIo-Hh-UoF"/>
                     <connections>
                         <outlet property="avatarImageView" destination="916-YZ-IGZ" id="m46-vQ-2Y0"/>
+                        <outlet property="funcTableView" destination="oEX-TB-ioS" id="I5K-WS-KML"/>
+                        <outlet property="loginButton" destination="ELW-Oc-hQr" id="XoZ-3U-Rlh"/>
                         <outlet property="userNameLabel" destination="Ecr-No-gt4" id="wvx-ev-1mu"/>
                     </connections>
                 </viewController>
@@ -326,10 +333,10 @@
             </objects>
             <point key="canvasLocation" x="3186" y="360"/>
         </scene>
-        <!--参与的活动-->
+        <!--My Events View Controller-->
         <scene sceneID="OH8-o5-Oha">
             <objects>
-                <tableViewController id="t0K-ZK-zuO" customClass="MyEventsViewController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="t0K-ZK-zuO" customClass="MyEventsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Ol-Dm-vfn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +354,7 @@
                             <outlet property="delegate" destination="t0K-ZK-zuO" id="qjM-Nm-pTk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="参与的活动" id="UjH-Q5-Hpu"/>
+                    <navigationItem key="navigationItem" id="UjH-Q5-Hpu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKT-gD-7NC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

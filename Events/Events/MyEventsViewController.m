@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if ([_contentType isEqualToString:@"participated"]) {
+        self.navigationItem.title = @"参与的活动";
+    } else if ([_contentType isEqualToString:@"hosted"]) {
+        self.navigationItem.title = @"主办的活动";
+    }
 }
 
 - (void)didReceiveMemoryWarning {

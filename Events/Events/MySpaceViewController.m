@@ -7,12 +7,16 @@
 //
 
 #import "MySpaceViewController.h"
+#import "MyEventsViewController.h"
+#import "User.h"
 
 @interface MySpaceViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UITableView *funcTableView;
 
 @end
 
@@ -22,8 +26,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(handleLogin:) name:@"login" object:nil];
+    NSDictionary *currentUser = [User getCurrentUser];
+    if (currentUser) {
+        _user = currentUser;
+        [self setUserInfo];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+    } else {
+        self.userNameLabel.text = @"登录账户";
+        self.avatarImageView.image = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+        self.loginButton.hidden = false;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,8 +52,13 @@
     // Sender is the object from notification, userInfo is the dictionary in it.
     self.user = sender.userInfo;
     NSLog(@"user:%@", self.user);
+    [self setUserInfo];
     
-    // Set the content of user
+}
+
+//set the user info
+
+- (void)setUserInfo {
     NSString *imageString = [_user objectForKey:@"avatar"];
     
     UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
@@ -46,8 +67,16 @@
     
     
     self.userNameLabel.text = [_user objectForKey:@"name"];
+    self.loginButton.hidden = true;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+
+}
+
+- (void)logout {
+    [User logoutCurrentUser];
+    self.user = nil;
     
-    
+    [self viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,5 +103,31 @@
     return cell;
     
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"myEvents"]) {
+        NSNumber *userID = [self.user objectForKey:@"userid"];
+        
+        self.user = [User getCurrentUser];
+        bool login = false;
+        if (self.user) {
+            login = true;
+        }
+        
+        if (login) {
+            NSIndexPath *indexPath = [_funcTableView indexPathForSelectedRow];
+            MyEventsViewController *vc = segue.destinationViewController;
+            if (indexPath.row == 0) {
+                vc.contentType = @"participated";
+            } else if (indexPath.row == 1) {
+                vc.contentType = @"hosted";
+            }
+        } else {
+            NSLog(@"not login");
+        }
+    }
+}
+
+
 
 @end

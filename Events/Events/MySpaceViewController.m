@@ -8,6 +8,7 @@
 
 #import "MySpaceViewController.h"
 #import "MyEventsViewController.h"
+#import "LoginViewController.h"
 #import "User.h"
 
 @interface MySpaceViewController ()
@@ -104,17 +105,27 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.user = [User getCurrentUser];
+    if (!self.user) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请登录账户" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"myEvents"]) {
-        NSNumber *userID = [self.user objectForKey:@"userid"];
-        
         self.user = [User getCurrentUser];
-        bool login = false;
-        if (self.user) {
-            login = true;
-        }
+        if (!self.user) {
+            //[self performSegueWithIdentifier:@"login" sender:self];
+            
+        }else {
         
-        if (login) {
             NSIndexPath *indexPath = [_funcTableView indexPathForSelectedRow];
             MyEventsViewController *vc = segue.destinationViewController;
             if (indexPath.row == 0) {
@@ -122,10 +133,19 @@
             } else if (indexPath.row == 1) {
                 vc.contentType = @"hosted";
             }
-        } else {
-            NSLog(@"not login");
         }
     }
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"myEvents"]) {
+        self.user = [User getCurrentUser];
+        if (self.user) {
+            return true;
+        }
+        return false;
+    }
+    return true;
 }
 
 

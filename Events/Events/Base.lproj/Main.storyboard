@@ -54,7 +54,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="nkJ-gR-5ob" secondAttribute="trailing" id="sW6-x3-gXf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="发现活动" id="sX2-uT-MaM"/>
+                    <navigationItem key="navigationItem" title="发现活动" id="sX2-uT-MaM">
+                        <barButtonItem key="rightBarButtonItem" title="发起" id="L7F-5u-ifG">
+                            <connections>
+                                <segue destination="7LH-FW-8CL" kind="show" identifier="createEvent" id="adI-26-T1P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="topicsTable" destination="nkJ-gR-5ob" id="kJp-WE-Irk"/>
                     </connections>
@@ -386,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="2361" y="1865"/>
         </scene>
-        <!--Create Event View Controller-->
+        <!--创建活动-->
         <scene sceneID="WXc-fK-da7">
             <objects>
                 <viewController id="7LH-FW-8CL" customClass="CreateEventViewController" sceneMemberID="viewController">
@@ -397,13 +403,32 @@
                     <view key="view" contentMode="scaleToFill" id="lKj-c9-cdA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="活动名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSB-dp-onF">
+                                <rect key="frame" x="16" y="108" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="活动名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-mT-1Hs">
+                                <rect key="frame" x="16" y="176" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eus-WV-5d9">
+                                <rect key="frame" x="59" y="137" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="k32-nX-VFF"/>
+                    <navigationItem key="navigationItem" title="创建活动" id="k32-nX-VFF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tii-1x-a5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3166" y="2746"/>
+            <point key="canvasLocation" x="2386" y="-1046"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -423,24 +448,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CUL-ni-iDP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6TN-2J-EgB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nBx-FU-QYD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7LH-FW-8CL" kind="relationship" relationship="rootViewController" id="eI3-9X-pE5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bnh-7b-oZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2354" y="2746"/>
         </scene>
         <!--发现-->
         <scene sceneID="pQD-up-3Kq">

@@ -8,7 +8,14 @@
 
 #import "CreateEventViewController.h"
 
-@interface CreateEventViewController ()
+
+@interface CreateEventViewController () 
+
+@property (weak, nonatomic) IBOutlet UITextField *titileTextField;
+@property (weak, nonatomic) IBOutlet UITextField *subTitleTextField;
+@property (weak, nonatomic) IBOutlet UILabel *classificationLabel;
+@property (weak, nonatomic) IBOutlet UITextView *introTextView;
+
 
 @end
 
@@ -24,14 +31,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (IBAction)chooseBtnPressed:(id)sender {
+    
+    
+}
 
+
+
+#pragma mark - Navigation
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

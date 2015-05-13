@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *mainContentView;
 
 @property (nonatomic) NSDictionary *eventDic;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
@@ -76,6 +77,9 @@
                 _eventDic = dic;
                 
                 NSDictionary *eventTopicDic = [dic valueForKey:@"topic"];
+                NSString *title = [eventTopicDic valueForKey:@"title"];
+                _titleLabel.text = title;
+                
                 // Foundamental information are in activity dic
                 NSDictionary *activityDic = [eventTopicDic valueForKey:@"activity"];
                 

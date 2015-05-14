@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseClassificationViewController : UIViewController
+@interface ChooseClassificationViewController : UITableViewController
 
 @end

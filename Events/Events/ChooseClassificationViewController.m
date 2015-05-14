@@ -9,12 +9,20 @@
 #import "ChooseClassificationViewController.h"
 #import "EventClassifications.h"
 
-@interface ChooseClassificationViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak, nonatomic) IBOutlet UIPickerView *classPicker;
+@interface ChooseClassificationViewController () <UITableViewDataSource, UITableViewDelegate>
+
+
 
 @end
 
 @implementation ChooseClassificationViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"选择活动类型";
+}
+
 - (IBAction)confirmBtnPressed:(id)sender {
     
 }
@@ -24,37 +32,19 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - PickerView delegate and data source
+#pragma mark - tableView
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *title = nil;
-    
-    switch (row) {
-        case 0:
-            title = @"在线活动";
-            break;
-        case 1:
-            title = @"聚会 Party";
-            break;
-        case 2:
-            title = @"户外郊游";
-            break;
-
-            
-        default:
-            title = @"song";
-            break;
-    }
-    
-    return title;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
 }
 
-- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 3;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    return cell;
 }
 
 @end

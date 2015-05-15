@@ -10,4 +10,13 @@
 
 @implementation Event
 
+- (instancetype)init {
+    self = [super init];
+    self.activityType = 0;
+    self.startDate = [[NSDate alloc]init];
+    self.endDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
+    
+    return self;
+}
+
 @end

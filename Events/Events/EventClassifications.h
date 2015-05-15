@@ -9,10 +9,7 @@
 #ifndef Events_EventClassifications_h
 #define Events_EventClassifications_h
 
-typedef NS_ENUM(NSInteger, EventClassifications) {
-    Online,
-    Party,
-    OutDoor
-};
+
+#define EventClassifications @[@"聚餐", @"户外郊游", @"线上活动"]
 
 #endif

@@ -16,6 +16,7 @@
 		041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */; };
 		041347E91AF8B0AF0015E38E /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041347E81AF8B0AF0015E38E /* EventsTests.m */; };
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
+		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
@@ -53,6 +54,8 @@
 		045D119B1B0322AA009FCF89 /* EventClassifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventClassifications.h; sourceTree = "<group>"; };
 		045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClassificationViewController.h; sourceTree = "<group>"; };
 		045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClassificationViewController.m; sourceTree = "<group>"; };
+		045DBEA51B05CAC500D3581C /* PerformanceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceTableViewController.h; sourceTree = "<group>"; };
+		045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTableViewController.m; sourceTree = "<group>"; };
 		046FB8CC1B019C5C00C339AE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		046FB8CD1B019C5C00C339AE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		047D91C91AF9AF1E00631FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -144,11 +147,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
+		045DBEA41B05CA4D00D3581C /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
 				045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */,
 				045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */,
+				047D91CC1AF9B09500631FCE /* CreateEventViewController.h */,
+				047D91CD1AF9B09500631FCE /* CreateEventViewController.m */,
+				045DBEA51B05CAC500D3581C /* PerformanceTableViewController.h */,
+				045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */,
+			);
+			name = CreateEvent;
+			sourceTree = "<group>";
+		};
+		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				045DBEA41B05CA4D00D3581C /* CreateEvent */,
 				041347D01AF8B0AF0015E38E /* DiscoverViewController.h */,
 				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
 				041347D31AF8B0AF0015E38E /* MySpaceViewController.h */,
@@ -157,8 +172,6 @@
 				048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */,
 				047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */,
 				047D91D01AF9B2B100631FCE /* MyEventsViewController.m */,
-				047D91CC1AF9B09500631FCE /* CreateEventViewController.h */,
-				047D91CD1AF9B09500631FCE /* CreateEventViewController.m */,
 				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
 			);
@@ -278,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
+				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,

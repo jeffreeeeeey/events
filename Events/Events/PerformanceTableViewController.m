@@ -24,6 +24,8 @@
 
 }
 
+#pragma mark - TableView delegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
@@ -60,11 +62,23 @@
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"endDate" forIndexPath:indexPath];
         cell.detailTextLabel.text = [formatter stringFromDate:_event.endDate];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"endDate" forIndexPath:indexPath];
+    } else if (indexPath.section == 0 && indexPath.row == 2) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"applyEndDate" forIndexPath:indexPath];
+        cell.detailTextLabel.text = [formatter stringFromDate:_event.applyEndDate];
+    }else if (indexPath.section == 1 && indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"location" forIndexPath:indexPath];
+        cell.detailTextLabel.text = @"选择地点";
+    }else if (indexPath.section == 2 && indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"capacity" forIndexPath:indexPath];
+        
     }
+
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 25.0;
 }
 
 @end

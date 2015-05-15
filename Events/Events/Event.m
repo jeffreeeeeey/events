@@ -15,6 +15,7 @@
     self.activityType = 0;
     self.startDate = [[NSDate alloc]init];
     self.endDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
+    self.applyEndDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
     
     return self;
 }

@@ -15,6 +15,7 @@
 		041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041347D91AF8B0AF0015E38E /* Images.xcassets */; };
 		041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */; };
 		041347E91AF8B0AF0015E38E /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041347E81AF8B0AF0015E38E /* EventsTests.m */; };
+		045A513A1B087DA50075E811 /* setDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A51391B087DA50075E811 /* setDateViewController.m */; };
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
@@ -51,6 +52,8 @@
 		041347E21AF8B0AF0015E38E /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041347E71AF8B0AF0015E38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041347E81AF8B0AF0015E38E /* EventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsTests.m; sourceTree = "<group>"; };
+		045A51381B087DA50075E811 /* setDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setDateViewController.h; sourceTree = "<group>"; };
+		045A51391B087DA50075E811 /* setDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setDateViewController.m; sourceTree = "<group>"; };
 		045D119B1B0322AA009FCF89 /* EventClassifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventClassifications.h; sourceTree = "<group>"; };
 		045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClassificationViewController.h; sourceTree = "<group>"; };
 		045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClassificationViewController.m; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 		045DBEA41B05CA4D00D3581C /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
+				045A51381B087DA50075E811 /* setDateViewController.h */,
+				045A51391B087DA50075E811 /* setDateViewController.m */,
 				045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */,
 				045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */,
 				047D91CC1AF9B09500631FCE /* CreateEventViewController.h */,
@@ -301,6 +306,7 @@
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,
+				045A513A1B087DA50075E811 /* setDateViewController.m in Sources */,
 				047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

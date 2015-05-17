@@ -7,6 +7,7 @@
 //
 
 #import "PerformanceTableViewController.h"
+#import "setDateViewController.h"
 
 @interface PerformanceTableViewController ()
 
@@ -22,6 +23,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.backBarButtonItem.title = @"上一步";
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 #pragma mark - TableView delegate
@@ -77,8 +82,47 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 25.0;
 }
+
+#pragma mark - navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"setStartDate"]) {
+
+        setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
+        vc.event = _event;
+        vc.dateType = 0;
+        vc.confirmBlock = ^{
+            [self.tableView reloadData];
+            NSLog(@"start:%@", _event.startDate);
+        };
+    }
+    if ([segue.identifier isEqualToString:@"setEndDate"]) {
+        setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
+        vc.event = _event;
+        vc.dateType = 1;
+        vc.confirmBlock = ^{
+            [self.tableView reloadData];
+            NSLog(@"end:%@", _event.endDate);
+        };
+    }
+    if ([segue.identifier isEqualToString:@"setApplyEndDate"]) {
+        setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
+        vc.event = _event;
+        vc.dateType = 2;
+        vc.confirmBlock = ^{
+            [self.tableView reloadData];
+            NSLog(@"apply:%@", _event.applyEndDate);
+        };
+    }
+}
+
+
 
 @end

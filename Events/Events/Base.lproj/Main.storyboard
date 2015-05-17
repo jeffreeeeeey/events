@@ -238,6 +238,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zeR-vy-Mrg" kind="presentation" id="RM1-1E-pF2"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="endDate" textLabel="Tmf-LJ-1LH" detailTextLabel="0mH-Ha-3bw" style="IBUITableViewCellStyleValue1" id="qoU-q9-6pf">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -258,6 +261,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zeR-vy-Mrg" kind="presentation" identifier="setEndDate" id="ery-Fx-aby"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="applyEndDate" textLabel="Xyo-9u-6KP" detailTextLabel="Mpm-3B-foM" style="IBUITableViewCellStyleValue1" id="a28-W5-YJR">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -278,6 +284,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zeR-vy-Mrg" kind="presentation" identifier="setApplyEndDate" id="8CE-SV-hiV"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="location" textLabel="n3D-YC-Cc8" detailTextLabel="m0d-Xc-OOt" rowHeight="45" style="IBUITableViewCellStyleValue1" id="Ufj-QP-d5N">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -340,7 +349,59 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bd0-eA-Uyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4730" y="-1101"/>
+            <point key="canvasLocation" x="4825" y="-1114"/>
+        </scene>
+        <!--Set Date View Controller-->
+        <scene sceneID="Ad6-3f-3oX">
+            <objects>
+                <viewController id="OTk-xo-Pv1" customClass="setDateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gk3-aA-vpH"/>
+                        <viewControllerLayoutGuide type="bottom" id="GHx-Tf-C4c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mEU-tk-8Wm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pn0-Ox-VfI">
+                                <rect key="frame" x="0.0" y="115" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="453541424.77269101">
+                                    <!--2015-05-17 07:43:44 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Pn0-Ox-VfI" secondAttribute="centerX" id="DAN-3i-MqY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pn0-Ox-VfI" secondAttribute="trailing" constant="-16" id="Jjd-xL-6W6"/>
+                            <constraint firstItem="Pn0-Ox-VfI" firstAttribute="leading" secondItem="mEU-tk-8Wm" secondAttribute="leadingMargin" constant="-16" id="TID-RW-PEA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LxF-3s-L1r">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="gOT-fC-fqH">
+                            <connections>
+                                <action selector="cancelBtnPressed:" destination="OTk-xo-Pv1" id="qPh-Dx-ZL1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="确定" id="ZEQ-vO-dt4">
+                            <connections>
+                                <action selector="confirmBtnPressed:" destination="OTk-xo-Pv1" id="caT-zi-q3T"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="Pn0-Ox-VfI" id="BnE-Nn-8Pk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZcS-xz-pVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6415" y="-1844"/>
         </scene>
         <!--Choose Classification View Controller-->
         <scene sceneID="OCo-1k-13Y">
@@ -823,9 +884,30 @@
             </objects>
             <point key="canvasLocation" x="3034" y="-1101"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y3W-mY-bkj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zeR-vy-Mrg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B3Q-tw-MLW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OTk-xo-Pv1" kind="relationship" relationship="rootViewController" id="IcD-aB-ex3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uT9-oA-Urc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5603" y="-1844"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8CE-SV-hiV"/>
+    </inferredMetricsTieBreakers>
 </document>

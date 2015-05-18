@@ -8,10 +8,13 @@
 
 #import "PerformanceTableViewController.h"
 #import "setDateViewController.h"
+#import "CapacityCell.h"
 
 @interface PerformanceTableViewController ()
 
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *capacitySegment;
+@property (weak, nonatomic) IBOutlet UITextField *capacityTextField;
+@property (weak, nonatomic) IBOutlet UILabel *capacityUnitLabel;
 
 @end
 
@@ -19,15 +22,23 @@
 @implementation PerformanceTableViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.navigationItem.title = @"时间/地点/人数";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.backBarButtonItem.title = @"上一步";
+    [_capacitySegment setEnabled:YES forSegmentAtIndex:0];
+    _capacityTextField.hidden = YES;
+    _capacityUnitLabel.hidden = YES;
+
+    
+    [_capacitySegment addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
 }
+
 
 #pragma mark - TableView delegate
 
@@ -51,8 +62,10 @@
     return n;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+    CapacityCell *capacityCell = nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
@@ -63,24 +76,47 @@
         NSString *dateString =  [formatter stringFromDate:_event.startDate];
         //NSLog(@"date:%@", dateString);
         cell.detailTextLabel.text = dateString;
+        return cell;
 
     } else if (indexPath.section == 0 && indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"endDate" forIndexPath:indexPath];
         cell.detailTextLabel.text = [formatter stringFromDate:_event.endDate];
+        return cell;
     } else if (indexPath.section == 0 && indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"applyEndDate" forIndexPath:indexPath];
         cell.detailTextLabel.text = [formatter stringFromDate:_event.applyEndDate];
+        return cell;
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"location" forIndexPath:indexPath];
         cell.detailTextLabel.text = @"选择地点";
+        return cell;
     }else if (indexPath.section == 2 && indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"capacity" forIndexPath:indexPath];
-        
-    }
+        capacityCell = [tableView dequeueReusableCellWithIdentifier:@"capacity" forIndexPath:indexPath];
+ 
+        return capacityCell;
 
-    
-    return cell;
+    }else {
+        return cell;
+    }
 }
+ */
+
+// Handle the change event of capacity segment
+- (void)segmentChanged:(UISegmentedControl *)paramSender {
+    
+        NSInteger selectedSegmentIndex = [paramSender selectedSegmentIndex];
+    if (selectedSegmentIndex == 0) {
+        _capacityTextField.hidden = YES;
+        _capacityUnitLabel.hidden = YES;
+    }else {
+        _capacityTextField.hidden = NO;
+        _capacityUnitLabel.hidden = NO;
+    }
+        NSString *selectedSegmentText = [paramSender titleForSegmentAtIndex:selectedSegmentIndex];
+        NSLog(@"Segment:%@ is selected", selectedSegmentText);
+
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -100,7 +136,7 @@
         vc.dateType = 0;
         vc.confirmBlock = ^{
             [self.tableView reloadData];
-            NSLog(@"start:%@", _event.startDate);
+            //NSLog(@"start:%@", _event.startDate);
         };
     }
     if ([segue.identifier isEqualToString:@"setEndDate"]) {
@@ -109,7 +145,7 @@
         vc.dateType = 1;
         vc.confirmBlock = ^{
             [self.tableView reloadData];
-            NSLog(@"end:%@", _event.endDate);
+            //NSLog(@"end:%@", _event.endDate);
         };
     }
     if ([segue.identifier isEqualToString:@"setApplyEndDate"]) {
@@ -118,7 +154,7 @@
         vc.dateType = 2;
         vc.confirmBlock = ^{
             [self.tableView reloadData];
-            NSLog(@"apply:%@", _event.applyEndDate);
+            //NSLog(@"apply:%@", _event.applyEndDate);
         };
     }
 }

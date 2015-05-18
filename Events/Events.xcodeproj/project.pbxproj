@@ -19,6 +19,7 @@
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
+		0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473E8501B09CA4E00590500 /* CapacityCell.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
 		047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91D01AF9B2B100631FCE /* MyEventsViewController.m */; };
@@ -61,6 +62,8 @@
 		045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTableViewController.m; sourceTree = "<group>"; };
 		046FB8CC1B019C5C00C339AE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		046FB8CD1B019C5C00C339AE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		0473E84F1B09CA4E00590500 /* CapacityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapacityCell.h; sourceTree = "<group>"; };
+		0473E8501B09CA4E00590500 /* CapacityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapacityCell.m; sourceTree = "<group>"; };
 		047D91C91AF9AF1E00631FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		047D91CA1AF9AF1E00631FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		047D91CC1AF9B09500631FCE /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		045DBEA41B05CA4D00D3581C /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
+				0473E84F1B09CA4E00590500 /* CapacityCell.h */,
+				0473E8501B09CA4E00590500 /* CapacityCell.m */,
 				045A51381B087DA50075E811 /* setDateViewController.h */,
 				045A51391B087DA50075E811 /* setDateViewController.m */,
 				045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */,
@@ -304,6 +309,7 @@
 				048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
+				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,
 				045A513A1B087DA50075E811 /* setDateViewController.m in Sources */,

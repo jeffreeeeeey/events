@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *capacitySegment;
 @property (weak, nonatomic) IBOutlet UITextField *capacityTextField;
 @property (weak, nonatomic) IBOutlet UILabel *capacityUnitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *applyEndDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *capacityLimitTextField;
 
 @end
 
@@ -23,19 +27,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"时间/地点/人数";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
-    self.navigationItem.backBarButtonItem.title = @"上一步";
-    [_capacitySegment setEnabled:YES forSegmentAtIndex:0];
-    _capacityTextField.hidden = YES;
-    _capacityUnitLabel.hidden = YES;
-
+    //self.navigationItem.title = @"时间/地点/人数";
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
+    // Set the back button of next view
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    [self setLabelContent];
     
+    // Set the segmentedControl
+    _capacitySegment.selectedSegmentIndex = 1;
     [_capacitySegment addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 
 }
 
+- (void)setLabelContent {
+    // Set the content
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    if (_event.startDate) {
+        _startDateLabel.text = [formatter stringFromDate:_event.startDate];
+    }
+    if (_event.endDate) {
+        _endDateLabel.text = [formatter stringFromDate:_event.endDate];
+    }
+    if (_event.applyEndDate) {
+        _applyEndDateLabel.text = [formatter stringFromDate:_event.applyEndDate];
+    }
+    _capacityTextField.text = [NSString stringWithFormat:@"%d", 50];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
+    [self setLabelContent];
     [self.tableView reloadData];
 }
 

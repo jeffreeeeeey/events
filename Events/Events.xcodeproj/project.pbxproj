@@ -25,6 +25,8 @@
 		047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91D01AF9B2B100631FCE /* MyEventsViewController.m */; };
 		048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */; };
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
+		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
+		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicDetailsViewController.m; sourceTree = "<group>"; };
 		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		048282A31AFB5F7100249E24 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLogoViewController.h; sourceTree = "<group>"; };
+		04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLogoViewController.m; sourceTree = "<group>"; };
+		04B82F0B1B0AE3C9006ED7A4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,7 @@
 		041347C81AF8B0AF0015E38E /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				04B82F0A1B0AE3B3006ED7A4 /* images */,
 				048282A61AFB5FD300249E24 /* Models */,
 				048282A51AFB5F8B00249E24 /* ViewControllers */,
 				041347CD1AF8B0AF0015E38E /* AppDelegate.h */,
@@ -156,6 +162,8 @@
 		045DBEA41B05CA4D00D3581C /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
+				04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */,
+				04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */,
 				0473E84F1B09CA4E00590500 /* CapacityCell.h */,
 				0473E8501B09CA4E00590500 /* CapacityCell.m */,
 				045A51381B087DA50075E811 /* setDateViewController.h */,
@@ -198,6 +206,14 @@
 				045D119B1B0322AA009FCF89 /* EventClassifications.h */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		04B82F0A1B0AE3B3006ED7A4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				04B82F0B1B0AE3C9006ED7A4 /* logo.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +298,7 @@
 			files = (
 				041347D81AF8B0AF0015E38E /* Main.storyboard in Resources */,
 				041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */,
+				04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */,
 				041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */,
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,

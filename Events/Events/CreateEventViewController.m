@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _event = [[Event alloc]init];
+    //UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //self.navigationItem.backBarButtonItem = backButton;
     
 }
 

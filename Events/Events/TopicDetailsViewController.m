@@ -5,7 +5,7 @@
 //  Created by mac on 5/7/15.
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
-
+#import "Settings.h"
 #import "TopicDetailsViewController.h"
 
 @interface TopicDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate>
@@ -54,16 +54,16 @@
 }
 */
 
-- (void)getEventDetail:(NSDictionary *)eventDic
+- (void)getEventDetail:(NSDictionary *)topicDic
 {
-    NSNumber *topicID = [eventDic valueForKey:@"id"];
+    NSNumber *topicID = [topicDic valueForKey:@"id"];
     NSLog(@"topic id:%@", topicID);
     
     __block NSDictionary *dic;
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://mpc.issll.com/llzgmri/m/p/topic/queryTopic?topicid=%@&page=1&userid=",topicID];
+    NSString *urlString = [NSString stringWithFormat:eventDetail,topicID];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -76,12 +76,26 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 _eventDic = dic;
                 
+                _titleLabel.text = [_eventDic valueForKey:@"title"];
+                
+                NSString *imageURLString = [_eventDic valueForKey:@"img"];
+                //NSLog(@"image url:%@", imageURLString);
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
+                _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
+                _eventImageView.image = image;
+                
+                _startTimeLabel.text = [_eventDic valueForKey:@"start_time"];
+                _endTimeLabel.text = [_eventDic valueForKey:@"end_time"];
+                _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
+                
+                /*
                 NSDictionary *eventTopicDic = [dic valueForKey:@"topic"];
                 NSString *title = [eventTopicDic valueForKey:@"title"];
                 _titleLabel.text = title;
                 
                 // Foundamental information are in activity dic
                 NSDictionary *activityDic = [eventTopicDic valueForKey:@"activity"];
+                
                 
                 NSString *imageURLString = [activityDic valueForKey:@"image"];
                 NSLog(@"image url:%@", imageURLString);
@@ -102,6 +116,7 @@
                 
                 NSNumber *n = [activityDic valueForKey:@"man_count"];
                 _participantsCount.text = [NSString stringWithFormat:@"%@",n];
+                 */
             });
 
         } else {

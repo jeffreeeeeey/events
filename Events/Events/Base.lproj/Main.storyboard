@@ -401,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bd0-eA-Uyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4825" y="-1114"/>
+            <point key="canvasLocation" x="4730" y="-1095"/>
         </scene>
         <!--Set Date View Controller-->
         <scene sceneID="Ad6-3f-3oX">
@@ -458,19 +458,40 @@
         <!--报名设置-->
         <scene sceneID="VJ7-Bd-Yg9">
             <objects>
-                <tableViewController id="oZU-r1-8K5" sceneMemberID="viewController">
+                <tableViewController id="oZU-r1-8K5" customClass="setApplicationsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GF4-E0-amI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JS3-s8-1Av">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="factors" textLabel="7eK-fC-KM5" style="IBUITableViewCellStyleDefault" id="JS3-s8-1Av">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JS3-s8-1Av" id="dtf-VU-MrT">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7eK-fC-KM5">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0aE-qu-FtX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0aE-qu-FtX" id="LOg-mE-E98">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z12-ww-oQZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z12-ww-oQZ" id="shE-oo-7Ck">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="oZU-r1-8K5" id="AVJ-bu-dGp"/>
                             <outlet property="delegate" destination="oZU-r1-8K5" id="v1c-1R-uSn"/>
@@ -482,7 +503,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZh-2K-b5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6438" y="-1110"/>
+            <point key="canvasLocation" x="6454" y="-1095"/>
         </scene>
         <!--Choose Classification View Controller-->
         <scene sceneID="OCo-1k-13Y">
@@ -981,7 +1002,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uT9-oA-Urc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5603" y="-1844"/>
+            <point key="canvasLocation" x="5707" y="-1844"/>
         </scene>
         <!--LOGO-->
         <scene sceneID="lMp-RA-hB9">
@@ -1002,29 +1023,25 @@
                                     <constraint firstAttribute="height" constant="150" id="ce2-Qs-dMH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击图片，设置 LOGO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUY-Jh-eW6">
-                                <rect key="frame" x="214" y="298" width="173" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-jh-rhl">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="camera" id="NVg-dF-lpS"/>
+                                    <barButtonItem systemItem="camera" id="NVg-dF-lpS">
+                                        <connections>
+                                            <action selector="uploadLogo:" destination="bwP-q8-zVJ" id="6eW-O7-2rG"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="rUY-Jh-eW6" secondAttribute="centerX" id="7Qr-bS-Xw7"/>
                             <constraint firstAttribute="centerX" secondItem="hh2-jh-rhl" secondAttribute="centerX" id="918-c0-0cW"/>
                             <constraint firstItem="hh2-jh-rhl" firstAttribute="leading" secondItem="elG-zX-Qqg" secondAttribute="leadingMargin" constant="-16" id="SyN-6T-Bsq"/>
                             <constraint firstAttribute="centerX" secondItem="Kgr-sd-qaE" secondAttribute="centerX" id="XuH-gW-4d7"/>
                             <constraint firstItem="aBU-62-hfq" firstAttribute="top" secondItem="hh2-jh-rhl" secondAttribute="bottom" id="fgr-gE-uam"/>
                             <constraint firstItem="Kgr-sd-qaE" firstAttribute="top" secondItem="jSm-5m-BfK" secondAttribute="bottom" constant="50" id="s09-Hx-eVd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hh2-jh-rhl" secondAttribute="trailing" constant="-16" id="u6P-O1-Zgk"/>
-                            <constraint firstItem="rUY-Jh-eW6" firstAttribute="top" secondItem="Kgr-sd-qaE" secondAttribute="bottom" constant="34" id="zO9-X1-7Vg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="LOGO" id="KXr-7w-XNb">
@@ -1035,6 +1052,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="logoImageView" destination="Kgr-sd-qaE" id="2zs-JF-8F4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyi-zF-Utj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

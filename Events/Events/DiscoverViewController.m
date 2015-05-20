@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
+#import "Settings.h"
 #import "DiscoverViewController.h"
 #import "TopicDetailsViewController.h"
 
@@ -79,12 +80,20 @@
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    NSURL *url = [NSURL URLWithString:@"http://mpc.issll.com/llzgmri/m/p/topic/getPlotTopicsByType?type=2&page=1&long=116.501426&lat=39.921523"];
+    NSURL *url = [NSURL URLWithString:eventList];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
-            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //NSLog(@"json:%@", dic);
+            array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"json:%@", array);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.topics = array;
+                [self.topicsTable reloadData];
+            });
+            
+            
+            /* handle forum topics
             array = [dic objectForKey:@"topics"];
             NSLog(@"there are %d topics in array", (unsigned)array.count);
             
@@ -93,7 +102,7 @@
                 self.topics = array;
                 [self.topicsTable reloadData];
             });
-            
+            */
             //[self.topicsTable reloadData];
         } else {
             NSLog(@"error:%@",error);

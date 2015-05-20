@@ -27,6 +27,7 @@
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
+		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,9 @@
 		04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLogoViewController.h; sourceTree = "<group>"; };
 		04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLogoViewController.m; sourceTree = "<group>"; };
 		04B82F0B1B0AE3C9006ED7A4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		04B82F0D1B0B05A9006ED7A4 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		04B82F0E1B0B20E7006ED7A4 /* setApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setApplicationsTableViewController.h; sourceTree = "<group>"; };
+		04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setApplicationsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				041347CD1AF8B0AF0015E38E /* AppDelegate.h */,
 				041347CE1AF8B0AF0015E38E /* AppDelegate.m */,
 				041347D61AF8B0AF0015E38E /* Main.storyboard */,
+				04B82F0D1B0B05A9006ED7A4 /* Settings.h */,
 				041347D91AF8B0AF0015E38E /* Images.xcassets */,
 				041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */,
 				041347C91AF8B0AF0015E38E /* Supporting Files */,
@@ -162,6 +167,8 @@
 		045DBEA41B05CA4D00D3581C /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
+				04B82F0E1B0B20E7006ED7A4 /* setApplicationsTableViewController.h */,
+				04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */,
 				04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */,
 				04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */,
 				0473E84F1B09CA4E00590500 /* CapacityCell.h */,
@@ -326,6 +333,7 @@
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,
 				048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
+				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,

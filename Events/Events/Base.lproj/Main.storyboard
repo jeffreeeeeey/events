@@ -45,6 +45,10 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="2qk-zT-Ngb"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VzQ-Io-NGd">
+                                <rect key="frame" x="0.0" y="282" width="600" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -52,6 +56,8 @@
                             <constraint firstItem="nkJ-gR-5ob" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="Fek-0t-RsK"/>
                             <constraint firstItem="nkJ-gR-5ob" firstAttribute="bottom" secondItem="tsR-hK-woN" secondAttribute="bottomMargin" id="eur-pH-9VT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nkJ-gR-5ob" secondAttribute="trailing" id="sW6-x3-gXf"/>
+                            <constraint firstAttribute="centerX" secondItem="VzQ-Io-NGd" secondAttribute="centerX" id="ueb-nG-rI0"/>
+                            <constraint firstAttribute="centerY" secondItem="VzQ-Io-NGd" secondAttribute="centerY" id="wva-tf-13F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="发现活动" id="sX2-uT-MaM">
@@ -62,6 +68,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicatorView" destination="VzQ-Io-NGd" id="rcA-7l-Ka3"/>
                         <outlet property="topicsTable" destination="nkJ-gR-5ob" id="kJp-WE-Irk"/>
                     </connections>
                 </viewController>
@@ -543,8 +550,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tW-SN-qL3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tW-SN-qL3">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YO-BE-pLl">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
@@ -628,12 +635,18 @@
                                             <constraint firstItem="wcv-to-QEI" firstAttribute="leading" secondItem="7YO-BE-pLl" secondAttribute="leading" constant="8" id="xvI-nV-Lcc"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-7f-Eib">
+                                        <rect key="frame" x="266" y="282" width="37" height="37"/>
+                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="7YO-BE-pLl" firstAttribute="top" secondItem="1tW-SN-qL3" secondAttribute="top" id="4gQ-fW-h5V"/>
+                                    <constraint firstAttribute="centerY" secondItem="Tvr-7f-Eib" secondAttribute="centerY" id="8u0-pV-gls"/>
                                     <constraint firstAttribute="centerX" secondItem="7YO-BE-pLl" secondAttribute="centerX" id="LUg-Zj-Yiy"/>
                                     <constraint firstAttribute="trailing" secondItem="7YO-BE-pLl" secondAttribute="trailing" id="MRf-vj-gbs"/>
                                     <constraint firstAttribute="bottom" secondItem="7YO-BE-pLl" secondAttribute="bottom" id="Ybo-QU-iU5"/>
+                                    <constraint firstAttribute="centerX" secondItem="Tvr-7f-Eib" secondAttribute="centerX" id="eJH-Zz-m3m"/>
                                     <constraint firstItem="7YO-BE-pLl" firstAttribute="leading" secondItem="1tW-SN-qL3" secondAttribute="leading" id="i1d-rg-y1V"/>
                                 </constraints>
                             </scrollView>

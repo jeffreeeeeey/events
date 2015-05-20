@@ -73,6 +73,7 @@
             
             
             // Have to use dispatch_async to make it work. NSURLSession get data asynchronously
+            // for event
             dispatch_async(dispatch_get_main_queue(), ^{
                 _eventDic = dic;
                 
@@ -89,6 +90,7 @@
                 _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
                 
                 /*
+                // for forum topics
                 NSDictionary *eventTopicDic = [dic valueForKey:@"topic"];
                 NSString *title = [eventTopicDic valueForKey:@"title"];
                 _titleLabel.text = title;

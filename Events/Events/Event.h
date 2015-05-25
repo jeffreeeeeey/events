@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, assign) NSUInteger activityType;
+@property (nonatomic, assign) NSArray *activityTypes;
 @property (nonatomic, strong) NSURL *activityImage;
 @property (nonatomic, strong) NSNumber *plotID;
 @property (nonatomic, strong) NSString *forumCode;

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *closingDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *participantsCount;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -88,6 +89,7 @@
                 _startTimeLabel.text = [_eventDic valueForKey:@"start_time"];
                 _endTimeLabel.text = [_eventDic valueForKey:@"end_time"];
                 _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
+                [self.activityIndicator stopAnimating];
                 
                 /*
                 // for forum topics

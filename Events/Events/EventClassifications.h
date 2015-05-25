@@ -10,6 +10,6 @@
 #define Events_EventClassifications_h
 
 
-#define EventClassifications @[@"聚餐", @"户外郊游", @"线上活动"]
+#define EventClassifications @[@"亲子", @"运动", @"旅行", @"美食", @"优惠", @"比赛", @"创业", @"科技", @"跳蚤市场", @"聚会 Party", @"线上"]
 
 #endif

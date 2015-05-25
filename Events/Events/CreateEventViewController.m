@@ -23,10 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _event = [[Event alloc]init];
-    //UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
-    //self.navigationItem.backBarButtonItem = backButton;
     
+    _event = [[Event alloc]init];
+    NSLog(@"init type count:%ldu", _event.activityTypes.count);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,7 +65,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"chooseClassification"]) {
-        ChooseClassificationViewController *vc = segue.destinationViewController;
+        ChooseClassificationViewController *vc = (ChooseClassificationViewController *)[segue.destinationViewController topViewController];
         vc.event = self.event;
         vc.dismissBlock = ^{
             [self.tableView reloadData];

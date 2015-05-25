@@ -27,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _event = [[Event alloc]init];
     //self.navigationItem.title = @"时间/地点/人数";
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
     // Set the back button of next view

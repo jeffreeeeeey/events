@@ -24,6 +24,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (IBAction)finishBtnPressed:(UIBarButtonItem *)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Table view data source
 

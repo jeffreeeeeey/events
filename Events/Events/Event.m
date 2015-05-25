@@ -12,7 +12,7 @@
 
 - (instancetype)init {
     self = [super init];
-    self.activityType = 0;
+    self.activityTypes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:1], [NSNumber numberWithInteger:2],nil];
     self.startDate = [[NSDate alloc]init];
     self.endDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
     self.applyEndDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];

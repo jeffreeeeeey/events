@@ -10,7 +10,7 @@
 #import "Event.h"
 
 @interface ChooseClassificationViewController : UITableViewController
-@property (nonatomic) Event *event;
+@property (nonatomic, strong) Event *event;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 @end

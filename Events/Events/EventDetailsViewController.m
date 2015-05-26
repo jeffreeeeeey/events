@@ -6,32 +6,34 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 #import "Settings.h"
-#import "TopicDetailsViewController.h"
+#import "EventDetailsViewController.h"
 
-@interface TopicDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *mainContentView;
+@interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
 
 @property (nonatomic) NSDictionary *eventDic;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *closingDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *participantsCount;
+@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
+@property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
-@implementation TopicDetailsViewController
+@implementation EventDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
-    self.scrollView.contentSize = self.mainContentView.bounds.size;
     
     [self getEventDetail:self.topicDic];
+    self.tableView.estimatedRowHeight = 1440.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -44,6 +46,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)textViewDidChange:(UITextView *)textView theCell:(UITableViewCell *)cell {
+    CGFloat fixedWidth = textView.frame.size.width;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = textView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    //cell = [self.tableView dequeueReusableCellWithIdentifier:@"introductionCell"];
+    
+    textView.frame = newFrame;
+    [self.tableView reloadData];
+}
+
+#pragma mark - tableView
+
+/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    return UITableViewAutomaticDimension;
+}
+ 
+ */
 
 /*
 #pragma mark - Navigation
@@ -79,6 +104,7 @@
                 _eventDic = dic;
                 
                 _titleLabel.text = [_eventDic valueForKey:@"title"];
+                _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
                 
                 NSString *imageURLString = [_eventDic valueForKey:@"img"];
                 //NSLog(@"image url:%@", imageURLString);
@@ -89,7 +115,12 @@
                 _startTimeLabel.text = [_eventDic valueForKey:@"start_time"];
                 _endTimeLabel.text = [_eventDic valueForKey:@"end_time"];
                 _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
+                _introductionTextView.text = [_eventDic valueForKey:@"content"];
+                _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
+                
                 [self.activityIndicator stopAnimating];
+                //[self textViewDidChange:_introductionTextView theCell:[self.tableView dequeueReusableCellWithIdentifier:@"introductionCell"]];
+                
                 
                 /*
                 // for forum topics

@@ -8,12 +8,14 @@
 
 #import "Settings.h"
 #import "DiscoverViewController.h"
-#import "TopicDetailsViewController.h"
+#import "EventDetailsViewController.h"
+#import "EventListTableViewCell.h"
 
 @interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
 @property (nonatomic)  NSDictionary *jsonDic;
 @property (nonatomic)  NSArray *topics;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end
@@ -56,12 +58,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topicCell" forIndexPath:indexPath];
+    EventListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
+    
     
     NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
     NSString *title = [topicDic objectForKey:@"title"];
     //NSLog(@"%@", title);
-    cell.textLabel.text = title;
+    cell.titleLabel.text = title;
+    cell.subtitleLabel.text = [topicDic objectForKey:@"subtitle"];
+    cell.locationLabel.text = [topicDic objectForKey:@"location"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[topicDic objectForKey:@"img"]]]];
+    cell.eventImageView.image = image;
+
     return cell;
 }
 
@@ -77,7 +85,7 @@
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
-        TopicDetailsViewController *vc = segue.destinationViewController;
+        EventDetailsViewController *vc = segue.destinationViewController;
         vc.topicDic = topicDic;
     }
 }

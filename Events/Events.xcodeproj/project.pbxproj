@@ -15,6 +15,8 @@
 		041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041347D91AF8B0AF0015E38E /* Images.xcassets */; };
 		041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */; };
 		041347E91AF8B0AF0015E38E /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041347E81AF8B0AF0015E38E /* EventsTests.m */; };
+		043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043198D21B145D9D00D597B3 /* EventListTableViewCell.m */; };
+		043198D61B1469F700D597B3 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043198D51B1469F700D597B3 /* BaiduMapAPI.framework */; };
 		045A513A1B087DA50075E811 /* setDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A51391B087DA50075E811 /* setDateViewController.m */; };
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
@@ -23,7 +25,7 @@
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
 		047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91D01AF9B2B100631FCE /* MyEventsViewController.m */; };
-		048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */; };
+		048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* EventDetailsViewController.m */; };
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
@@ -56,6 +58,9 @@
 		041347E21AF8B0AF0015E38E /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041347E71AF8B0AF0015E38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041347E81AF8B0AF0015E38E /* EventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsTests.m; sourceTree = "<group>"; };
+		043198D11B145D9D00D597B3 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
+		043198D21B145D9D00D597B3 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
+		043198D51B1469F700D597B3 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator/BaiduMapAPI.framework"; sourceTree = "<group>"; };
 		045A51381B087DA50075E811 /* setDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setDateViewController.h; sourceTree = "<group>"; };
 		045A51391B087DA50075E811 /* setDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setDateViewController.m; sourceTree = "<group>"; };
 		045D119B1B0322AA009FCF89 /* EventClassifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventClassifications.h; sourceTree = "<group>"; };
@@ -73,8 +78,8 @@
 		047D91CD1AF9B09500631FCE /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
 		047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventsViewController.h; sourceTree = "<group>"; };
 		047D91D01AF9B2B100631FCE /* MyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsViewController.m; sourceTree = "<group>"; };
-		0482829F1AFB5EA900249E24 /* TopicDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicDetailsViewController.h; sourceTree = "<group>"; };
-		048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicDetailsViewController.m; sourceTree = "<group>"; };
+		0482829F1AFB5EA900249E24 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
+		048282A01AFB5EA900249E24 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		048282A31AFB5F7100249E24 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLogoViewController.h; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043198D61B1469F700D597B3 /* BaiduMapAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +112,7 @@
 		041347BD1AF8B0AF0015E38E = {
 			isa = PBXGroup;
 			children = (
+				043198D51B1469F700D597B3 /* BaiduMapAPI.framework */,
 				041347C81AF8B0AF0015E38E /* Events */,
 				041347E51AF8B0AF0015E38E /* EventsTests */,
 				041347C71AF8B0AF0015E38E /* Products */,
@@ -193,12 +200,14 @@
 				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
 				041347D31AF8B0AF0015E38E /* MySpaceViewController.h */,
 				041347D41AF8B0AF0015E38E /* MySpaceViewController.m */,
-				0482829F1AFB5EA900249E24 /* TopicDetailsViewController.h */,
-				048282A01AFB5EA900249E24 /* TopicDetailsViewController.m */,
+				0482829F1AFB5EA900249E24 /* EventDetailsViewController.h */,
+				048282A01AFB5EA900249E24 /* EventDetailsViewController.m */,
 				047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */,
 				047D91D01AF9B2B100631FCE /* MyEventsViewController.m */,
 				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
+				043198D11B145D9D00D597B3 /* EventListTableViewCell.h */,
+				043198D21B145D9D00D597B3 /* EventListTableViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -331,7 +340,8 @@
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,
-				048282A11AFB5EA900249E24 /* TopicDetailsViewController.m in Sources */,
+				048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */,
+				043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
@@ -467,6 +477,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/mac/Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator",
+				);
 				INFOPLIST_FILE = Events/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,6 +491,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/mac/Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator",
+				);
 				INFOPLIST_FILE = Events/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

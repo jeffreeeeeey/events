@@ -38,7 +38,7 @@
 - (void)refreshInvoked{
     
     [self getTopics];
-    NSLog(@"r===========efresh");
+    NSLog(@"===========refresh===========");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +58,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     EventListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     
     
@@ -142,6 +143,7 @@
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:^{
                 [_indicatorView stopAnimating];
+                
                 
             }];
 

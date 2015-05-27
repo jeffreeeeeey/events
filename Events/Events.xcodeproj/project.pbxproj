@@ -30,6 +30,8 @@
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
+		04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */; };
+		04FCC3951B15A6340053C8C3 /* yangMi.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FCC3941B15A6340053C8C3 /* yangMi.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,9 @@
 		04B82F0D1B0B05A9006ED7A4 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		04B82F0E1B0B20E7006ED7A4 /* setApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setApplicationsTableViewController.h; sourceTree = "<group>"; };
 		04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setApplicationsTableViewController.m; sourceTree = "<group>"; };
+		04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTableViewController.h; sourceTree = "<group>"; };
+		04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTableViewController.m; sourceTree = "<group>"; };
+		04FCC3941B15A6340053C8C3 /* yangMi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yangMi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +213,8 @@
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
 				043198D11B145D9D00D597B3 /* EventListTableViewCell.h */,
 				043198D21B145D9D00D597B3 /* EventListTableViewCell.m */,
+				04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */,
+				04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				04B82F0B1B0AE3C9006ED7A4 /* logo.png */,
+				04FCC3941B15A6340053C8C3 /* yangMi.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -315,6 +323,7 @@
 				041347D81AF8B0AF0015E38E /* Main.storyboard in Resources */,
 				041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */,
 				04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */,
+				04FCC3951B15A6340053C8C3 /* yangMi.png in Resources */,
 				041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +346,7 @@
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
+				04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,

@@ -32,7 +32,8 @@
     // pull to refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refreshInvoked) forControlEvents:UIControlEventValueChanged];
-    
+    //self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight =120.0;
 }
 
 - (void)refreshInvoked{

@@ -8,6 +8,7 @@
 #import "Settings.h"
 #import "EventDetailsViewController.h"
 #import "ApplyTableViewController.h"
+#import "ApplicationsTableViewController.h"
 
 #define introductionTextViewRow 8
 
@@ -99,6 +100,11 @@
     if ([segue.identifier isEqualToString:@"apply"]) {
         ApplyTableViewController *vc = (ApplyTableViewController *)[segue.destinationViewController topViewController];
         vc.EventDic = self.eventDic;
+    } else {
+        if ([segue.identifier isEqualToString:@"applications"]) {
+            ApplicationsTableViewController *vc = [segue destinationViewController];
+            vc.eventDic = self.eventDic;
+        }
     }
 }
 

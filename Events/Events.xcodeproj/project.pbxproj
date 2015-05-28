@@ -21,6 +21,10 @@
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
+		04720ECD1B16A3D4009D1B74 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECC1B16A3D4009D1B74 /* Application.m */; };
+		04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */; };
+		04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */; };
+		04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */; };
 		0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473E8501B09CA4E00590500 /* CapacityCell.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
@@ -72,6 +76,14 @@
 		045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTableViewController.m; sourceTree = "<group>"; };
 		046FB8CC1B019C5C00C339AE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		046FB8CD1B019C5C00C339AE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		04720ECB1B16A3D4009D1B74 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		04720ECC1B16A3D4009D1B74 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
+		04720ECE1B16A975009D1B74 /* AgeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeTableViewCell.h; sourceTree = "<group>"; };
+		04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeTableViewCell.m; sourceTree = "<group>"; };
+		04720ED21B16AFC9009D1B74 /* GenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderTableViewCell.h; sourceTree = "<group>"; };
+		04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderTableViewCell.m; sourceTree = "<group>"; };
+		04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationsTableViewController.h; sourceTree = "<group>"; };
+		04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationsTableViewController.m; sourceTree = "<group>"; };
 		0473E84F1B09CA4E00590500 /* CapacityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapacityCell.h; sourceTree = "<group>"; };
 		0473E8501B09CA4E00590500 /* CapacityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapacityCell.m; sourceTree = "<group>"; };
 		047D91C91AF9AF1E00631FCE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -197,9 +209,25 @@
 			name = CreateEvent;
 			sourceTree = "<group>";
 		};
+		04720ED11B16A989009D1B74 /* Apply */ = {
+			isa = PBXGroup;
+			children = (
+				04720ED21B16AFC9009D1B74 /* GenderTableViewCell.h */,
+				04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */,
+				04720ECE1B16A975009D1B74 /* AgeTableViewCell.h */,
+				04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */,
+				04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */,
+				04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */,
+			);
+			name = Apply;
+			sourceTree = "<group>";
+		};
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */,
+				04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */,
+				04720ED11B16A989009D1B74 /* Apply */,
 				045DBEA41B05CA4D00D3581C /* CreateEvent */,
 				041347D01AF8B0AF0015E38E /* DiscoverViewController.h */,
 				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
@@ -213,8 +241,6 @@
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
 				043198D11B145D9D00D597B3 /* EventListTableViewCell.h */,
 				043198D21B145D9D00D597B3 /* EventListTableViewCell.m */,
-				04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */,
-				04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -222,6 +248,8 @@
 		048282A61AFB5FD300249E24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04720ECB1B16A3D4009D1B74 /* Application.h */,
+				04720ECC1B16A3D4009D1B74 /* Application.m */,
 				048282A21AFB5F7100249E24 /* Event.h */,
 				048282A31AFB5F7100249E24 /* Event.m */,
 				046FB8CC1B019C5C00C339AE /* User.h */,
@@ -343,18 +371,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */,
+				04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */,
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
+				04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,
 				048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */,
+				04720ECD1B16A3D4009D1B74 /* Application.m in Sources */,
 				043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
+				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,

@@ -15,6 +15,9 @@
 
 @interface CreateEventViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, strong) Event *event;
+@property (weak, nonatomic) IBOutlet UITextField *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
 
 @end
 
@@ -61,6 +64,25 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    BOOL shouldPerform = false;
+    
+    // Varifify if title is empty
+    if (_titleLabel.text.length == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请填写活动标题" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }else {
+        shouldPerform = true;
+    }
+    
+    return shouldPerform;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
@@ -70,9 +92,18 @@
         vc.dismissBlock = ^{
             [self.tableView reloadData];
         };
-    }
-    
-    if ([segue.identifier isEqualToString:@"performance"]) {
+    }else if ([segue.identifier isEqualToString:@"performance"]) {
+        if (_titleLabel.text.length > 0) {
+            _event.title = _titleLabel.text;
+        }
+        if (_subtitleLabel.text.length > 0) {
+            _event.subtitle = _titleLabel.text;
+        }
+        if (_introductionTextView.text.length > 0) {
+            _event.content = _introductionTextView.text;
+        }
+        
+        
         PerformanceTableViewController *vc = segue.destinationViewController;
         vc.event = self.event;
     }

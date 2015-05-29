@@ -161,6 +161,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="introductionTextView" destination="Nfq-A3-Fqh" id="Kh2-Ze-fO7"/>
+                        <outlet property="subtitleLabel" destination="gk9-N5-Aj5" id="4Sh-Wg-0MJ"/>
+                        <outlet property="titleLabel" destination="V10-yd-VUZ" id="tG3-3x-egk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UzA-30-Dsu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -946,9 +951,9 @@
         <!--活动详情-->
         <scene sceneID="v7p-7t-9fv">
             <objects>
-                <tableViewController id="d0E-wb-VmV" customClass="EventDetailsViewController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="d0E-wb-VmV" customClass="EventDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="b6D-Lx-MpR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1248,23 +1253,10 @@
                                                         <outlet property="delegate" destination="d0E-wb-VmV" id="3kQ-eT-LAO"/>
                                                     </connections>
                                                 </textView>
-                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aof-O0-ClQ">
-                                                    <rect key="frame" x="0.0" y="232" width="600" height="44"/>
-                                                    <items>
-                                                        <barButtonItem title="报名管理" id="nE2-n0-LGb">
-                                                            <connections>
-                                                                <segue destination="zT0-Dn-GNp" kind="show" identifier="applications" id="OGW-tL-HMu"/>
-                                                            </connections>
-                                                        </barButtonItem>
-                                                    </items>
-                                                </toolbar>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="pAz-JT-hcz" secondAttribute="centerY" id="1Jr-tX-Xri"/>
-                                                <constraint firstItem="Aof-O0-ClQ" firstAttribute="bottom" secondItem="vWf-nN-T24" secondAttribute="bottomMargin" id="1zk-xM-wbj"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="pAz-JT-hcz" secondAttribute="bottom" constant="-8" id="DjH-M9-jA7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Aof-O0-ClQ" secondAttribute="trailing" constant="-8" id="Sll-LQ-DOV"/>
-                                                <constraint firstItem="Aof-O0-ClQ" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="Tj4-Es-7t0"/>
                                                 <constraint firstAttribute="centerX" secondItem="pAz-JT-hcz" secondAttribute="centerX" id="V8z-gv-OYZ"/>
                                                 <constraint firstItem="pAz-JT-hcz" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="Yrq-wl-ZGO"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pAz-JT-hcz" secondAttribute="trailing" constant="-8" id="ZNh-cf-3ai"/>
@@ -1294,6 +1286,13 @@
                             <outlet property="delegate" destination="d0E-wb-VmV" id="vX5-Tm-kqh"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="报名管理" id="vt2-v0-kco">
+                            <connections>
+                                <segue destination="zT0-Dn-GNp" kind="show" identifier="applications" id="nis-fF-Pni"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="活动详情" id="Ywk-UZ-Gq4">
                         <barButtonItem key="rightBarButtonItem" title="报名" id="fCI-g2-iZZ">
                             <connections>
@@ -1301,7 +1300,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
@@ -1533,7 +1532,20 @@
                             <constraint firstAttribute="centerX" secondItem="ELW-Oc-hQr" secondAttribute="centerX" id="xkc-Wr-lht"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="用户信息" id="snH-R0-rli">
+                            <connections>
+                                <action selector="checkUserInfo:" destination="8rJ-Kc-sve" id="hwv-Af-fqF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="postLogin" id="jYB-Gf-Hqi">
+                            <connections>
+                                <action selector="postLogin:" destination="8rJ-Kc-sve" id="dSt-df-7Cz"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="我的" id="GIo-Hh-UoF"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avatarImageView" destination="916-YZ-IGZ" id="m46-vQ-2Y0"/>
                         <outlet property="funcTableView" destination="oEX-TB-ioS" id="I5K-WS-KML"/>
@@ -1656,11 +1668,11 @@
             <objects>
                 <tableViewController id="zT0-Dn-GNp" customClass="ApplicationsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yFC-xX-kLe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Ofd-M9-Jkd" detailTextLabel="JU6-aT-Xhy" style="IBUITableViewCellStyleValue1" id="gmM-QN-VhC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="application" textLabel="Ofd-M9-Jkd" detailTextLabel="JU6-aT-Xhy" style="IBUITableViewCellStyleValue1" id="gmM-QN-VhC">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gmM-QN-VhC" id="a38-ty-MzC">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1668,7 +1680,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ofd-M9-Jkd">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JU6-aT-Xhy">
@@ -1772,7 +1784,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Oz8-rz-ZWC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjX-x3-WZR" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ZjX-x3-WZR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Stf-69-XQj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

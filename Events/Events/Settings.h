@@ -15,6 +15,8 @@
 #define eventDetail @"http://192.168.1.80:9090/huodong/api/activity/%@"
 #define apply @"http://192.168.1.80:9090/huodong/api/activity/apply"
 #define applications @"http://192.168.1.80:9090/huodong/api/admin/activity/%@/applies"
+#define getUser @"http://192.168.1.80:9090/huodong/api/admin/activity/userinfo"
+
 /*
  报名可以提交以下字段，值都为纯文本
  activityid

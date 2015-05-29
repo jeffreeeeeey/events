@@ -37,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
+    self.navigationController.toolbarHidden = NO;
     
     [self getEventDetail:self.topicDic];
     

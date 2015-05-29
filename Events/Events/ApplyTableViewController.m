@@ -122,15 +122,15 @@
     NSString *idcard = _idcardTextField.text;
 
     NSURL *url = [NSURL URLWithString:apply];
-    NSString *params = [NSString stringWithFormat:@"activityId=%@&username=%@&age=%@", username, age, eventID];
-    //NSString *params = @"activityId=10011&username=test";
+    NSString *params = [NSString stringWithFormat:@"activityId=%@&username=%@&age=%@",eventID, username, age];
+
     NSLog(@"%@ %@", url, params);
     
     NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[params length]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
     /*
@@ -160,17 +160,51 @@
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data.length > 0) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@", dic);
+        if (data.length > 0 && connectionError == nil) {
+            NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            //NSString *fixedString = [self fixJSON:dataString];
+            
+            NSLog(@"data:%@", dataString);
+            
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSNumber *success = [NSNumber numberWithBool:dic[@"isSuccess"]];
+            
+            NSLog(@"dic:%@", success);
+            if (success) {
+                
+                
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+        }else {
+            NSLog(@"no data");
         }
-        
-        NSLog(@"%@, %@", response, data);
-
     }];
     
 }
-
+/*
+ // Fix json data keys without quotes
+- (NSString *)fixJSON:(NSString *)s {
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"[{,]\\s*(\\w+)\\s*:"
+                                                                            options:0
+                                                                              error:NULL];
+    NSMutableString *b = [NSMutableString stringWithCapacity:([s length] * 1.1)];
+    __block NSUInteger offset = 0;
+    [regexp enumerateMatchesInString:s
+                             options:0
+                               range:NSMakeRange(0, [s length])
+                          usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                              NSRange r = [result rangeAtIndex:1];
+                              [b appendString:[s substringWithRange:NSMakeRange(offset, r.location - offset)]];
+                              [b appendString:@"\""];
+                              [b appendString:[s substringWithRange:r]];
+                              [b appendString:@"\""];
+                              offset = r.location + r.length;
+                          }];
+    [b appendString:[s substringWithRange:NSMakeRange(offset, [s length] - offset)]];
+    return b;
+}
+*/
 # pragma mark - set buttons
 
 - (IBAction)ageSliderValueChanged:(id)sender {

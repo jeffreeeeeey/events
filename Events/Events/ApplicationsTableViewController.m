@@ -11,6 +11,8 @@
 
 @interface ApplicationsTableViewController () <NSURLSessionDelegate, NSURLSessionDataDelegate>
 
+@property (nonatomic) NSArray *applicationsArray;
+
 @end
 
 @implementation ApplicationsTableViewController
@@ -38,24 +40,41 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return _applicationsArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"application" forIndexPath:indexPath];
     
     // Configure the cell...
+    NSDictionary *dic = [_applicationsArray objectAtIndex:indexPath.row];
+    if (dic) {
+        NSLog(@"======this one=======:%@",dic);
+        NSString *info = [dic objectForKey:@"info"];
+        //NSDictionary *infoDic = [NSJSONSerialization JSONObjectWithData:info options:NSJSONReadingAllowFragments error:nil];
+        
+        //NSString *username = [info objectForKey:@"username"];
+        NSData *jsonData = [info dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *e;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&e];
+        
+        NSLog(@"%@",dic[@"username"]);
+        cell.textLabel.text = dic[@"username"];
+    } else {
+        NSLog(@"nil dic");
+    }
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -105,7 +124,7 @@
 - (void)getEventApplications:(NSNumber *)eventID
 {
 
-    
+    __block NSArray *array;
     __block NSDictionary *dic;
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -116,10 +135,11 @@
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
-            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", dic);
+            array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"array:%@", array);
             
-            
+            self.applicationsArray = array;
+            [self.tableView reloadData];
         } else if(error) {
             NSLog(@"error:%@",error);
         } else {

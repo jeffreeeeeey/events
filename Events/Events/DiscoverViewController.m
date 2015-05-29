@@ -36,6 +36,11 @@
     self.tableView.estimatedRowHeight =120.0;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.toolbarHidden = YES;
+
+}
+
 - (void)refreshInvoked{
     
     [self getTopics];

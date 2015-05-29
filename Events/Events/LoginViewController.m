@@ -43,6 +43,7 @@
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
     NSString *urlString = [NSString stringWithFormat:@"http://mpc.issll.com/llzgmri/m/p/user/login?accountName=%@&pwd=%@", self.userNameTextField.text, self.passwordTextField.text];
+
     
     NSURL *url = [NSURL URLWithString:urlString];
     

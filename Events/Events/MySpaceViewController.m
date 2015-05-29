@@ -10,6 +10,7 @@
 #import "MyEventsViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
+#import "Settings.h"
 
 @interface MySpaceViewController ()
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.navigationController.toolbarHidden = NO;
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(handleLogin:) name:@"login" object:nil];
@@ -44,7 +45,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
+    NSLog(@"here");
 }
 
 - (void)handleLogin:(NSNotification *)sender {
@@ -149,5 +151,45 @@
 }
 
 
+- (IBAction)checkUserInfo:(UIBarButtonItem *)sender {
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURL *url = [NSURL URLWithString:getUser];
+    //NSURL *loginurl = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api//user/login"];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (data.length > 0 && error == nil) {
+            NSLog(@"data: %@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        }else {
+            NSLog(@"%@",error);
+        }
+    }];
+    [dataTask resume];
+}
+- (IBAction)postLogin:(UIBarButtonItem *)sender {
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api/user/login"];
+    NSString *params = [NSString stringWithFormat:@"username=admin&password=111111"];
+    //NSString *params = @"activityId=10011&username=test";
+    NSLog(@"%@ %@", url, params);
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[params length]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data.length > 0) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"%@", dic);
+        }
+        
+        NSLog(@"%@, %@", response, [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        
+    }];
+
+}
 
 @end

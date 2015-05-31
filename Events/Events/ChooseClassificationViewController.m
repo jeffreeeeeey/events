@@ -24,6 +24,10 @@
     [super viewDidLoad];
     
     self.tableView.allowsMultipleSelection = YES;
+    
+    
+
+    
     /*
     if (_event != nil) {
         NSArray *selectedTypes = [NSArray arrayWithArray:_event.activityTypes];
@@ -44,6 +48,29 @@
     
     //[self.tableView cellForRowAtIndexPath:ip].accessoryType = UITableViewCellAccessoryCheckmark;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (_classificationsArray != nil && _classificationsArray.count > 0) {
+
+        int n = (int)_classificationsArray.count;
+        
+        if (n > 0) {
+            for (int i = 0; i < n; i++) {
+                int m = [[_classificationsArray objectAtIndex:i] intValue];
+                NSIndexPath *ip = [NSIndexPath indexPathForRow:m inSection:0];
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:ip];
+                [self.tableView selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionNone];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                NSLog(@"set cell");
+            }
+            //[self.tableView reloadData];
+        }
+        
+    }else {
+        NSLog(@"types are nil");
+    }
 }
 
 - (IBAction)confirmBtnPressed:(id)sender {

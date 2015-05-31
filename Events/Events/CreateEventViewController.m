@@ -29,6 +29,8 @@
     
     _event = [[Event alloc]init];
     NSLog(@"init type count:%d", (int)_event.activityTypes.count);
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -89,7 +91,7 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"chooseClassification"]) {
         ChooseClassificationViewController *vc = (ChooseClassificationViewController *)[segue.destinationViewController topViewController];
-        vc.event = self.event;
+        vc.classificationsArray = _classificationsArray;
         vc.getClassificationsBlock = ^(NSArray *response){
             self.classificationsArray = response;
             // Set the classification cell

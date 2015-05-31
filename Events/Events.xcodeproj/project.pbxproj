@@ -20,6 +20,7 @@
 		045A513A1B087DA50075E811 /* setDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A51391B087DA50075E811 /* setDateViewController.m */; };
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
+		046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
 		04720ECD1B16A3D4009D1B74 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECC1B16A3D4009D1B74 /* Application.m */; };
 		04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */; };
@@ -69,11 +70,12 @@
 		043198D51B1469F700D597B3 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator/BaiduMapAPI.framework"; sourceTree = "<group>"; };
 		045A51381B087DA50075E811 /* setDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setDateViewController.h; sourceTree = "<group>"; };
 		045A51391B087DA50075E811 /* setDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setDateViewController.m; sourceTree = "<group>"; };
-		045D119B1B0322AA009FCF89 /* EventClassifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventClassifications.h; sourceTree = "<group>"; };
 		045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClassificationViewController.h; sourceTree = "<group>"; };
 		045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClassificationViewController.m; sourceTree = "<group>"; };
 		045DBEA51B05CAC500D3581C /* PerformanceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceTableViewController.h; sourceTree = "<group>"; };
 		045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTableViewController.m; sourceTree = "<group>"; };
+		046164DE1B1AEF9000D72B6F /* DiscoverContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverContainerViewController.h; sourceTree = "<group>"; };
+		046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverContainerViewController.m; sourceTree = "<group>"; };
 		046FB8CC1B019C5C00C339AE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		046FB8CD1B019C5C00C339AE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		04720ECB1B16A3D4009D1B74 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
@@ -225,6 +227,8 @@
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				046164DE1B1AEF9000D72B6F /* DiscoverContainerViewController.h */,
+				046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */,
 				04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */,
 				04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */,
 				04720ED11B16A989009D1B74 /* Apply */,
@@ -254,7 +258,6 @@
 				048282A31AFB5F7100249E24 /* Event.m */,
 				046FB8CC1B019C5C00C339AE /* User.h */,
 				046FB8CD1B019C5C00C339AE /* User.m */,
-				045D119B1B0322AA009FCF89 /* EventClassifications.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
+				046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,

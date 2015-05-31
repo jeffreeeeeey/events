@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
+#import "CreateEventViewController.h"
 #import "ChooseClassificationViewController.h"
-#import "EventClassifications.h"
-#import "Event.h"
+#import "Settings.h"
+
 
 @interface ChooseClassificationViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,14 +24,15 @@
     [super viewDidLoad];
     
     self.tableView.allowsMultipleSelection = YES;
-    if (_event.activityTypes != nil) {
+    /*
+    if (_event != nil) {
         NSArray *selectedTypes = [NSArray arrayWithArray:_event.activityTypes];
-        NSLog(@"type count:%lud", selectedTypes.count);
+        NSLog(@"type count:%d", (int)selectedTypes.count);
         
         for (int i = 0; i < selectedTypes.count; i++) {
             NSIndexPath *ip = [NSIndexPath indexPathForRow:[[selectedTypes objectAtIndex:i] integerValue] inSection:0];
             [self.tableView selectRowAtIndexPath:ip animated:NO scrollPosition:UITableViewScrollPositionNone];
-            NSLog(@"select row:%ld", (long)ip.row);
+            NSLog(@"select row:%d", (int)ip.row);
             
         }
 
@@ -38,7 +40,7 @@
         NSLog(@"types is null");
     }
     
-    
+    */
     
     //[self.tableView cellForRowAtIndexPath:ip].accessoryType = UITableViewCellAccessoryCheckmark;
     
@@ -49,25 +51,30 @@
     NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
     NSInteger rowsCount = selectedRows.count;
     if (rowsCount > 0) {
-        NSInteger m = 0;
         NSNumber *n = nil;
-
-        NSMutableArray *types = [[NSMutableArray alloc]init];
+        
+        _classificationsArray= [[NSMutableArray alloc]init];
         for (int i = 0; i < rowsCount; i++) {
             NSIndexPath *ip = selectedRows[i];
-            m = ip.row;
-            n = [NSNumber numberWithInteger:m];
+
+            n = [NSNumber numberWithInteger:ip.row];
             
-            [types addObject:n];
+            [_classificationsArray addObject:n];
         }
-        _event.activityTypes = types;
 
+        for (NSNumber *typeNumber in _classificationsArray) {
+            NSLog(@"choosed %d", typeNumber.intValue);
+        }
+        NSLog(@"activityTypes count:%d", (int)_classificationsArray.count);
+        
     }
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        self.getClassificationsBlock(_classificationsArray);
+    }];
 }
 
 - (IBAction)cancelBtnPressed:(id)sender {
+    
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -79,12 +86,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return EventClassifications.count;
+    return eventClassifications.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    NSString * className = EventClassifications[indexPath.row];
+    NSString * className = eventClassifications[indexPath.row];
     
     cell.textLabel.text = className;
 
@@ -93,7 +100,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *selectedRows = [tableView indexPathsForSelectedRows];
-    NSLog(@"selected:%lu", (unsigned long)selectedRows.count);
+    NSLog(@"already select rows count:%d", (int)selectedRows.count);
     if (selectedRows.count == 2) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"最多选择两种类型" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
@@ -120,13 +127,14 @@
     // Set the check mark of previous and current selection
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else if(cell.accessoryType == UITableViewCellAccessoryCheckmark) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    
+    NSLog(@"Did select %d", (int)indexPath.row);
     // Change the classification of event
     //self.event.activityType = indexPath.row;
 }

@@ -11,6 +11,7 @@
 
 @interface ChooseClassificationViewController : UITableViewController
 @property (nonatomic, strong) Event *event;
-@property (nonatomic, copy) void (^dismissBlock)(void);
+@property (nonatomic, strong) NSMutableArray *classificationsArray;
+@property (nonatomic, copy) void (^getClassificationsBlock)(NSArray *classifications);
 
 @end

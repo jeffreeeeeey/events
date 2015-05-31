@@ -16,8 +16,6 @@
 @property (nonatomic)  NSDictionary *jsonDic;
 @property (nonatomic)  NSArray *topics;
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
-
 @end
 
 @implementation DiscoverViewController
@@ -25,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    [_indicatorView startAnimating];
+
     [self getTopics];
     
     // pull to refresh
@@ -37,6 +34,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     self.navigationController.toolbarHidden = YES;
 
 }
@@ -113,13 +111,18 @@
             
             array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSLog(@"json:%@", array);
+            NSLog(@"data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.topics = array;
                 [self.tableView reloadData];
-                [_indicatorView stopAnimating];
                 [self.refreshControl endRefreshing];
             });
             
+            CGRect frameRect = CGRectMake(0, 0, self.tableView.frame.size.width, 100);
+            UIView *notiView = [[UIView alloc]initWithFrame:frameRect];
+            notiView.backgroundColor = [UIColor grayColor];
+            
+            [self.parentViewController.view addSubview:notiView];
             
              //handle forum topics
 //            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -148,7 +151,7 @@
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:^{
-                [_indicatorView stopAnimating];
+
                 
                 
             }];

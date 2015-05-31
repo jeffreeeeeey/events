@@ -91,7 +91,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="选择活动类型，最多两个" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QCi-hx-M86">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="请选择" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QCi-hx-M86">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -162,6 +162,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="classificationsDetailLabel" destination="QCi-hx-M86" id="xQ1-W8-zQ3"/>
                         <outlet property="introductionTextView" destination="Nfq-A3-Fqh" id="Kh2-Ze-fO7"/>
                         <outlet property="subtitleLabel" destination="gk9-N5-Aj5" id="4Sh-Wg-0MJ"/>
                         <outlet property="titleLabel" destination="V10-yd-VUZ" id="tG3-3x-egk"/>
@@ -1335,26 +1336,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="79" id="KvP-fq-mi8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KvP-fq-mi8" id="XEc-9i-uGA">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未连接到网络" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwF-pm-ui1">
-                                            <rect key="frame" x="249" y="28" width="102" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="BwF-pm-ui1" secondAttribute="centerY" id="ep3-m9-6Y4"/>
-                                        <constraint firstAttribute="centerX" secondItem="BwF-pm-ui1" secondAttribute="centerX" id="mx1-Nm-I0T"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="118" id="moF-Y4-xXc" customClass="EventListTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="moF-Y4-xXc" id="ZOZ-9i-lJc">
@@ -1435,16 +1416,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="发现" id="YIF-yD-QvF">
-                        <barButtonItem key="rightBarButtonItem" title="创建活动" id="Cni-Ge-BIQ">
-                            <connections>
-                                <segue destination="ZjX-x3-WZR" kind="presentation" id="RfI-FP-kyo"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="创建活动" id="Cni-Ge-BIQ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bis-No-rqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="-907"/>
+            <point key="canvasLocation" x="2090" y="-1102"/>
         </scene>
         <!--我的-->
         <scene sceneID="wg7-f3-ORb">
@@ -1725,6 +1702,48 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--发现活动-->
+        <scene sceneID="cGI-4U-z6u">
+            <objects>
+                <viewController id="nL1-LQ-LTu" customClass="DiscoverContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BX0-MO-geX"/>
+                        <viewControllerLayoutGuide type="bottom" id="58G-Mi-wn8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7fU-ZL-Pn2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gN-fr-De5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Zdv-IQ-Us9" kind="embed" id="KLi-VG-XFd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="2gN-fr-De5" secondAttribute="trailing" constant="-16" id="3AW-aX-66w"/>
+                            <constraint firstItem="2gN-fr-De5" firstAttribute="leading" secondItem="7fU-ZL-Pn2" secondAttribute="leadingMargin" constant="-16" id="8jW-r2-ROG"/>
+                            <constraint firstItem="2gN-fr-De5" firstAttribute="top" secondItem="7fU-ZL-Pn2" secondAttribute="topMargin" id="ZgF-Ls-PfI"/>
+                            <constraint firstItem="58G-Mi-wn8" firstAttribute="top" secondItem="2gN-fr-De5" secondAttribute="bottom" id="dRm-hg-fJy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="发现活动" id="Q8b-mU-7F8">
+                        <barButtonItem key="rightBarButtonItem" title="创建活动" id="VkF-Qp-rER">
+                            <connections>
+                                <segue destination="ZjX-x3-WZR" kind="presentation" id="rUG-F8-osC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="2gN-fr-De5" id="OlH-jp-YN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L6e-jX-b98" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1299" y="-1102"/>
+        </scene>
         <!--发现-->
         <scene sceneID="pQD-up-3Kq">
             <objects>
@@ -1737,7 +1756,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Zdv-IQ-Us9" kind="relationship" relationship="rootViewController" id="G9W-F8-sRD"/>
+                        <segue destination="nL1-LQ-LTu" kind="relationship" relationship="rootViewController" id="nE1-gg-fd9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTQ-Jk-UYt" userLabel="First Responder" sceneMemberID="firstResponder"/>

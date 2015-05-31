@@ -7,17 +7,17 @@
 //
 
 #import "CreateEventViewController.h"
+#import "Settings.h"
 #import "Event.h"
-#import "EventClassifications.h"
 #import "ChooseClassificationViewController.h"
 #import "PerformanceTableViewController.h"
 
 
 @interface CreateEventViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
-@property (nonatomic, strong) Event *event;
 @property (weak, nonatomic) IBOutlet UITextField *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *classificationsDetailLabel;
 
 @end
 
@@ -28,14 +28,14 @@
     // Do any additional setup after loading the view.
     
     _event = [[Event alloc]init];
-    NSLog(@"init type count:%ldu", _event.activityTypes.count);
+    NSLog(@"init type count:%d", (int)_event.activityTypes.count);
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
     //NSLog(@"%@", EventClassifications[_event.activityType]);
-    [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,15 +66,16 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    BOOL shouldPerform = false;
+    BOOL shouldPerform = true;
     
     // Varifify if title is empty
-    if (_titleLabel.text.length == 0) {
+    if ([identifier isEqualToString:@"performance"] && _titleLabel.text.length == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请填写活动标题" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
+        shouldPerform = false;
         
     }else {
         shouldPerform = true;
@@ -89,8 +90,26 @@
     if ([segue.identifier isEqualToString:@"chooseClassification"]) {
         ChooseClassificationViewController *vc = (ChooseClassificationViewController *)[segue.destinationViewController topViewController];
         vc.event = self.event;
-        vc.dismissBlock = ^{
-            [self.tableView reloadData];
+        vc.getClassificationsBlock = ^(NSArray *response){
+            self.classificationsArray = response;
+            // Set the classification cell
+            
+            NSString *typeNames = @"";
+            
+            if (_classificationsArray != nil && _classificationsArray.count > 0) {
+                int n = (int)_classificationsArray.count;
+                
+                if (n > 0) {
+                    for (int i = 0; i < n; i++) {
+                        int m = [[_classificationsArray objectAtIndex:i] intValue];
+                        typeNames = [typeNames stringByAppendingFormat:@" %@", eventClassifications[m]];
+                    }
+                    _classificationsDetailLabel.text = typeNames;
+                }
+                [self.tableView reloadData];
+            }else {
+                NSLog(@"types are nil");
+            }
         };
     }else if ([segue.identifier isEqualToString:@"performance"]) {
         if (_titleLabel.text.length > 0) {

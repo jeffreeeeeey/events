@@ -9,13 +9,45 @@
 #ifndef Events_Settings_h
 #define Events_Settings_h
 
+// 0 for production, 1 for issll, 2 for development
+
+#define ENV 1
+
+#if ENV== 2
+#define BASE_URL @"http://192.168.1.80:9090/"
+
 #define topicList @"http://mpc.issll.com/llzgmri/m/p/topic/getPlotTopicsByType?type=2&page=1&long=116.501426&lat=39.921523"
 #define topicDetail @"http://mpc.issll.com/llzgmri/m/p/topic/queryTopic?topicid=%@&page=1&userid="
-#define eventList @"http://192.168.1.80:9090/huodong/api/activity"
+
+#define eventList [NSString stringWithFormat:@"%@/api/activity", BASE_URL]
 #define eventDetail @"http://192.168.1.80:9090/huodong/api/activity/%@"
 #define apply @"http://192.168.1.80:9090/huodong/api/activity/apply"
 #define applications @"http://192.168.1.80:9090/huodong/api/admin/activity/%@/applies"
 #define getUser @"http://192.168.1.80:9090/huodong/api/admin/activity/userinfo"
+
+#elif EVN==1
+
+#define BASE_URL @"http://cbd.issll.com/huodong"
+#define eventList [NSString stringWithFormat: @"%@/api/activity", BASE_URL]
+#define eventDetail  [NSString stringWithFormat: @"%@/api/activity/\%\@", BASE_URL]
+#define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
+#define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]
+
+#define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
+
+#else
+
+#define BASE_URL @"http://cbd.issll.com/huodong"
+#define eventList [NSString stringWithFormat: @"%@/api/activity", BASE_URL]
+#define eventDetail  [NSString stringWithFormat: @"%@/api/activity/\%\@", BASE_URL]
+#define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
+#define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]
+
+#define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
+
+
+
+#endif
 
 /*
  报名可以提交以下字段，值都为纯文本
@@ -42,7 +74,7 @@
  */
 
 
-
+#define eventClassifications @[@"线上", @"亲子", @"公益", @"运动", @"旅行", @"美食", @"优惠", @"比赛", @"跳蚤市场", @"聚会", @"科技", @"创业"]
 #define applicationFactors @[@"姓名", @"年龄", @"性别", @"身份证", @"小区", @"QQ号", @"电话", @"行业", @"工作单位", @"职位", @"图片"]
 
 #endif

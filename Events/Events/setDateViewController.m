@@ -11,6 +11,7 @@
 @implementation setDateViewController 
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     
     switch (_dateType) {
         case 0:

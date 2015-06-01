@@ -11,10 +11,12 @@
 
 // 0 for production, 1 for issll, 2 for development
 
-#define ENV 1
+#define ENV 2
 
 #if ENV== 2
 #define BASE_URL @"http://192.168.1.80:9090/"
+//图片服务器
+#define imagesServer @"http://image.issll.com/iserver/upload/mobile?key=abcdefghijklmn123456"
 
 #define topicList @"http://mpc.issll.com/llzgmri/m/p/topic/getPlotTopicsByType?type=2&page=1&long=116.501426&lat=39.921523"
 #define topicDetail @"http://mpc.issll.com/llzgmri/m/p/topic/queryTopic?topicid=%@&page=1&userid="
@@ -27,7 +29,10 @@
 
 #elif EVN==1
 
-#define BASE_URL @"http://cbd.issll.com/huodong"
+#define BASE_URL @"http://cbd.issll.com/event"
+//图片服务器
+#define imagesServer @"http://image.issll.com/iserver/upload/mobile?key=abcdefghijklmn123456"
+
 #define eventList [NSString stringWithFormat: @"%@/api/activity", BASE_URL]
 #define eventDetail  [NSString stringWithFormat: @"%@/api/activity/\%\@", BASE_URL]
 #define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
@@ -44,7 +49,8 @@
 #define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
-
+//图片服务器
+#define imagesServer @"http://image.llzg.cn/iserver/upload/mobile?key=abcdefghijklmn123456"
 
 
 #endif
@@ -70,6 +76,8 @@
  /api/admin/activity POST 新增/编辑 活动（id为空时为新增）
  
  /api/admin/activity/:id/delete POST 删除活动
+ 
+
  
  */
 

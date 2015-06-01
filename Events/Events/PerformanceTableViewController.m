@@ -9,37 +9,64 @@
 #import "PerformanceTableViewController.h"
 #import "setDateViewController.h"
 #import "CapacityCell.h"
+#import "EditLogoViewController.h"
 
 @interface PerformanceTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *capacitySegment;
-@property (weak, nonatomic) IBOutlet UITextField *capacityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *capacityLimitTextField;
+
 @property (weak, nonatomic) IBOutlet UILabel *capacityUnitLabel;
+@property (strong, nonatomic) NSDate *startDate;
+@property (strong, nonatomic) NSDate *endDate;
+@property (strong, nonatomic) NSDate *applyEndDate;
+
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *applyEndDateLabel;
-@property (weak, nonatomic) IBOutlet UITextField *capacityLimitTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 
 @end
 
 
 @implementation PerformanceTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    if (self = [super initWithCoder:aDecoder]) {
+        // Init the date
+        _startDate = [[NSDate alloc]init];
+        _endDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];
+        _applyEndDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];;
+        NSLog(@"====initializing====%@", _startDate);
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _event = [[Event alloc]init];
     //self.navigationItem.title = @"时间/地点/人数";
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
     // Set the back button of next view
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
-    [self setLabelContent];
+    
     
     // Set the segmentedControl
     _capacitySegment.selectedSegmentIndex = 1;
     [_capacitySegment addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
+    [self setLabelContent];
+    
+    
+    if (_event != nil) {
+        NSLog(@"title:%@, subTitle:%@", _event.title, _event.subtitle);
 
+    }else {
+        NSLog(@"event nil");
+    }
 }
 
 - (void)setLabelContent {
@@ -48,16 +75,17 @@
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    if (_event.startDate) {
-        _startDateLabel.text = [formatter stringFromDate:_event.startDate];
+    if (_startDate) {
+        _startDateLabel.text = [formatter stringFromDate:_startDate];
+        NSLog(@"set start date:%@", [formatter stringFromDate:_startDate]);
     }
-    if (_event.endDate) {
-        _endDateLabel.text = [formatter stringFromDate:_event.endDate];
+    if (_endDate) {
+        _endDateLabel.text = [formatter stringFromDate:_endDate];
     }
-    if (_event.applyEndDate) {
-        _applyEndDateLabel.text = [formatter stringFromDate:_event.applyEndDate];
+    if (_applyEndDate) {
+        _applyEndDateLabel.text = [formatter stringFromDate:_applyEndDate];
     }
-    _capacityTextField.text = [NSString stringWithFormat:@"%d", 50];
+    _capacityLimitTextField.text = [NSString stringWithFormat:@"%d", 50];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -133,10 +161,12 @@
     
         NSInteger selectedSegmentIndex = [paramSender selectedSegmentIndex];
     if (selectedSegmentIndex == 0) {
-        _capacityTextField.hidden = YES;
+        [_capacityLimitTextField setHidden:YES];
+        [_capacityLimitTextField setEnabled:NO];
         _capacityUnitLabel.hidden = YES;
     }else {
-        _capacityTextField.hidden = NO;
+        [_capacityLimitTextField setEnabled:YES];
+        [_capacityLimitTextField setHidden:NO];
         _capacityUnitLabel.hidden = NO;
     }
         NSString *selectedSegmentText = [paramSender titleForSegmentAtIndex:selectedSegmentIndex];
@@ -155,37 +185,93 @@
 
 #pragma mark - navigation
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    BOOL shouldPerform = true;
+    if ([identifier isEqualToString:@"logo"]) {
+        if (_addressTextField.text.length == 0) {
+            [self showAlert:@"请填写地址"];
+            shouldPerform = false;
+        }else if (_capacitySegment.selectedSegmentIndex == 1 && _capacityLimitTextField.text.length == 0) {
+            [self showAlert:@"请填写参与人数"];
+            shouldPerform = false;
+        }else if (_capacitySegment.selectedSegmentIndex == 1) {
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+            
+            if ([formatter numberFromString:_capacityLimitTextField.text]) {
+                if ([formatter numberFromString:_capacityLimitTextField.text] == 0) {
+                    [self showAlert:@"参与人数不能为零"];
+                } else {
+                    
+                }
+            }else {
+                [self showAlert:@"请填写正确的人数"];
+            }
+            
+        }
+    }
+    
+    
+    return shouldPerform;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"setStartDate"]) {
 
         setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
-        vc.event = _event;
+        //vc.event = _event;
         vc.dateType = 0;
-        vc.confirmBlock = ^{
-            [self.tableView reloadData];
-            //NSLog(@"start:%@", _event.startDate);
+        vc.thisDate = _startDate;
+        vc.getDateBlock = ^(NSDate *date){
+            _startDate = date;
+
+            [self setLabelContent];
         };
-    }
-    if ([segue.identifier isEqualToString:@"setEndDate"]) {
+    }else if ([segue.identifier isEqualToString:@"setEndDate"]) {
         setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
-        vc.event = _event;
+        //vc.event = _event;
         vc.dateType = 1;
-        vc.confirmBlock = ^{
-            [self.tableView reloadData];
-            //NSLog(@"end:%@", _event.endDate);
+        vc.thisDate = _endDate;
+        vc.getDateBlock = ^(NSDate *date){
+            _endDate = date;
+            [self setLabelContent];
         };
-    }
-    if ([segue.identifier isEqualToString:@"setApplyEndDate"]) {
+    }else if ([segue.identifier isEqualToString:@"setApplyEndDate"]) {
         setDateViewController *vc = (setDateViewController *)[[segue destinationViewController] topViewController];
-        vc.event = _event;
+        //vc.event = _event;
         vc.dateType = 2;
-        vc.confirmBlock = ^{
-            [self.tableView reloadData];
-            //NSLog(@"apply:%@", _event.applyEndDate);
+        vc.thisDate = _applyEndDate;
+        vc.getDateBlock = ^(NSDate *date){
+            _applyEndDate = date;
+            [self setLabelContent];
         };
+    }else if ([segue.identifier isEqualToString:@"logo"]) {
+        
+        _event.startDate = _startDate;
+        _event.endDate = _endDate;
+        _event.applyEndDate = _applyEndDate;
+        _event.address = _addressTextField.text;
+        if (_capacitySegment.selectedSegmentIndex == 0) {
+            _event.capacity = [NSNumber numberWithInt:0];
+        } else {
+            NSString *capacityString = _capacityLimitTextField.text;
+            double doublaValue = [capacityString doubleValue];
+            int intValue = ceil(doublaValue);
+            _event.capacity = [NSNumber numberWithInt:intValue];
+            
+        }
+        
+        EditLogoViewController *vc = [segue destinationViewController];
+        vc.event = _event;
     }
 }
 
+#pragma mark - alert
 
+- (void)showAlert:(NSString *)noteString {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:noteString preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 @end

@@ -94,7 +94,10 @@
         }
         NSLog(@"activityTypes count:%d", (int)_classificationsArray.count);
         
+    }else {
+        [_classificationsArray removeAllObjects];
     }
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         self.getClassificationsBlock(_classificationsArray);
     }];

@@ -42,7 +42,7 @@
 - (void)refreshInvoked{
     
     [self getTopics];
-    NSLog(@"===========refresh===========");
+    NSLog(@"===========refreshing===========");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,6 +102,7 @@
     __block NSDictionary *dic;
     __block NSArray *array;
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    defaultConfigObject.timeoutIntervalForRequest = 10;
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
     NSURL *url = [NSURL URLWithString:eventList];

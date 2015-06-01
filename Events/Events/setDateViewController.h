@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Event.h"
+
 
 @interface setDateViewController : UIViewController
 
-@property (nonatomic) Event *event;
-
 @property (nonatomic) NSInteger dateType; //0:start 1:end 2:apply end
 
-@property (nonatomic, copy)void (^confirmBlock)(void);
+@property (nonatomic, copy)void (^getDateBlock)(NSDate *date);
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) NSDate *thisDate;
 
 @end

@@ -45,10 +45,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)nextBtnPressed:(id)sender {
-    
-    
-}
 
 - (IBAction)cancelButtonPressed:(id)sender {
     
@@ -110,7 +106,7 @@
                 }
                 [self.tableView reloadData];
             }else {
-                NSLog(@"types are nil");
+                _classificationsDetailLabel.text = @"请选择";
             }
         };
     }else if ([segue.identifier isEqualToString:@"performance"]) {
@@ -118,11 +114,15 @@
             _event.title = _titleLabel.text;
         }
         if (_subtitleLabel.text.length > 0) {
-            _event.subtitle = _titleLabel.text;
+            _event.subtitle = _subtitleLabel.text;
+        }
+        if (_classificationsArray.count > 0) {
+            _event.activityTypes = _classificationsArray;
         }
         if (_introductionTextView.text.length > 0) {
             _event.content = _introductionTextView.text;
         }
+        
         
         
         PerformanceTableViewController *vc = segue.destinationViewController;

@@ -759,16 +759,16 @@
                         <barButtonItem key="backBarButtonItem" title="上一步" id="TTX-l8-50H"/>
                         <barButtonItem key="rightBarButtonItem" title="下一步" id="6Ve-C5-lAx">
                             <connections>
-                                <segue destination="bwP-q8-zVJ" kind="show" id="gCw-uR-FdH"/>
+                                <segue destination="bwP-q8-zVJ" kind="show" identifier="logo" id="gCw-uR-FdH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addressTextField" destination="ODX-aT-aRn" id="aEC-yn-OzT"/>
                         <outlet property="applyEndDateLabel" destination="Mpm-3B-foM" id="hUY-i3-XKc"/>
-                        <outlet property="capacityLimitTextField" destination="Wq9-86-Ra1" id="HUe-Ss-XsI"/>
+                        <outlet property="capacityLimitTextField" destination="Wq9-86-Ra1" id="kqI-FT-Hfl"/>
                         <outlet property="capacitySegment" destination="AcT-hY-jbl" id="9ZF-0E-Qh9"/>
-                        <outlet property="capacityTextField" destination="Wq9-86-Ra1" id="A24-Gb-Cvg"/>
                         <outlet property="capacityUnitLabel" destination="t4j-lK-Vtd" id="c5M-hy-3pt"/>
                         <outlet property="endDateLabel" destination="0mH-Ha-3bw" id="YHe-6c-KJx"/>
                         <outlet property="startDateLabel" destination="wOK-EL-hXQ" id="LpE-09-oqg"/>
@@ -1936,6 +1936,6 @@
         <image name="yangMi.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8CE-SV-hiV"/>
+        <segue reference="RM1-1E-pF2"/>
     </inferredMetricsTieBreakers>
 </document>

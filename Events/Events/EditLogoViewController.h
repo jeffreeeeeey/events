@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
 @interface EditLogoViewController : UIViewController
+@property (strong, nonatomic) Event *event;
 
 @end

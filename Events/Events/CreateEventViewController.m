@@ -26,9 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _titleLabel.text = @"活动测试";
     
     _event = [[Event alloc]init];
-    NSLog(@"init type count:%d", (int)_event.activityTypes.count);
+    //NSLog(@"init type count:%d", (int)_event.activityTypes.count);
     
     
 }

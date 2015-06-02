@@ -56,17 +56,8 @@
     _capacitySegment.selectedSegmentIndex = 1;
     [_capacitySegment addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
     
-    
-    
+    _addressTextField.text = @"住邦2000商务中心";
     [self setLabelContent];
-    
-    
-    if (_event != nil) {
-        NSLog(@"title:%@, subTitle:%@", _event.title, _event.subtitle);
-
-    }else {
-        NSLog(@"event nil");
-    }
 }
 
 - (void)setLabelContent {

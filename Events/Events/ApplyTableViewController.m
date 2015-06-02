@@ -133,30 +133,6 @@
     //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
-    /*
-    //Use NSURLSession
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if ([NSJSONSerialization isValidJSONObject:data]) {
-            NSLog(@"yes, json obj");
-        }
-        if (data.length > 0 && error == nil) {
-            NSError *errorJson = nil;
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorJson];
-            NSLog(@"json:%@", dic);
-            NSLog(@"data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-            NSLog(@"error:%@", errorJson);
-        } else {
-            NSLog(@"response:%@, error:%@", response, error);
-        }
-    }];
-    
-    [postDataTask resume];
-    */
-    
-     //Use connection
-    //NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

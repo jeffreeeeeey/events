@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 #import "Settings.h"
+#import "Services.h"
 #import "setApplicationsTableViewController.h"
 
 @interface setApplicationsTableViewController ()
@@ -22,10 +23,85 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (IBAction)finishBtnPressed:(UIBarButtonItem *)sender {
+    NSString *requirement = [[NSMutableString alloc]init];
+    NSArray *selections = [NSArray arrayWithArray:[self.tableView indexPathsForSelectedRows]] ;
+    NSLog(@"choosen count:%ld", [self.tableView indexPathsForSelectedRows].count);
+    if (selections) {
+        for (int i = 0; i < selections.count; i++) {
+            NSIndexPath *ip = [selections objectAtIndex:i];
+            NSString *factor = applicationFactorsName[ip.row];
+            //NSLog(@"factor:%@", factor);
+            if (i == 0) {
+                requirement = [requirement stringByAppendingFormat:@"%@", factor];
+            }else {
+                requirement = [requirement stringByAppendingFormat:@",%@", factor];
+            }
+        }
+        _event.requirements = requirement;
+
+        NSLog(@"event requirement:%@", _event.requirements);
+    }else {
+        NSLog(@"no selections");
+    }
+    
+    NSDictionary *eventDic = _event.getEventDic;
+    NSLog(@"event dic:%@", eventDic);
+    
+    NSString *testURLString = @"http://192.168.1.80:9090/huodong/api/admin/activity";
+    
+    [self submitEvent:eventDic toURL:createEvent];
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)submitEvent:(NSDictionary *)dic toURL:(NSString *)urlString{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *title = [dic valueForKey:@"title"];
+    NSString *subtitle = [dic valueForKey:@"subtitle"];
+    NSString *content = [dic valueForKey:@"content"];
+    NSString *startTime = [dic valueForKey:@"start_time"];
+    NSString *endTime = [dic valueForKey:@"end_time"];
+    NSString *deadline = [dic valueForKey:@"deadline"];
+    NSString *price = [dic valueForKey:@"price"];
+    NSString *capacity = [dic valueForKey:@"capacity"];
+    NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&start_time=%@&end_time=%@&deadline=%@&price=%@&capacity=%@", title, subtitle, content, startTime, endTime, deadline, price, capacity];
+    
+    NSLog(@"%@ %@", url, params);
+    
+    //NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[params length]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data.length > 0 && connectionError == nil) {
+            NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            //NSString *fixedString = [self fixJSON:dataString];
+            
+            NSLog(@"data:%@", dataString);
+            
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSNumber *success = [NSNumber numberWithBool:dic[@"isSuccess"]];
+            
+            NSLog(@"dic:%@", success);
+            if (success) {
+                
+                
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+        }else {
+            NSLog(@"no data");
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -58,11 +134,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"select row %ld", indexPath.row);
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    
+}
+
+- (void)deselectedRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+    NSLog(@"deselect row %ld", indexPath.row);
     
 }
 

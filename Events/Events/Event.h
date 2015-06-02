@@ -24,6 +24,10 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSNumber *capacity;
 @property (nonatomic, strong) NSNumber *costs;
+@property (nonatomic, copy) NSString *requirements;  // factors need to provide when apply.
 @property (nonatomic, strong) NSDate *time;
 
++ (NSArray *)getKeys;
+
+- (NSDictionary *)getEventDic;
 @end

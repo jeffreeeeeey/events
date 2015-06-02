@@ -7,6 +7,7 @@
 //
 
 #import "Settings.h"
+#import "Services.h"
 #import "DiscoverViewController.h"
 #import "EventDetailsViewController.h"
 #import "EventListTableViewCell.h"
@@ -23,14 +24,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
-    [self getTopics];
-    
+/*
+    [self getTopics:^(NSArray *array) {
+        NSLog(@"json:%@", array);
+        //NSLog(@"data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        
+        self.topics = array;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }];
+*/
+    [self getData];
     // pull to refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refreshInvoked) forControlEvents:UIControlEventValueChanged];
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight =120.0;
+}
+
+- (void)getData {
+    Services *service = [[Services alloc]init];
+    
+    [service fetchData:eventList getData:^(NSData *data, NSError *error) {
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.topics = array;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -40,8 +60,7 @@
 }
 
 - (void)refreshInvoked{
-    
-    [self getTopics];
+    [self getData];
     NSLog(@"===========refreshing===========");
 }
 
@@ -96,50 +115,25 @@
 }
 
 #pragma mark - Network
-
-- (void)getTopics
+/*
+- (void)getTopics:(void(^)(NSArray *array))handler
 {
     __block NSDictionary *dic;
-    __block NSArray *array;
+
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.timeoutIntervalForRequest = 10;
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
     NSURL *url = [NSURL URLWithString:eventList];
+    NSLog(@"get event list:%@", url);
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
             
-            array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", array);
-            NSLog(@"data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.topics = array;
-                [self.tableView reloadData];
-                [self.refreshControl endRefreshing];
-            });
+            NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            CGRect frameRect = CGRectMake(0, 0, self.tableView.frame.size.width, 100);
-            UIView *notiView = [[UIView alloc]initWithFrame:frameRect];
-            notiView.backgroundColor = [UIColor grayColor];
-            
-            [self.parentViewController.view addSubview:notiView];
-            
-             //handle forum topics
-//            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"json:%@", dic);
-//            
-//            array = [dic objectForKey:@"topics"];
-//            NSLog(@"there are %d topics in array", (unsigned)array.count);
-//            
-//            // Have to use dispatch_async to make it work. NSURLSession get data asynchronously
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                
-//            });
-//            self.topics = array;
-//            [self.topicsTable reloadData];
-//            [_indicatorView stopAnimating];
-//            [_indicatorView hidesWhenStopped];
+            // Send it back
+            handler(array);
             
         } else if (data.length == 0 && error == nil){
             NSLog(@"no events around");
@@ -153,7 +147,11 @@
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:^{
 
+                CGRect frameRect = CGRectMake(0, 0, self.tableView.frame.size.width, 100);
+                UIView *notiView = [[UIView alloc]initWithFrame:frameRect];
+                notiView.backgroundColor = [UIColor grayColor];
                 
+                [self.parentViewController.view addSubview:notiView];
                 
             }];
 
@@ -161,5 +159,5 @@
     }];
     [dataTask resume];
 }
-
+*/
 @end

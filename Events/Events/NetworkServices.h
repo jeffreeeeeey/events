@@ -9,11 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@protocol fetchDataResponseDelegate <NSObject>
 
-@interface Services : NSObject
+@required
+- (void)didFinishRequestWithData:(NSData *)responseData;
 
+@end
+
+
+@interface NetworkServices : NSObject
+
+@property (nonatomic, strong)NSObject <fetchDataResponseDelegate> *delegate;
 
 + (void)postInfo:(NSString *)urlString sendImage:(UIImage *)image sendParams:(NSDictionary *)params getblock:(void(^)(NSString *imageURLString, NSData *data))handler;
 
-- (void)fetchData:(NSString *)urlString getData:(void(^)(NSData *data, NSError *error))handler;
++ (void)fetchData:(NSString *)urlString getData:(void(^)(NSData *data, NSError *error))handler;
 @end

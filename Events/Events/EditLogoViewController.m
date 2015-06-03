@@ -9,7 +9,7 @@
 #import "EditLogoViewController.h"
 #import "setApplicationsTableViewController.h"
 #import "Settings.h"
-#import "Services.h"
+#import "NetworkServices.h"
 
 @interface EditLogoViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, NSURLSessionDataDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -62,7 +62,7 @@
     UIImage *image = info[UIImagePickerControllerEditedImage];
     _logoImageView.image = image;
     [self dismissViewControllerAnimated:YES completion:nil];
-    [Services postInfo:imagesServer sendImage:image sendParams:nil getblock:^(NSString *imageURLString, NSData *data) {
+    [NetworkServices postInfo:imagesServer sendImage:image sendParams:nil getblock:^(NSString *imageURLString, NSData *data) {
         NSLog(@"returned:%@", imageURLString);
         _event.logoImageURLString = imageURLString;
     }];

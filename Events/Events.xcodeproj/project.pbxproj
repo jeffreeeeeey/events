@@ -22,7 +22,7 @@
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
 		046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */; };
 		046AD6E51B1D3E68008791FE /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046AD6E41B1D3E68008791FE /* AlertsViewController.m */; };
-		046AD6E81B1D4397008791FE /* Services.m in Sources */ = {isa = PBXBuildFile; fileRef = 046AD6E71B1D4397008791FE /* Services.m */; };
+		046AD6E81B1D4397008791FE /* NetworkServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 046AD6E71B1D4397008791FE /* NetworkServices.m */; };
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
 		04720ECD1B16A3D4009D1B74 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECC1B16A3D4009D1B74 /* Application.m */; };
 		04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */; };
@@ -80,8 +80,8 @@
 		046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverContainerViewController.m; sourceTree = "<group>"; };
 		046AD6E31B1D3E68008791FE /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
 		046AD6E41B1D3E68008791FE /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
-		046AD6E61B1D4397008791FE /* Services.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
-		046AD6E71B1D4397008791FE /* Services.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Services.m; sourceTree = "<group>"; };
+		046AD6E61B1D4397008791FE /* NetworkServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkServices.h; sourceTree = "<group>"; };
+		046AD6E71B1D4397008791FE /* NetworkServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkServices.m; sourceTree = "<group>"; };
 		046FB8CC1B019C5C00C339AE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		046FB8CD1B019C5C00C339AE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		04720ECB1B16A3D4009D1B74 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 				041347CD1AF8B0AF0015E38E /* AppDelegate.h */,
 				041347CE1AF8B0AF0015E38E /* AppDelegate.m */,
 				041347D61AF8B0AF0015E38E /* Main.storyboard */,
-				046AD6E61B1D4397008791FE /* Services.h */,
-				046AD6E71B1D4397008791FE /* Services.m */,
+				046AD6E61B1D4397008791FE /* NetworkServices.h */,
+				046AD6E71B1D4397008791FE /* NetworkServices.m */,
 				046AD6E31B1D3E68008791FE /* AlertsViewController.h */,
 				046AD6E41B1D3E68008791FE /* AlertsViewController.m */,
 				04B82F0D1B0B05A9006ED7A4 /* Settings.h */,
@@ -385,7 +385,7 @@
 			files = (
 				04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */,
 				04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */,
-				046AD6E81B1D4397008791FE /* Services.m in Sources */,
+				046AD6E81B1D4397008791FE /* NetworkServices.m in Sources */,
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
 				04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */,

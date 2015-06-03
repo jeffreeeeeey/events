@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 #import "Settings.h"
-#import "Services.h"
+#import "NetworkServices.h"
 #import "setApplicationsTableViewController.h"
 
 @interface setApplicationsTableViewController ()

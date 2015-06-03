@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 #import "Settings.h"
-#import "Services.h"
+#import "NetworkServices.h"
 #import "EventDetailsViewController.h"
 #import "ApplyTableViewController.h"
 #import "ApplicationsTableViewController.h"
 
 #define introductionTextViewRow 8
 
-@interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
+@interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate, fetchDataResponseDelegate>
 
 @property (nonatomic) NSDictionary *eventDic;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -45,9 +45,9 @@
     NSNumber *topicID = [_topicDic valueForKey:@"id"];
     NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
     NSLog(@"==========urlString===========:%@", urlString);
-    Services *service = [[Services alloc]init];
-    
-    [service fetchData:urlString getData:^(NSData *data, NSError *error) {
+    //NetworkServices *service = [[NetworkServices alloc]init];
+    //service.delegate = self;
+    [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
         
         if (data) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -98,11 +98,65 @@
             [self.tableView reloadData];
             
         }
+        
     }];
         
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
     self.introductionTextViewHeight = [NSNumber numberWithFloat:44.0];
+}
+- (void)didFinishRequestWithData:(NSData *)responseData {
+    /*
+    if (responseData) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+        NSLog(@"json:%@", dic);
+        
+        _eventDic = dic;
+        
+        _titleLabel.text = [_eventDic valueForKey:@"title"];
+        _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
+        
+        NSString *imageURLString = [_eventDic valueForKey:@"img"];
+        NSLog(@"image url:%@", imageURLString);
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
+        _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _eventImageView.image = image;
+        
+        _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
+        _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
+        _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
+        _addressLabel.text =[_eventDic valueForKey:@"location"];
+        _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
+        // Handle price
+        NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
+        NSString *priceString;
+        if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
+            priceString = @"免费";
+        } else {
+            priceString = [NSString stringWithFormat:@"%@", priceNumber];
+        }
+        
+        _priceLabel.text = priceString;
+        
+        // Handle text view
+        _introductionTextView.text = [_eventDic valueForKey:@"content"];
+        // Get the size of textView
+        CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
+        //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
+        
+        _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
+        //NSLog(@"revise height:%@",_introductionTextViewHeight);
+        
+        [self.activityIndicator stopAnimating];
+        
+        // Resize introduction textView
+        
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [self.tableView reloadData];
+        
+    }
+     */
 }
 
 - (void)viewDidAppear:(BOOL)animated

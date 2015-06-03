@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "Settings.h"
-#import "Services.h"
+#import "NetworkServices.h"
 
-@interface Services () <NSURLSessionDelegate>
+@interface NetworkServices () <NSURLSessionDelegate, NSURLConnectionDelegate>
 
 @end
 
-@implementation Services
+@implementation NetworkServices
 
 - (instancetype)init {
     self = [super init];
@@ -101,19 +101,21 @@
 }
 
 // use get
-- (void)fetchData:(NSString *)urlString getData:(void(^)(NSData *data, NSError *error))handler
++ (void)fetchData:(NSString *)urlString getData:(void(^)(NSData *data, NSError *error))handler
 {
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.timeoutIntervalForRequest = 10;
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    NSURL *url = [NSURL URLWithString:eventList];
-    NSLog(@"get event list:%@", url);
+    NSURL *url = [NSURL URLWithString:urlString];
+
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
             // Send it back
+            NSLog(@"send data back:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
             handler(data, nil);
+            //[self.delegate didFinishRequestWithData:data];
             
         } else if (data.length == 0 && error == nil){
             NSLog(@"no data around");

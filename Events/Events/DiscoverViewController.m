@@ -7,12 +7,12 @@
 //
 
 #import "Settings.h"
-#import "Services.h"
+#import "NetworkServices.h"
 #import "DiscoverViewController.h"
 #import "EventDetailsViewController.h"
 #import "EventListTableViewCell.h"
 
-@interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
+@interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate, fetchDataResponseDelegate>
 
 @property (nonatomic)  NSDictionary *jsonDic;
 @property (nonatomic)  NSArray *topics;
@@ -35,6 +35,9 @@
     }];
 */
     [self getData];
+    
+    
+    
     // pull to refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refreshInvoked) forControlEvents:UIControlEventValueChanged];
@@ -42,10 +45,19 @@
     self.tableView.estimatedRowHeight =120.0;
 }
 
+- (void)didFinishRequestWithData:(NSData *)responseData {
+//    NSArray *array = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+//    NSLog(@"get data:%@", [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding]);
+//    self.topics = array;
+//    [self.tableView reloadData];
+//    [self.refreshControl endRefreshing];
+}
+
 - (void)getData {
-    Services *service = [[Services alloc]init];
+    //NetworkServices *service = [[NetworkServices alloc]init];
+    //service.delegate = self;
     
-    [service fetchData:eventList getData:^(NSData *data, NSError *error) {
+    [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         self.topics = array;
         [self.tableView reloadData];

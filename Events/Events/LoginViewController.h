@@ -10,5 +10,6 @@
 
 @interface LoginViewController : UIViewController
 
+@property (nonatomic, copy) void (^loginDismissBlock)(NSDictionary *userDic);
 
 @end

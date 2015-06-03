@@ -13,7 +13,7 @@
 
 #define ENV 2
 
-#if ENV== 2
+#if ENV==2
 #define BASE_URL @"http://192.168.1.80:9090/huodong"
 #define imagesServer @"http://image.issll.com/iserver/upload/mobile?key=abcdefghijklmn123456"
 
@@ -25,7 +25,8 @@
 #define eventDetail [NSString stringWithFormat:@"%@/api/activity/", BASE_URL]
 #define apply @"http://192.168.1.80:9090/huodong/api/activity/apply"
 #define applications @"http://192.168.1.80:9090/huodong/api/admin/activity/%@/applies"
-#define getUser @"http://192.168.1.80:9090/huodong/api/admin/activity/userinfo"
+#define getUser [NSString stringWithFormat:@"%@/api/admin/activity/userinfo", BASE_URL];
+#define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
 
 
 #elif EVN==1
@@ -41,6 +42,7 @@
 #define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
+#define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
 
 #elif EVN==0
 
@@ -53,6 +55,7 @@
 #define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
+#define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
 //图片服务器
 #define imagesServer @"http://image.llzg.cn/iserver/upload/mobile?key=abcdefghijklmn123456"
 

@@ -10,6 +10,6 @@
 
 @interface AlertsViewController : NSObject
 
-
++ (id)createAlert:(NSString *)title setMessage:(NSString *)message;
 
 @end

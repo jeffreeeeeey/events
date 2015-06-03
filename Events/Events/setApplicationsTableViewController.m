@@ -9,6 +9,7 @@
 #import "NetworkServices.h"
 #import "setApplicationsTableViewController.h"
 
+
 @interface setApplicationsTableViewController ()
 
 @end
@@ -51,11 +52,11 @@
     NSDictionary *eventDic = _event.getEventDic;
     NSLog(@"event dic:%@", eventDic);
     
-    NSString *testURLString = @"http://192.168.1.80:9090/huodong/api/admin/activity";
+    //NSString *testURLString = @"http://192.168.1.80:9090/huodong/api/admin/activity";
     
     [self submitEvent:eventDic toURL:createEvent];
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)submitEvent:(NSDictionary *)dic toURL:(NSString *)urlString{
@@ -63,14 +64,19 @@
     NSString *title = [dic valueForKey:@"title"];
     NSString *subtitle = [dic valueForKey:@"subtitle"];
     NSString *content = [dic valueForKey:@"content"];
+    NSString *img = [dic valueForKey:@"img"];
+    NSString *requirement = [dic valueForKey:@"requirement"];
     NSString *startTime = [dic valueForKey:@"start_time"];
     NSString *endTime = [dic valueForKey:@"end_time"];
     NSString *deadline = [dic valueForKey:@"deadline"];
     NSString *price = [dic valueForKey:@"price"];
+    NSString *location = [dic valueForKey:@"location"];
     NSString *capacity = [dic valueForKey:@"capacity"];
-    NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&start_time=%@&end_time=%@&deadline=%@&price=%@&capacity=%@", title, subtitle, content, startTime, endTime, deadline, price, capacity];
+    NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&img=%@&requirement=%@&start_time=%@&end_time=%@&deadline=%@&price=%@&location=%@&capacity=%@", title, subtitle, content, img, requirement, startTime, endTime, deadline, price, location, capacity];
+    //for test fail condition
+    //NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&img=%@&requirement=%@&start_time=%@&end_time=%@&deadline=%@&location=%@&capacity=%@", title, subtitle, content, img, requirement, startTime, endTime, deadline, location, capacity];
     
-    NSLog(@"%@ %@", url, params);
+    NSLog(@"createEvent:post:%@\n url:%@", url, params);
     
     //NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[params length]];
     
@@ -79,7 +85,6 @@
     //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
-    
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (data.length > 0 && connectionError == nil) {
@@ -92,14 +97,22 @@
             NSNumber *success = [NSNumber numberWithBool:dic[@"isSuccess"]];
             
             NSLog(@"dic:%@", success);
-            if (success) {
                 
-                
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-            }
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
         }else {
-            NSLog(@"no data");
+            // if no data returned, send an alert
+            NSLog(@"create event, get no data response");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"活动创建失败" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+            }];
+            UIAlertAction *quit = [UIAlertAction actionWithTitle:@"取消创建" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alert addAction:action];
+            [alert addAction:quit];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }];
 }

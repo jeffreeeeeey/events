@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "Settings.h"
+#import "NetworkServices.h"
 #import "User.h"
 
 @interface LoginViewController () <NSURLSessionDataDelegate, NSURLSessionDelegate>
@@ -26,8 +28,8 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
     
-    self.userNameTextField.text = @"llzgllzgllzg";
-    self.passwordTextField.text = @"123456";
+    self.userNameTextField.text = @"admin";
+    self.passwordTextField.text = @"111111";
     
 }
 
@@ -37,6 +39,49 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
+    
+    NSDictionary *paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"username", _passwordTextField.text, @"password", nil];
+    NSString *urlString = loginURL;
+    
+    [NetworkServices postData:urlString setParam:paramsDic getData:^(NSData *data, NSError *error) {
+        //NSLog(@"login return data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        
+        if (data.length > 0 && error == nil) {
+            NSError *jsonError;
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (jsonError) {
+                NSLog(@"%@", jsonError);
+            }else {
+                NSNumber *isSuccess = [dic valueForKey:@"isSuccess"];
+                
+                if (isSuccess.intValue == 1) {
+                    // Get the user information
+                    NSDictionary *userDic = [dic valueForKey:@"user"];
+                    [User setUser:userDic];
+                    
+//                    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+//                        // Pass user dictionary by notification center
+//                        [[NSNotificationCenter defaultCenter]postNotificationName:@"login" object:self userInfo:userDic];
+//                    }];
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                        _loginDismissBlock(userDic);
+                    }];
+                }else {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"登录未成功，请检查用户名和密码" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+                    [alert addAction:action];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+            }
+            
+            //[self.topicsTable reloadData];
+        } else {
+            NSLog(@"error:%@",error);
+        }
+    }];
+    
+    
+    /*
     __block NSDictionary *dic;
     __block NSArray *array;
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -72,6 +117,7 @@
         }
     }];
     [dataTask resume];
+    */
 }
 
 /*

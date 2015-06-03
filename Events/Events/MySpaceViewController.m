@@ -62,14 +62,14 @@
 //set the user info
 
 - (void)setUserInfo {
-    NSString *imageString = [_user objectForKey:@"avatar"];
+    //NSString *imageString = [_user objectForKey:@"avatar"];
     
-    UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
-    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
-    _avatarImageView.image = avatarImage;
+   // UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
+   // _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
+   // _avatarImageView.image = avatarImage;
     
     
-    self.userNameLabel.text = [_user objectForKey:@"name"];
+    self.userNameLabel.text = [_user objectForKey:@"nickname"];
     self.loginButton.hidden = true;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
 
@@ -127,7 +127,6 @@
             //[self performSegueWithIdentifier:@"login" sender:self];
             
         }else {
-        
             NSIndexPath *indexPath = [_funcTableView indexPathForSelectedRow];
             MyEventsViewController *vc = segue.destinationViewController;
             if (indexPath.row == 0) {
@@ -136,6 +135,15 @@
                 vc.contentType = @"hosted";
             }
         }
+    }
+    if ([segue.identifier isEqualToString:@"login"]) {
+        LoginViewController *vc = (LoginViewController *)[segue.destinationViewController topViewController];
+        vc.loginDismissBlock = ^(NSDictionary *dic){
+            self.user = dic;
+            NSLog(@"block get user:%@", self.user);
+            [self setUserInfo];
+
+        };
     }
 }
 
@@ -155,7 +163,8 @@
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSURL *url = [NSURL URLWithString:getUser];
+    NSString *urlString = getUser;
+    NSURL *url = [NSURL URLWithString:urlString];
     //NSURL *loginurl = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api//user/login"];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
@@ -166,6 +175,7 @@
     }];
     [dataTask resume];
 }
+
 - (IBAction)postLogin:(UIBarButtonItem *)sender {
     NSURL *url = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api/user/login"];
     NSString *params = [NSString stringWithFormat:@"username=admin&password=111111"];
@@ -189,7 +199,6 @@
         NSLog(@"%@, %@", response, [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
         
     }];
-
 }
 
 @end

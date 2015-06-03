@@ -37,7 +37,8 @@
         // Init the date
         _startDate = [[NSDate alloc]init];
         _endDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];
-        _applyEndDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];;
+        _applyEndDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];
+        
         NSLog(@"====initializing====%@", _startDate);
     }
     return self;

@@ -50,7 +50,7 @@
     NSString *startDateString = [formatter stringFromDate:_startDate];
     NSString *endDateString = [formatter stringFromDate:_endDate];
     NSString *applyEndDateString = [formatter stringFromDate:_applyEndDate];
-    NSString *costsString = [NSString stringWithFormat:@"%@", _costs];
+    NSString *costsString = [NSString stringWithFormat:@"%ld", [_costs integerValue]];
     NSString *capacityString = [NSString stringWithFormat:@"%@", _capacity];
     
     [eventDic setValue:_title forKey:@"title"];
@@ -61,9 +61,11 @@
     [eventDic setValue:startDateString forKey:@"start_time"];
     [eventDic setValue:endDateString forKey:@"end_time"];
     [eventDic setValue:applyEndDateString forKey:@"deadline"];
-    [eventDic setValue:@"12" forKey:@"price"];
+    [eventDic setValue:costsString forKey:@"price"];
     [eventDic setValue:_address forKey:@"location"];
     [eventDic setValue:capacityString forKey:@"capacity"];
+    
+    NSLog(@"creating event dic:%@", eventDic);
     
     return eventDic;
 

@@ -1295,6 +1295,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="BF1-Sk-sGZ" id="C2W-Zu-ZX6"/>
                         <outlet property="addressLabel" destination="bWG-Ft-9ru" id="gMb-gJ-xBM"/>
+                        <outlet property="applyBtn" destination="fCI-g2-iZZ" id="dUd-kw-Shb"/>
                         <outlet property="capacityLabel" destination="WJX-fx-Zij" id="FNu-RU-r9X"/>
                         <outlet property="closingDateLabel" destination="SGU-pQ-FfG" id="PYF-ue-eXZ"/>
                         <outlet property="endDateLabel" destination="zLV-8O-P9u" id="QcY-J5-G0u"/>

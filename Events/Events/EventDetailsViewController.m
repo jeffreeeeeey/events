@@ -13,7 +13,7 @@
 
 #define introductionTextViewRow 8
 
-@interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate, fetchDataResponseDelegate>
+@interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
 
 @property (nonatomic) NSDictionary *eventDic;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *applyBtn;
 
 @property (strong,nonatomic) NSNumber *introductionTextViewHeight;
 
@@ -45,8 +46,7 @@
     NSNumber *topicID = [_topicDic valueForKey:@"id"];
     NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
     NSLog(@"==========urlString===========:%@", urlString);
-    //NetworkServices *service = [[NetworkServices alloc]init];
-    //service.delegate = self;
+
     [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
         
         if (data) {
@@ -79,6 +79,12 @@
             }
             
             _priceLabel.text = priceString;
+            
+            // if no requirement for apply, remove the button
+            NSString *requirement = [_eventDic valueForKey:@"requirement"];
+            if (requirement.length == 0) {
+                self.navigationItem.rightBarButtonItem = nil;
+            }
             
             // Handle text view
             _introductionTextView.text = [_eventDic valueForKey:@"content"];

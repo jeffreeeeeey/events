@@ -23,7 +23,7 @@
 }
 
 
-+ (void)postInfo:(NSString *)urlString sendImage:(UIImage *)image sendParams:(NSDictionary *)params getblock:(void(^)(NSString *imageURLString, NSData *data))handler {
++ (void)postInfo:(NSString *)urlString sendImage:(UIImage *)image sendParams:(NSDictionary *)params getblock:(void(^)(NSData *data, NSError *error))handler {
     ;
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -36,7 +36,7 @@
     
     NSString *boundary = @"-----------qwertyuiop";
     NSString *fileParamConstant = @"Filedata";
-    NSString *contentType = [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=utf-8", boundary];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8; boundary=%@", boundary];
     
     //NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
@@ -88,10 +88,11 @@
             urlString = [urlString stringByAppendingString:file];
             
             // call the block to set url
-            handler(urlString, data);
+         
             //NSLog(@"image url:%@", _event.logoImageURLString);
         }
         */
+        handler(data, error);
         NSLog(@"String:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
         NSLog(@"response:%@", response);
         NSLog(@"error:%@", error);
@@ -113,7 +114,7 @@
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (data.length > 0 && error == nil) {
             // Send it back
-            NSLog(@"send data back:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+            //NSLog(@"send data back:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
             handler(data, nil);
             //[self.delegate didFinishRequestWithData:data];
             
@@ -127,6 +128,48 @@
         }
     }];
     [dataTask resume];
+}
+
++ (void)postData:(NSString *)urlString setParam:(NSDictionary *)params getData:(void(^)(NSData *data, NSError *error))handler{
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *paramString = @"";
+    if (params) {
+        NSArray *keys = [params allKeys];
+        NSArray *values = [params allValues];
+        int n = (int)keys.count;
+        for (int i = 0; i < n; i++) {
+            paramString = [paramString stringByAppendingFormat:@"%@=%@", keys[i], values[i]];
+            if (i < n - 1) {
+                paramString = [paramString stringByAppendingString:@"&"];
+            }
+        }
+        
+    }
+    
+    //NSString *paramString = [NSString stringWithFormat:@"username=admin&password=111111"];
+    //NSString *params = @"activityId=10011&username=test";
+    NSLog(@"post:url:%@ params:%@", url, paramString);
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[paramString length]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[NSData dataWithBytes:[paramString UTF8String] length:strlen([paramString UTF8String])]];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data.length > 0 && connectionError == nil) {
+            handler(data, nil);
+        } else {
+            handler(nil, connectionError);
+        }
+        
+        //NSLog(@"%@, %@", response, [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        
+    }];
+    
 }
 
 @end

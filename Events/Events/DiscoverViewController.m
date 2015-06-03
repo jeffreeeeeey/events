@@ -12,7 +12,7 @@
 #import "EventDetailsViewController.h"
 #import "EventListTableViewCell.h"
 
-@interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate, fetchDataResponseDelegate>
+@interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
 @property (nonatomic)  NSDictionary *jsonDic;
 @property (nonatomic)  NSArray *topics;
@@ -54,11 +54,10 @@
 }
 
 - (void)getData {
-    //NetworkServices *service = [[NetworkServices alloc]init];
-    //service.delegate = self;
     
     [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"eventList:%@", array);
         self.topics = array;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];

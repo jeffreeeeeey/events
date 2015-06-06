@@ -36,8 +36,6 @@
 */
     [self getData];
     
-    
-    
     // pull to refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refreshInvoked) forControlEvents:UIControlEventValueChanged];
@@ -57,6 +55,7 @@
     
     [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"eventListURL:%@", eventList);
         NSLog(@"eventList:%@", array);
         self.topics = array;
         [self.tableView reloadData];

@@ -1281,6 +1281,7 @@
                                 <segue destination="zT0-Dn-GNp" kind="show" identifier="applications" id="nis-fF-Pni"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="编辑" id="fFi-wN-sdG"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="活动详情" id="Ywk-UZ-Gq4">
                         <barButtonItem key="rightBarButtonItem" title="报名" id="fCI-g2-iZZ">

@@ -45,7 +45,8 @@
     
     NSNumber *topicID = [_topicDic valueForKey:@"id"];
     NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
-    NSLog(@"==========urlString===========:%@", urlString);
+    NSLog(@"eventDetailURL:%@", eventDetail);
+    NSLog(@"==========urlString:%@", urlString);
 
     [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
         

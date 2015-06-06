@@ -11,7 +11,8 @@
 #import "ApplyTableViewController.h"
 #import "ApplicationsTableViewController.h"
 
-#define introductionTextViewRow 8
+#define introductionRowCount 8
+float introWebViewHeight;
 
 @interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
 
@@ -25,7 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
+@property (weak, nonatomic) UITextView *introductionTextView;
+@property (strong, nonatomic) IBOutlet UIWebView *introWebView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *applyBtn;
 
@@ -40,6 +42,8 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
     self.navigationController.toolbarHidden = NO;
+    //Set the web view
+    _introWebView.delegate = self;
     
     //[self getEventDetail:self.topicDic];
     
@@ -87,89 +91,33 @@
                 self.navigationItem.rightBarButtonItem = nil;
             }
             
-            // Handle text view
-            _introductionTextView.text = [_eventDic valueForKey:@"content"];
+            // caculate the height of UIWebView based on content
+            NSString *intro = [_eventDic valueForKey:@"content"];
+            [_introWebView loadHTMLString:intro baseURL:nil];
+            
+            /*
+             //For TextView
             // Get the size of textView
             CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
             //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
             
             _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
             //NSLog(@"revise height:%@",_introductionTextViewHeight);
+             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
+             
+             [self.tableView reloadData];
+             
+             */
             
-            [self.activityIndicator stopAnimating];
-            
-            // Resize introduction textView
-            
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-            
-            [self.tableView reloadData];
-            
+            //[self.activityIndicator stopAnimating];
+
         }
         
     }];
         
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
-    self.introductionTextViewHeight = [NSNumber numberWithFloat:44.0];
-}
-- (void)didFinishRequestWithData:(NSData *)responseData {
-    /*
-    if (responseData) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-        NSLog(@"json:%@", dic);
-        
-        _eventDic = dic;
-        
-        _titleLabel.text = [_eventDic valueForKey:@"title"];
-        _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
-        
-        NSString *imageURLString = [_eventDic valueForKey:@"img"];
-        NSLog(@"image url:%@", imageURLString);
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
-        _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _eventImageView.image = image;
-        
-        _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
-        _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
-        _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
-        _addressLabel.text =[_eventDic valueForKey:@"location"];
-        _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
-        // Handle price
-        NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
-        NSString *priceString;
-        if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
-            priceString = @"免费";
-        } else {
-            priceString = [NSString stringWithFormat:@"%@", priceNumber];
-        }
-        
-        _priceLabel.text = priceString;
-        
-        // Handle text view
-        _introductionTextView.text = [_eventDic valueForKey:@"content"];
-        // Get the size of textView
-        CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
-        //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
-        
-        _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
-        //NSLog(@"revise height:%@",_introductionTextViewHeight);
-        
-        [self.activityIndicator stopAnimating];
-        
-        // Resize introduction textView
-        
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self.tableView reloadData];
-        
-    }
-     */
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-
+    //self.introductionTextViewHeight = [NSNumber numberWithFloat:44.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -177,39 +125,60 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - webView
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    if (error) {
+        NSLog(@"load webView error:%@", error);
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    CGRect frame = _introWebView.frame;
+    frame.size.height = 1;
+    _introWebView.frame = frame;
+    frame.size = [_introWebView sizeThatFits:CGSizeZero];
+    frame.size.height += 44.0f;
+    _introWebView.frame = frame;
+    
+    float height = frame.size.height;
+    introWebViewHeight = height;
+    
+    //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionRowCount inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
+
+    [self.tableView reloadData];
+    NSLog(@"webView finish load, frame height:%lf", height);
+}
+
+#pragma mark - tableView
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    
+    
+    return cell;
+}
+*/
 - (void)textViewDidChange:(UITextView *)textView theCell:(UITableViewCell *)cell {
     
 //    [self.tableView reloadData];
 }
 
 
-#pragma mark - tableView
-
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0 && indexPath.row == introductionTextViewRow) {
-//        CGFloat fixedWidth = _introductionTextView.frame.size.width;
-//        CGSize newSize = [_introductionTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-//        CGRect newFrame = _introductionTextView.frame;
-//        newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-//        //cell = [self.tableView dequeueReusableCellWithIdentifier:@"introductionCell"];
-//    
-//        _introductionTextView.frame = newFrame;
-//        CGFloat height = _introductionTextView.frame.size.height;
-//        NSLog(@"height:%f", newSize.height);
-        NSLog(@"height for row:%f", [_introductionTextViewHeight floatValue]);
-        return [_introductionTextViewHeight floatValue];
+    if (indexPath.section == 0 && indexPath.row == introductionRowCount) {
+
+        NSLog(@"height for row:%f", introWebViewHeight);
+        return introWebViewHeight;
 
     } else {
     
         return [super tableView:tableView heightForRowAtIndexPath:indexPath];
     }
 }
-
-
-
 
 #pragma mark - Navigation
 
@@ -229,115 +198,5 @@
     }
 }
 
-
-- (void)getEventDetail:(NSDictionary *)topicDic
-{
-    NSNumber *topicID = [topicDic valueForKey:@"id"];
-    //NSLog(@"topic id:%@", topicID);
-    
-    __block NSDictionary *dic;
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@", eventDetail];
-    urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
-    NSLog(@"%@", urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (data.length > 0 && error == nil) {
-            dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", dic);
-            
-            
-            // Have to use dispatch_async to make it work. NSURLSession get data asynchronously
-            // for event
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _eventDic = dic;
-                
-                _titleLabel.text = [_eventDic valueForKey:@"title"];
-                _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
-                
-                NSString *imageURLString = [_eventDic valueForKey:@"img"];
-                //NSLog(@"image url:%@", imageURLString);
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
-                _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
-                _eventImageView.image = image;
-                
-                _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
-                _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
-                _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
-                _addressLabel.text =[_eventDic valueForKey:@"location"];
-                _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
-                // Handle price
-                NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
-                NSString *priceString;
-                if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
-                    priceString = @"免费";
-                } else {
-                    priceString = [NSString stringWithFormat:@"%@", priceNumber];
-                }
-                
-                _priceLabel.text = priceString;
-                
-                // Handle text view
-                _introductionTextView.text = [_eventDic valueForKey:@"content"];
-                // Get the size of textView
-                CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
-                //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
-                
-                _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
-                //NSLog(@"revise height:%@",_introductionTextViewHeight);
-                
-                
-                
-                [self.activityIndicator stopAnimating];
-                
-                // Resize introduction textView
-
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-
-                [self.tableView reloadData];
-                
-                
-                /*
-                // for forum topics
-                NSDictionary *eventTopicDic = [dic valueForKey:@"topic"];
-                NSString *title = [eventTopicDic valueForKey:@"title"];
-                _titleLabel.text = title;
-                
-                // Foundamental information are in activity dic
-                NSDictionary *activityDic = [eventTopicDic valueForKey:@"activity"];
-                
-                
-                NSString *imageURLString = [activityDic valueForKey:@"image"];
-                NSLog(@"image url:%@", imageURLString);
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
-                _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
-                _eventImageView.image = image;
-                
-                
-                NSString *startTimeString = [activityDic valueForKey:@"startTime"];
-                NSLog(@"%@", startTimeString);
-                _startTimeLabel.text = startTimeString;
-                
-                NSString *endTimeString = [activityDic valueForKey:@"endTime"];
-                _endTimeLabel.text = endTimeString;
-                
-                NSString *closingDateString = [activityDic valueForKey:@"joinEndTime"];
-                _closingDateLabel.text = closingDateString;
-                
-                NSNumber *n = [activityDic valueForKey:@"man_count"];
-                _participantsCount.text = [NSString stringWithFormat:@"%@",n];
-                 */
-            });
-            
-
-        } else {
-            NSLog(@"error:%@",error);
-        }
-    }];
-    [dataTask resume];
-}
 
 @end

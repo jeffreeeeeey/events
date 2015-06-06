@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Event.h"
 
-@interface EventDetailsViewController : UITableViewController
+@interface EventDetailsViewController : UITableViewController <UIWebViewDelegate>
 
 @property (nonatomic) NSDictionary *topicDic;
 

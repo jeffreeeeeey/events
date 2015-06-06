@@ -1228,43 +1228,22 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="introductionCell" rowHeight="285" id="tbx-6g-Db0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="introductionCell" rowHeight="109" id="tbx-6g-Db0">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tbx-6g-Db0" id="vWf-nN-T24">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="活动介绍" translatesAutoresizingMaskIntoConstraints="NO" id="pAz-JT-hcz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="284"/>
+                                                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nL8-eg-0fi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="d0E-wb-VmV" id="3kQ-eT-LAO"/>
-                                                    </connections>
-                                                </textView>
+                                                </webView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="pAz-JT-hcz" secondAttribute="centerY" id="1Jr-tX-Xri"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="pAz-JT-hcz" secondAttribute="bottom" constant="-8" id="DjH-M9-jA7"/>
-                                                <constraint firstAttribute="centerX" secondItem="pAz-JT-hcz" secondAttribute="centerX" id="V8z-gv-OYZ"/>
-                                                <constraint firstItem="pAz-JT-hcz" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="Yrq-wl-ZGO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pAz-JT-hcz" secondAttribute="trailing" constant="-8" id="ZNh-cf-3ai"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pAz-JT-hcz" secondAttribute="trailing" constant="-8" id="a64-kd-4R2"/>
-                                                <constraint firstItem="pAz-JT-hcz" firstAttribute="top" secondItem="vWf-nN-T24" secondAttribute="topMargin" constant="-8" id="lw5-ef-PvB"/>
-                                                <constraint firstItem="pAz-JT-hcz" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="m0b-9C-Id4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pAz-JT-hcz" secondAttribute="trailing" constant="-8" id="rhi-Io-doG"/>
-                                                <constraint firstItem="pAz-JT-hcz" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="s8I-UB-8G2"/>
-                                                <constraint firstItem="pAz-JT-hcz" firstAttribute="top" secondItem="vWf-nN-T24" secondAttribute="topMargin" constant="-8" id="wyA-AK-cDw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nL8-eg-0fi" secondAttribute="trailing" constant="-8" id="AxW-SK-xCF"/>
+                                                <constraint firstAttribute="centerX" secondItem="nL8-eg-0fi" secondAttribute="centerX" id="ciK-fG-fZS"/>
+                                                <constraint firstItem="nL8-eg-0fi" firstAttribute="top" secondItem="vWf-nN-T24" secondAttribute="topMargin" constant="-8" id="oye-WE-FCD"/>
+                                                <constraint firstItem="nL8-eg-0fi" firstAttribute="leading" secondItem="vWf-nN-T24" secondAttribute="leadingMargin" constant="-8" id="s1W-Hz-I8u"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Yrq-wl-ZGO"/>
-                                                    <exclude reference="ZNh-cf-3ai"/>
-                                                    <exclude reference="lw5-ef-PvB"/>
-                                                    <exclude reference="rhi-Io-doG"/>
-                                                    <exclude reference="s8I-UB-8G2"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1301,7 +1280,7 @@
                         <outlet property="closingDateLabel" destination="SGU-pQ-FfG" id="PYF-ue-eXZ"/>
                         <outlet property="endDateLabel" destination="zLV-8O-P9u" id="QcY-J5-G0u"/>
                         <outlet property="eventImageView" destination="EmX-q2-vV2" id="ncp-ez-6cw"/>
-                        <outlet property="introductionTextView" destination="pAz-JT-hcz" id="Uwm-ws-PC9"/>
+                        <outlet property="introWebView" destination="nL8-eg-0fi" id="Y6k-i3-8XM"/>
                         <outlet property="priceLabel" destination="b3I-h7-LX1" id="2Hs-hV-V2a"/>
                         <outlet property="startDateLabel" destination="vIp-pu-Nqy" id="GeY-By-gxV"/>
                         <outlet property="subtitleLabel" destination="J5U-tA-mih" id="SBS-kY-wOE"/>

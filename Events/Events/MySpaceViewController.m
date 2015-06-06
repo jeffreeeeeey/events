@@ -7,7 +7,7 @@
 //
 
 #import "MySpaceViewController.h"
-#import "MyEventsViewController.h"
+#import "MyEventsTableViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
 #import "Settings.h"
@@ -172,7 +172,7 @@
             [self performSegueWithIdentifier:@"login" sender:self];
             
         }else {
-            MyEventsViewController *vc = segue.destinationViewController;
+            MyEventsTableViewController *vc = segue.destinationViewController;
             vc.contentType = @"participated";
         }
     }
@@ -182,7 +182,7 @@
             NSLog(@"redirect");
             [self performSegueWithIdentifier:@"login" sender:self];
         }else {
-            MyEventsViewController *vc = segue.destinationViewController;
+            MyEventsTableViewController *vc = segue.destinationViewController;
             vc.contentType = @"hosted";
         }
     }

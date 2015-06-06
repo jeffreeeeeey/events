@@ -10,4 +10,6 @@
 
 @interface MyEventsTableViewController : UITableViewController
 
+@property (nonatomic,weak) NSString *contentType;
+
 @end

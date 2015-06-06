@@ -31,12 +31,16 @@
 		0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473E8501B09CA4E00590500 /* CapacityCell.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
-		047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91D01AF9B2B100631FCE /* MyEventsViewController.m */; };
 		048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* EventDetailsViewController.m */; };
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
+		04F73D941B22866500EB1EED /* avatar1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04F73D921B22866500EB1EED /* avatar1.jpeg */; };
+		04F73D951B22866500EB1EED /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F73D931B22866500EB1EED /* avatar2.png */; };
+		04F73D971B22BD0300EB1EED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F73D961B22BD0300EB1EED /* Security.framework */; };
+		04F73D9B1B22C1FD00EB1EED /* JNKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F73D9A1B22C1FD00EB1EED /* JNKeychain.m */; };
+		04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */; };
 		04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */; };
 		04FCC3951B15A6340053C8C3 /* yangMi.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FCC3941B15A6340053C8C3 /* yangMi.png */; };
 /* End PBXBuildFile section */
@@ -98,8 +102,6 @@
 		047D91CA1AF9AF1E00631FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		047D91CC1AF9B09500631FCE /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		047D91CD1AF9B09500631FCE /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
-		047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventsViewController.h; sourceTree = "<group>"; };
-		047D91D01AF9B2B100631FCE /* MyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsViewController.m; sourceTree = "<group>"; };
 		0482829F1AFB5EA900249E24 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
 		048282A01AFB5EA900249E24 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -110,6 +112,13 @@
 		04B82F0D1B0B05A9006ED7A4 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		04B82F0E1B0B20E7006ED7A4 /* setApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setApplicationsTableViewController.h; sourceTree = "<group>"; };
 		04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setApplicationsTableViewController.m; sourceTree = "<group>"; };
+		04F73D921B22866500EB1EED /* avatar1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpeg; sourceTree = "<group>"; };
+		04F73D931B22866500EB1EED /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
+		04F73D961B22BD0300EB1EED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		04F73D991B22C1FD00EB1EED /* JNKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNKeychain.h; sourceTree = "<group>"; };
+		04F73D9A1B22C1FD00EB1EED /* JNKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JNKeychain.m; sourceTree = "<group>"; };
+		04F73D9C1B22CBD100EB1EED /* MyEventsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventsTableViewController.h; sourceTree = "<group>"; };
+		04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventsTableViewController.m; sourceTree = "<group>"; };
 		04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTableViewController.h; sourceTree = "<group>"; };
 		04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTableViewController.m; sourceTree = "<group>"; };
 		04FCC3941B15A6340053C8C3 /* yangMi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yangMi.png; sourceTree = "<group>"; };
@@ -120,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F73D971B22BD0300EB1EED /* Security.framework in Frameworks */,
 				043198D61B1469F700D597B3 /* BaiduMapAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +147,7 @@
 		041347BD1AF8B0AF0015E38E = {
 			isa = PBXGroup;
 			children = (
+				04F73D961B22BD0300EB1EED /* Security.framework */,
 				043198D51B1469F700D597B3 /* BaiduMapAPI.framework */,
 				041347C81AF8B0AF0015E38E /* Events */,
 				041347E51AF8B0AF0015E38E /* EventsTests */,
@@ -162,10 +173,7 @@
 				041347CD1AF8B0AF0015E38E /* AppDelegate.h */,
 				041347CE1AF8B0AF0015E38E /* AppDelegate.m */,
 				041347D61AF8B0AF0015E38E /* Main.storyboard */,
-				046AD6E61B1D4397008791FE /* NetworkServices.h */,
-				046AD6E71B1D4397008791FE /* NetworkServices.m */,
-				046AD6E31B1D3E68008791FE /* AlertsViewController.h */,
-				046AD6E41B1D3E68008791FE /* AlertsViewController.m */,
+				04F73D981B22C1DF00EB1EED /* Services */,
 				04B82F0D1B0B05A9006ED7A4 /* Settings.h */,
 				041347D91AF8B0AF0015E38E /* Images.xcassets */,
 				041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */,
@@ -237,6 +245,8 @@
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04F73D9C1B22CBD100EB1EED /* MyEventsTableViewController.h */,
+				04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */,
 				046164DE1B1AEF9000D72B6F /* DiscoverContainerViewController.h */,
 				046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */,
 				04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */,
@@ -249,8 +259,6 @@
 				041347D41AF8B0AF0015E38E /* MySpaceViewController.m */,
 				0482829F1AFB5EA900249E24 /* EventDetailsViewController.h */,
 				048282A01AFB5EA900249E24 /* EventDetailsViewController.m */,
-				047D91CF1AF9B2B100631FCE /* MyEventsViewController.h */,
-				047D91D01AF9B2B100631FCE /* MyEventsViewController.m */,
 				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
 				043198D11B145D9D00D597B3 /* EventListTableViewCell.h */,
@@ -277,8 +285,23 @@
 			children = (
 				04B82F0B1B0AE3C9006ED7A4 /* logo.png */,
 				04FCC3941B15A6340053C8C3 /* yangMi.png */,
+				04F73D921B22866500EB1EED /* avatar1.jpeg */,
+				04F73D931B22866500EB1EED /* avatar2.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		04F73D981B22C1DF00EB1EED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				046AD6E61B1D4397008791FE /* NetworkServices.h */,
+				04F73D991B22C1FD00EB1EED /* JNKeychain.h */,
+				04F73D9A1B22C1FD00EB1EED /* JNKeychain.m */,
+				046AD6E71B1D4397008791FE /* NetworkServices.m */,
+				046AD6E31B1D3E68008791FE /* AlertsViewController.h */,
+				046AD6E41B1D3E68008791FE /* AlertsViewController.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,9 +386,11 @@
 			files = (
 				041347D81AF8B0AF0015E38E /* Main.storyboard in Resources */,
 				041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */,
+				04F73D941B22866500EB1EED /* avatar1.jpeg in Resources */,
 				04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */,
 				04FCC3951B15A6340053C8C3 /* yangMi.png in Resources */,
 				041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */,
+				04F73D951B22866500EB1EED /* avatar2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,15 +417,16 @@
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
-				047D91D11AF9B2B100631FCE /* MyEventsViewController.m in Sources */,
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,
 				048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */,
 				046AD6E51B1D3E68008791FE /* AlertsViewController.m in Sources */,
 				04720ECD1B16A3D4009D1B74 /* Application.m in Sources */,
 				043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */,
+				04F73D9B1B22C1FD00EB1EED /* JNKeychain.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */,
+				04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,

@@ -6,10 +6,14 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
+#import <Security/Security.h>
 #import "LoginViewController.h"
 #import "Settings.h"
 #import "NetworkServices.h"
 #import "User.h"
+#import "JNKeychain.h"
+
+
 
 @interface LoginViewController () <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
@@ -30,6 +34,7 @@
     
     self.userNameTextField.text = @"admin";
     self.passwordTextField.text = @"111111";
+    
     
 }
 
@@ -57,6 +62,14 @@
                 if (isSuccess.intValue == 1) {
                     // Get the user information
                     NSDictionary *userDic = [dic valueForKey:@"user"];
+                    
+                    // Use keychain to store password
+                    //[JNKeychain saveValue:_passwordTextField.text forKey:_userNameTextField.text];
+                    
+#warning incomplete set user defaults
+                    //User userdefaults to store other normal info.
+                    
+                    
                     [User setUser:userDic];
                     
 //                    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{

@@ -97,4 +97,11 @@
 #define applicationFactors @[@"姓名", @"年龄", @"性别", @"身份证", @"小区", @"QQ号", @"电话", @"行业", @"工作单位", @"职位", @"图片"]
 #define applicationFactorsName @[@"username", @"age", @"gender", @"idcard", @"address", @"qq", @"phone", @"industry", @"company", @"position", @"img"]
 
+// UserDefault keys
+#define UDID @"userID"
+#define UDName @"userName"
+#define UDAvatar @"avatar"
+#define UDRole @"role"
+
+
 #endif

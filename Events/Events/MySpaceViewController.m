@@ -27,7 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController.toolbarHidden = NO;
+    self.navigationController.toolbarHidden = YES;
+
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(handleLogin:) name:@"login" object:nil];
@@ -37,8 +38,7 @@
         [self setUserInfo];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
     } else {
-        self.userNameLabel.text = @"登录账户";
-        self.avatarImageView.image = nil;
+
         self.navigationItem.rightBarButtonItem = nil;
         self.loginButton.hidden = false;
     }
@@ -46,7 +46,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"here");
 }
 
 - (void)handleLogin:(NSNotification *)sender {
@@ -62,9 +61,12 @@
 //set the user info
 
 - (void)setUserInfo {
-    //NSString *imageString = [_user objectForKey:@"avatar"];
+    NSString *imageString = [_user objectForKey:@"avatar"];
+    if (imageString == nil) {
+        
+    }
     
-   // UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
+   //UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
    // _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
    // _avatarImageView.image = avatarImage;
     
@@ -87,6 +89,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -95,18 +98,57 @@
     return 2;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (indexPath.row == 0) {
         cell.textLabel.text = @"我参与的";
+        cell.detailTextLabel.text = @"0";
     } else {
         cell.textLabel.text = @"我主办的";
+        cell.detailTextLabel.text = @"0";
     }
     
     return cell;
     
 }
 
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    if (touch.view == _avatarImageView) {
+        NSLog(@"touch imageView began");
+    }else {
+        NSLog(@"get touch began");
+    }
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesMoved:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    if (touch.view == _avatarImageView) {
+        NSLog(@"touch imageView");
+    }else {
+        NSLog(@"get touch");
+    }
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    
+    UITouch *touch = [touches anyObject];
+    if (touch.view == _avatarImageView) {
+        NSLog(@"touch imageView");
+    }else {
+        NSLog(@"get touch");
+    }
+}
+*/
+
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.user = [User getCurrentUser];
     if (!self.user) {
@@ -119,23 +161,32 @@
     }
 
 }
-
+*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"myEvents"]) {
+    
+    if ([[segue identifier] isEqualToString:@"participatedEvents"]) {
+
         self.user = [User getCurrentUser];
         if (!self.user) {
-            //[self performSegueWithIdentifier:@"login" sender:self];
+            NSLog(@"redirect");
+            [self performSegueWithIdentifier:@"login" sender:self];
             
         }else {
-            NSIndexPath *indexPath = [_funcTableView indexPathForSelectedRow];
             MyEventsViewController *vc = segue.destinationViewController;
-            if (indexPath.row == 0) {
-                vc.contentType = @"participated";
-            } else if (indexPath.row == 1) {
-                vc.contentType = @"hosted";
-            }
+            vc.contentType = @"participated";
         }
     }
+    if ([segue.identifier isEqualToString:@"hostedEvents"]) {
+        self.user = [User getCurrentUser];
+        if (!self.user) {
+            NSLog(@"redirect");
+            [self performSegueWithIdentifier:@"login" sender:self];
+        }else {
+            MyEventsViewController *vc = segue.destinationViewController;
+            vc.contentType = @"hosted";
+        }
+    }
+    
     if ([segue.identifier isEqualToString:@"login"]) {
         LoginViewController *vc = (LoginViewController *)[segue.destinationViewController topViewController];
         vc.loginDismissBlock = ^(NSDictionary *dic){
@@ -148,6 +199,7 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    /*
     if ([identifier isEqualToString:@"myEvents"]) {
         self.user = [User getCurrentUser];
         if (self.user) {
@@ -155,50 +207,10 @@
         }
         return false;
     }
+     */
     return true;
 }
 
 
-- (IBAction)checkUserInfo:(UIBarButtonItem *)sender {
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSString *urlString = getUser;
-    NSURL *url = [NSURL URLWithString:urlString];
-    //NSURL *loginurl = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api//user/login"];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (data.length > 0 && error == nil) {
-            NSLog(@"data: %@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-        }else {
-            NSLog(@"%@",error);
-        }
-    }];
-    [dataTask resume];
-}
-
-- (IBAction)postLogin:(UIBarButtonItem *)sender {
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.80:9090/huodong/api/user/login"];
-    NSString *params = [NSString stringWithFormat:@"username=admin&password=111111"];
-    //NSString *params = @"activityId=10011&username=test";
-    NSLog(@"%@ %@", url, params);
-    
-    NSString *postLength = [NSString stringWithFormat:@"%lud", (unsigned long)[params length]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:strlen([params UTF8String])]];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data.length > 0) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@", dic);
-        }
-        
-        NSLog(@"%@, %@", response, [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-        
-    }];
-}
 
 @end

@@ -6,11 +6,9 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
-#import "Settings.h"
-#import "NetworkServices.h"
+
 #import "DiscoverViewController.h"
-#import "EventDetailsViewController.h"
-#import "EventListTableViewCell.h"
+
 
 @interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
@@ -20,6 +18,33 @@
 @end
 
 @implementation DiscoverViewController
+
+- (void)getData:(__unused id)sender {
+    
+    //Use AFNetwork
+    AFHTTPRequestOperation *request;
+    [UIAlertView showAlertViewForRequestOperationWithErrorOnCompletion:request delegate:nil];
+    
+    request = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }];
+    
+    
+    
+    [self.refreshControl setRefreshingWithStateOfOperation:request];
+    
+    //    [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
+    //        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    //        NSLog(@"eventListURL:%@", eventList);
+    //        NSLog(@"eventList:%@", array);
+    //        self.topics = array;
+    //        [self.tableView reloadData];
+    //        [self.refreshControl endRefreshing];
+    //    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,13 +59,15 @@
         [self.refreshControl endRefreshing];
     }];
 */
-    [self getData];
-    
+
     // pull to refresh
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    [self.refreshControl addTarget:self action:@selector(refreshInvoked) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
+    [self.refreshControl addTarget:self action:@selector(getData:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.tableHeaderView addSubview:self.refreshControl];
+    
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight =120.0;
+    [self getData:nil];
 }
 
 - (void)didFinishRequestWithData:(NSData *)responseData {
@@ -51,17 +78,7 @@
 //    [self.refreshControl endRefreshing];
 }
 
-- (void)getData {
-    
-    [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
-        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"eventListURL:%@", eventList);
-        NSLog(@"eventList:%@", array);
-        self.topics = array;
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-    }];
-}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -70,7 +87,7 @@
 }
 
 - (void)refreshInvoked{
-    [self getData];
+    [self getData:nil];
     NSLog(@"===========refreshing===========");
 }
 

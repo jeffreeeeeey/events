@@ -8,7 +8,18 @@
 
 #import "Event.h"
 
+
 @implementation Event
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+#warning init Event
+    
+    return self;
+}
 
 + (NSArray *)getKeys{
     NSArray *keys = [[NSArray alloc]initWithObjects:@"title", @"subtitle", @"content", @"img", @"tag", @"requirement", @"start_time", @"end_time", @"deadline", @"price", @"location", @"capacity", nil];
@@ -71,5 +82,24 @@
 
 }
 
+#pragma mark - AFNetwork get events
+
++ (AFHTTPRequestOperation *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    return [manager GET:eventList parameters:nil success:^(AFHTTPRequestOperation * __unused operation, id responseObject) {
+        
+        if (block) {
+            block([NSArray arrayWithObject:@"this"], nil);
+            NSLog(@"AF json:%@", responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation * __unused operation, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+            NSLog(@"AF Error:%@",error);
+        }
+        
+    }];
+    
+}
 
 @end

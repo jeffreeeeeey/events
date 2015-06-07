@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFHTTPRequestOperationManager.h"
+#import "Settings.h"
+#import "UIAlertView+AFNetworking.h"
+
 
 @interface Event : NSObject
 
@@ -26,6 +30,9 @@
 @property (nonatomic, strong) NSNumber *costs;
 @property (nonatomic, copy) NSString *requirements;  // factors need to provide when apply.
 @property (nonatomic, strong) NSDate *time;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
++ (AFHTTPRequestOperation *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block;
 
 + (NSArray *)getKeys;
 

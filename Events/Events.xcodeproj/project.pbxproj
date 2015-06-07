@@ -16,7 +16,8 @@
 		041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */; };
 		041347E91AF8B0AF0015E38E /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041347E81AF8B0AF0015E38E /* EventsTests.m */; };
 		043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043198D21B145D9D00D597B3 /* EventListTableViewCell.m */; };
-		043198D61B1469F700D597B3 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043198D51B1469F700D597B3 /* BaiduMapAPI.framework */; };
+		04372B0B1B23F20D00D8623F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04372B0A1B23F20D00D8623F /* CoreLocation.framework */; };
+		04372B0E1B24281300D8623F /* AFLLZGEventsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */; };
 		045A513A1B087DA50075E811 /* setDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A51391B087DA50075E811 /* setDateViewController.m */; };
 		045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D119D1B033666009FCF89 /* ChooseClassificationViewController.m */; };
 		045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DBEA61B05CAC500D3581C /* PerformanceTableViewController.m */; };
@@ -43,6 +44,7 @@
 		04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */; };
 		04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */; };
 		04FCC3951B15A6340053C8C3 /* yangMi.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FCC3941B15A6340053C8C3 /* yangMi.png */; };
+		2A4B964945ACB7DE03C897A7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E9C8B1FA7B099C3BB55EA6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		043198D11B145D9D00D597B3 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
 		043198D21B145D9D00D597B3 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
 		043198D51B1469F700D597B3 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator/BaiduMapAPI.framework"; sourceTree = "<group>"; };
+		04372B0A1B23F20D00D8623F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		04372B0C1B24281300D8623F /* AFLLZGEventsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFLLZGEventsAPIClient.h; sourceTree = "<group>"; };
+		04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFLLZGEventsAPIClient.m; sourceTree = "<group>"; };
 		045A51381B087DA50075E811 /* setDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setDateViewController.h; sourceTree = "<group>"; };
 		045A51391B087DA50075E811 /* setDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setDateViewController.m; sourceTree = "<group>"; };
 		045D119C1B033666009FCF89 /* ChooseClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClassificationViewController.h; sourceTree = "<group>"; };
@@ -122,6 +127,9 @@
 		04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTableViewController.h; sourceTree = "<group>"; };
 		04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTableViewController.m; sourceTree = "<group>"; };
 		04FCC3941B15A6340053C8C3 /* yangMi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yangMi.png; sourceTree = "<group>"; };
+		5973BB11CBBDA6F578F5240D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		74C0BB8A5A1E6687A7D186F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		80E9C8B1FA7B099C3BB55EA6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +137,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04372B0B1B23F20D00D8623F /* CoreLocation.framework in Frameworks */,
 				04F73D971B22BD0300EB1EED /* Security.framework in Frameworks */,
-				043198D61B1469F700D597B3 /* BaiduMapAPI.framework in Frameworks */,
+				2A4B964945ACB7DE03C897A7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +161,8 @@
 				041347C81AF8B0AF0015E38E /* Events */,
 				041347E51AF8B0AF0015E38E /* EventsTests */,
 				041347C71AF8B0AF0015E38E /* Products */,
+				D71475A4A2827F00BFC3D7FB /* Pods */,
+				C79F3C5A85F8932FDF56F3E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,14 +256,14 @@
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				04F73D9C1B22CBD100EB1EED /* MyEventsTableViewController.h */,
-				04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */,
-				046164DE1B1AEF9000D72B6F /* DiscoverContainerViewController.h */,
-				046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */,
-				04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */,
-				04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */,
 				04720ED11B16A989009D1B74 /* Apply */,
 				045DBEA41B05CA4D00D3581C /* CreateEvent */,
+				04F73D9C1B22CBD100EB1EED /* MyEventsTableViewController.h */,
+				04F73D9D1B22CBD100EB1EED /* MyEventsTableViewController.m */,
+				04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */,
+				04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */,
+				046164DE1B1AEF9000D72B6F /* DiscoverContainerViewController.h */,
+				046164DF1B1AEF9000D72B6F /* DiscoverContainerViewController.m */,
 				041347D01AF8B0AF0015E38E /* DiscoverViewController.h */,
 				041347D11AF8B0AF0015E38E /* DiscoverViewController.m */,
 				041347D31AF8B0AF0015E38E /* MySpaceViewController.h */,
@@ -295,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				046AD6E61B1D4397008791FE /* NetworkServices.h */,
+				04372B0C1B24281300D8623F /* AFLLZGEventsAPIClient.h */,
+				04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */,
 				04F73D991B22C1FD00EB1EED /* JNKeychain.h */,
 				04F73D9A1B22C1FD00EB1EED /* JNKeychain.m */,
 				046AD6E71B1D4397008791FE /* NetworkServices.m */,
@@ -304,6 +317,24 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		C79F3C5A85F8932FDF56F3E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04372B0A1B23F20D00D8623F /* CoreLocation.framework */,
+				80E9C8B1FA7B099C3BB55EA6 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D71475A4A2827F00BFC3D7FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5973BB11CBBDA6F578F5240D /* Pods.debug.xcconfig */,
+				74C0BB8A5A1E6687A7D186F3 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 041347EC1AF8B0AF0015E38E /* Build configuration list for PBXNativeTarget "Events" */;
 			buildPhases = (
+				07976984DA52FD45AF6FF954 /* Check Pods Manifest.lock */,
 				041347C21AF8B0AF0015E38E /* Sources */,
 				041347C31AF8B0AF0015E38E /* Frameworks */,
 				041347C41AF8B0AF0015E38E /* Resources */,
+				7B5B6884429ECAD42C1604B4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -403,6 +436,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07976984DA52FD45AF6FF954 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7B5B6884429ECAD42C1604B4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		041347C21AF8B0AF0015E38E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -412,6 +478,7 @@
 				04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */,
 				046AD6E81B1D4397008791FE /* NetworkServices.m in Sources */,
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
+				04372B0E1B24281300D8623F /* AFLLZGEventsAPIClient.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
 				04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
@@ -559,6 +626,7 @@
 		};
 		041347ED1AF8B0AF0015E38E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5973BB11CBBDA6F578F5240D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -566,6 +634,7 @@
 					"/Users/mac/Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator",
 				);
 				INFOPLIST_FILE = Events/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -573,6 +642,7 @@
 		};
 		041347EE1AF8B0AF0015E38E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74C0BB8A5A1E6687A7D186F3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -580,6 +650,7 @@
 					"/Users/mac/Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator",
 				);
 				INFOPLIST_FILE = Events/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

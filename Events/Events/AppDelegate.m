@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 
+#import "Settings.h"
 #import "AppDelegate.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    switch (ENV) {
+        case 0:
+            NSLog(@"Develop Environment");
+            break;
+        case 1:
+            NSLog(@"issll Environment");
+            break;
+        case 2:
+            NSLog(@"Product Environment");
+        default:
+            break;
+    }
+    //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
     return YES;
 }
 

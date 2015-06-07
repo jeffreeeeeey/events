@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Event.h"
+#import "AFLLZGEventsAPIClient.h"
 
 @interface EditLogoViewController : UIViewController
 @property (strong, nonatomic) Event *event;

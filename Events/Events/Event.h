@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFLLZGEventsAPIClient.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Settings.h"
 #import "UIAlertView+AFNetworking.h"
@@ -32,7 +33,7 @@
 @property (nonatomic, strong) NSDate *time;
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
-+ (AFHTTPRequestOperation *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block;
++ (NSURLSessionDataTask *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block;
 
 + (NSArray *)getKeys;
 

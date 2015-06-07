@@ -35,7 +35,7 @@
 
 #define imagesServer @"http://image.issll.com/iserver/upload/mobile?key=abcdefghijklmn123456"
 #define createEvent [NSString stringWithFormat:@"%@/api/admin/activity", BASE_URL]
-#define eventList [NSString stringWithFormat:@"%@/api/activity", BASE_URL]
+#define eventList [NSString stringWithFormat:@"%/api/activity"]
 
 #define eventDetail [NSString stringWithFormat:@"%@/api/activity/", BASE_URL]
 #define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]

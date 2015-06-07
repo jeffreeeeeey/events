@@ -22,19 +22,16 @@
 - (void)getData:(__unused id)sender {
     
     //Use AFNetwork
-    AFHTTPRequestOperation *request;
-    [UIAlertView showAlertViewForRequestOperationWithErrorOnCompletion:request delegate:nil];
-    
-    request = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
+    NSURLSessionDataTask *task = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
         if (error) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
+            //UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            //[alert show];
         }
     }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     
     
-    
-    [self.refreshControl setRefreshingWithStateOfOperation:request];
+    [self.refreshControl setRefreshingWithStateOfTask:task];
     
     //    [NetworkServices fetchData:eventList getData:^(NSData *data, NSError *error) {
     //        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

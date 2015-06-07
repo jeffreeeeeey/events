@@ -62,7 +62,36 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerEditedImage];
     _logoImageView.image = image;
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+
+    AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
+    NSURLSessionDataTask *task = [manager POST:imagesServer parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"Filedata" fileName:@"logo.jpg" mimeType:@"image/jpeg"];
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Success:%@", responseObject);
+        NSError *jsonError;
+
+        NSDictionary *dic = responseObject;
+                    NSString *server = [dic valueForKey:@"server"];
+            NSString *file = [dic valueForKey:@"file"];
+            NSString *urlString = [NSString stringWithFormat:@"%@,%@",server,file];
+            //urlString = [urlString stringByAppendingString:server];
+            //urlString = [urlString stringByAppendingString:file];
+            NSLog(@"image url:%@", urlString);
+            _event.logoImageURLString = urlString;
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error:%@", error);
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }];
+    [task resume];
     
+    
+    
+    /*
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
@@ -73,6 +102,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error:%@", error);
     }];
+    */
     
     /*
     [NetworkServices postInfo:imagesServer sendImage:image sendParams:nil getblock:^(NSData *data, NSError *error) {

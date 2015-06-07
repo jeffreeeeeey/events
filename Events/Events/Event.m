@@ -84,7 +84,22 @@
 
 #pragma mark - AFNetwork get events
 
-+ (AFHTTPRequestOperation *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block {
++ (NSURLSessionDataTask *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block {
+    //Use NSURLSession
+    
+    return [[AFLLZGEventsAPIClient sharedClient] GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (block) {
+            block([NSArray array], nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+    
+    
+    /*
+    //Use NSURLConnection
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     return [manager GET:eventList parameters:nil success:^(AFHTTPRequestOperation * __unused operation, id responseObject) {
         
@@ -99,7 +114,7 @@
         }
         
     }];
-    
+    */
 }
 
 @end

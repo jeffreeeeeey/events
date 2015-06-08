@@ -11,7 +11,7 @@
 
 // 0 for production, 1 for issll, 2 for development
 
-#define ENV 2
+#define ENV 1
 
 #if ENV==2
 #define BASE_URL @"http://192.168.1.80:9090/huodong"

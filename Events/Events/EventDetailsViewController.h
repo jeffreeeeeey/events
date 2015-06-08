@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Event.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EventDetailsViewController : UITableViewController <UIWebViewDelegate>
 
 @property (nonatomic) NSDictionary *topicDic;
+@property (strong, nonatomic) Event *event;
 
 @end

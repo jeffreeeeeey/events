@@ -142,9 +142,9 @@ static NSString *cellIdentifier = @"eventCell";
     if ([[segue identifier] isEqualToString: @"showEventDetails"]) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *topicDic = [_eventsArray objectAtIndex:indexPath.row];
+        Event *event = [_eventsArray objectAtIndex:indexPath.row];
         EventDetailsViewController *vc = segue.destinationViewController;
-        vc.topicDic = topicDic;
+        vc.event = event;
     }
 }
 

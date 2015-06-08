@@ -47,74 +47,80 @@ float introWebViewHeight;
     
     //[self getEventDetail:self.topicDic];
     
-    NSNumber *topicID = [_topicDic valueForKey:@"id"];
+    NSNumber *topicID = _event.eventID;
     NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
     NSLog(@"eventDetailURL:%@", eventDetail);
     NSLog(@"==========urlString:%@", urlString);
+    
+    _titleLabel.text = _event.title;
+    _subtitleLabel.text = _event.subtitle;
+    [_eventImageView setImageWithURL:_event.logoImageURL placeholderImage:[UIImage imageNamed:@"logo.png"]];
+    
 
-    [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
-        
-        if (data) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"json:%@", dic);
-            
-            _eventDic = dic;
-            
-            _titleLabel.text = [_eventDic valueForKey:@"title"];
-            _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
-            
-            NSString *imageURLString = [_eventDic valueForKey:@"img"];
-            NSLog(@"image url:%@", imageURLString);
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
-            _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
-            _eventImageView.image = image;
-            
-            _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
-            _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
-            _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
-            _addressLabel.text =[_eventDic valueForKey:@"location"];
-            _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
-            // Handle price
-            NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
-            NSString *priceString;
-            if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
-                priceString = @"免费";
-            } else {
-                priceString = [NSString stringWithFormat:@"%@", priceNumber];
-            }
-            
-            _priceLabel.text = priceString;
-            
-            // if no requirement for apply, remove the button
-            NSString *requirement = [_eventDic valueForKey:@"requirement"];
-            if (requirement.length == 0) {
-                self.navigationItem.rightBarButtonItem = nil;
-            }
-            
-            // caculate the height of UIWebView based on content
-            NSString *intro = [_eventDic valueForKey:@"content"];
-            [_introWebView loadHTMLString:intro baseURL:nil];
-            
-            /*
-             //For TextView
-            // Get the size of textView
-            CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
-            //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
-            
-            _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
-            //NSLog(@"revise height:%@",_introductionTextViewHeight);
-             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-             
-             [self.tableView reloadData];
-             
-             */
-            
-            //[self.activityIndicator stopAnimating];
+//    [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
+//        
+//        if (data) {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            NSLog(@"json:%@", dic);
+//            
+//            _eventDic = dic;
+//            
+//            _titleLabel.text = [_eventDic valueForKey:@"title"];
+//            _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
+//            
+//            NSString *imageURLString = [_eventDic valueForKey:@"img"];
+//            NSLog(@"image url:%@", imageURLString);
+//            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
+//            _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
+//            _eventImageView.image = image;
+//            
+//            _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
+//            _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
+//            _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
+//            _addressLabel.text =[_eventDic valueForKey:@"location"];
+//            _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
+//            // Handle price
+//            NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
+//            NSString *priceString;
+//            if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
+//                priceString = @"免费";
+//            } else {
+//                priceString = [NSString stringWithFormat:@"%@", priceNumber];
+//            }
+//            
+//            _priceLabel.text = priceString;
+//            
+//            // if no requirement for apply, remove the button
+//            NSString *requirement = [_eventDic valueForKey:@"requirement"];
+//            if (requirement.length == 0) {
+//                self.navigationItem.rightBarButtonItem = nil;
+//            }
+//            
+//            // caculate the height of UIWebView based on content
+//            NSString *intro = [_eventDic valueForKey:@"content"];
+//            [_introWebView loadHTMLString:intro baseURL:nil];
+//            
+//            /*
+//             //For TextView
+//            // Get the size of textView
+//            CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
+//            //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
+//            
+//            _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
+//            //NSLog(@"revise height:%@",_introductionTextViewHeight);
+//             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
+//             
+//             [self.tableView reloadData];
+//             
+//             */
+//            
+//            //[self.activityIndicator stopAnimating];
+//
+//        }
+//        
+//    }];
 
-        }
-        
-    }];
-        
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
     //self.introductionTextViewHeight = [NSNumber numberWithFloat:44.0];

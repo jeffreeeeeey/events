@@ -15,7 +15,7 @@
 		041347DA1AF8B0AF0015E38E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041347D91AF8B0AF0015E38E /* Images.xcassets */; };
 		041347DD1AF8B0AF0015E38E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041347DB1AF8B0AF0015E38E /* LaunchScreen.xib */; };
 		041347E91AF8B0AF0015E38E /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041347E81AF8B0AF0015E38E /* EventsTests.m */; };
-		043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043198D21B145D9D00D597B3 /* EventListTableViewCell.m */; };
+		043198D31B145D9D00D597B3 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043198D21B145D9D00D597B3 /* EventTableViewCell.m */; };
 		04372B0B1B23F20D00D8623F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04372B0A1B23F20D00D8623F /* CoreLocation.framework */; };
 		04372B0E1B24281300D8623F /* AFLLZGEventsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */; };
 		045A513A1B087DA50075E811 /* setDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A51391B087DA50075E811 /* setDateViewController.m */; };
@@ -73,8 +73,8 @@
 		041347E21AF8B0AF0015E38E /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041347E71AF8B0AF0015E38E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041347E81AF8B0AF0015E38E /* EventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsTests.m; sourceTree = "<group>"; };
-		043198D11B145D9D00D597B3 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
-		043198D21B145D9D00D597B3 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
+		043198D11B145D9D00D597B3 /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		043198D21B145D9D00D597B3 /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		043198D51B1469F700D597B3 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator/BaiduMapAPI.framework"; sourceTree = "<group>"; };
 		04372B0A1B23F20D00D8623F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		04372B0C1B24281300D8623F /* AFLLZGEventsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFLLZGEventsAPIClient.h; sourceTree = "<group>"; };
@@ -272,8 +272,8 @@
 				048282A01AFB5EA900249E24 /* EventDetailsViewController.m */,
 				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
-				043198D11B145D9D00D597B3 /* EventListTableViewCell.h */,
-				043198D21B145D9D00D597B3 /* EventListTableViewCell.m */,
+				043198D11B145D9D00D597B3 /* EventTableViewCell.h */,
+				043198D21B145D9D00D597B3 /* EventTableViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 				048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */,
 				046AD6E51B1D3E68008791FE /* AlertsViewController.m in Sources */,
 				04720ECD1B16A3D4009D1B74 /* Application.m in Sources */,
-				043198D31B145D9D00D597B3 /* EventListTableViewCell.m in Sources */,
+				043198D31B145D9D00D597B3 /* EventTableViewCell.m in Sources */,
 				04F73D9B1B22C1FD00EB1EED /* JNKeychain.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,

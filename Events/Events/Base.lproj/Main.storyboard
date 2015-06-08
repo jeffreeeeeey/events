@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1305,7 +1306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="118" id="moF-Y4-xXc" customClass="EventListTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="118" id="moF-Y4-xXc" customClass="EventTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="moF-Y4-xXc" id="ZOZ-9i-lJc">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1371,8 +1372,8 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addressLabel" destination="aSY-AQ-rc5" id="FtK-Sf-ofH"/>
                                     <outlet property="eventImageView" destination="llc-3n-v3K" id="VrH-6x-867"/>
-                                    <outlet property="locationLabel" destination="aSY-AQ-rc5" id="oOb-yD-F1u"/>
                                     <outlet property="subtitleLabel" destination="B9C-2k-fRd" id="fTU-u2-1jK"/>
                                     <outlet property="titleLabel" destination="bhE-1n-jTe" id="yYd-os-X6w"/>
                                     <segue destination="d0E-wb-VmV" kind="show" identifier="showEventDetails" id="kUK-h7-z0g"/>

@@ -9,11 +9,12 @@
 
 #import "DiscoverViewController.h"
 
+static NSString *cellIdentifier = @"eventCell";
 
 @interface DiscoverViewController () <UITableViewDataSource, UITableViewDelegate,NSURLSessionDataDelegate>
 
 @property (nonatomic)  NSDictionary *jsonDic;
-@property (nonatomic)  NSArray *topics;
+@property (nonatomic)  NSArray *eventsArray;
 
 @end
 
@@ -24,7 +25,7 @@
     //Use AFNetwork
     NSURLSessionDataTask *task = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
         if (!error) {
-            _topics = events;
+            _eventsArray = events;
             NSLog(@"topics,%@", events);
             [self.tableView reloadData];
         }else {
@@ -68,6 +69,7 @@
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight =120.0;
     [self getData:nil];
+    [self.tableView reloadData];
 }
 
 - (void)didFinishRequestWithData:(NSData *)responseData {
@@ -86,15 +88,12 @@
 
 }
 
-- (void)refreshInvoked{
-    [self getData:nil];
-    NSLog(@"===========refreshing===========");
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma - mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -103,26 +102,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _topics.count;
+    return _eventsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    EventListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     
+    EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        NSLog(@"create cell");
+        cell = [[EventTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
     
-    NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
-    NSString *title = [topicDic objectForKey:@"title"];
-    //NSLog(@"%@", title);
-    cell.titleLabel.text = title;
-    cell.subtitleLabel.text = [topicDic objectForKey:@"subtitle"];
-    cell.locationLabel.text = [topicDic objectForKey:@"location"];
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[topicDic objectForKey:@"img"]]]];
-    cell.eventImageView.image = image;
-
+    cell.event = [_eventsArray objectAtIndex:indexPath.row];
+    
     return cell;
-}
+    
+    
+//    NSDictionary *topicDic = [_eventsArray objectAtIndex:indexPath.row];
+//    NSString *title = [topicDic objectForKey:@"title"];
+//    //NSLog(@"%@", title);
+//    cell.titleLabel.text = title;
+//    cell.subtitleLabel.text = [topicDic objectForKey:@"subtitle"];
+//    cell.locationLabel.text = [topicDic objectForKey:@"location"];
+//    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[topicDic objectForKey:@"img"]]]];
+//    cell.eventImageView.image = image;
+
+    }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -135,56 +142,11 @@
     if ([[segue identifier] isEqualToString: @"showEventDetails"]) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *topicDic = [_topics objectAtIndex:indexPath.row];
+        NSDictionary *topicDic = [_eventsArray objectAtIndex:indexPath.row];
         EventDetailsViewController *vc = segue.destinationViewController;
         vc.topicDic = topicDic;
     }
 }
 
-#pragma mark - Network
-/*
-- (void)getTopics:(void(^)(NSArray *array))handler
-{
-    __block NSDictionary *dic;
 
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    defaultConfigObject.timeoutIntervalForRequest = 10;
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURL *url = [NSURL URLWithString:eventList];
-    NSLog(@"get event list:%@", url);
-    
-    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (data.length > 0 && error == nil) {
-            
-            NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-            // Send it back
-            handler(array);
-            
-        } else if (data.length == 0 && error == nil){
-            NSLog(@"no events around");
-            
-        } else if (error) {
-            NSString *description = [error localizedDescription];
-            
-            NSLog(@"error:%@", error);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:description preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:^{
-
-                CGRect frameRect = CGRectMake(0, 0, self.tableView.frame.size.width, 100);
-                UIView *notiView = [[UIView alloc]initWithFrame:frameRect];
-                notiView.backgroundColor = [UIColor grayColor];
-                
-                [self.parentViewController.view addSubview:notiView];
-                
-            }];
-
-        }
-    }];
-    [dataTask resume];
-}
-*/
 @end

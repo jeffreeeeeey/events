@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "EventDetailsViewController.h"
-#import "EventListTableViewCell.h"
+#import "EventTableViewCell.h"
 #import "Event.h"
 #import "Settings.h"
 #import "NetworkServices.h"
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DiscoverViewController : UITableViewController
 

@@ -16,7 +16,27 @@
     if (!self) {
         return nil;
     }
-#warning init Event
+
+    self.eventID = [attributes valueForKey:@"id"];
+    self.organizerID = [attributes valueForKey:@"organizer_id"];
+    self.title = [attributes valueForKey:@"title"];
+    self.subtitle = [attributes valueForKey:@"subtitle"];
+    self.logoImageURL = [NSURL URLWithString:[attributes valueForKey:@"img"]];
+    self.address = [attributes valueForKey:@"location"];
+    self.requirements = [attributes valueForKey:@"attributes"];
+    self.capacity = [attributes valueForKey:@"capacity"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    self.startDate = [formatter dateFromString:[attributes valueForKey:@"start_time"]];
+    self.endDate = [formatter dateFromString:[attributes valueForKey:@"end_time"]];
+    self.deadline = [formatter dateFromString:[attributes valueForKey:@"start_time"]];
+    self.costs = [attributes valueForKey:@"price"];
+    self.content = [attributes valueForKey:@"content"];
+    self.updateTime = [attributes valueForKey:@"update_time"];
     
     return self;
 }
@@ -30,14 +50,15 @@
 - (instancetype)init {
     self = [super init];
     //self.activityTypes = [NSArray arrayWithObjects:[NSNumber numberWithInteger:1], [NSNumber numberWithInteger:2],nil];
+    /*
     _title = @"";
     _subtitle = @"";
     _content = @"";
-    _logoImageURLString = @"";
+    _logoImageURL = nil;
     _requirements = [[NSString alloc]initWithFormat:@""];
     _startDate = [NSDate date];
     _endDate = [NSDate date];
-    _applyEndDate = [NSDate date];
+    _deadline = [NSDate date];
     _costs = 0;
     _address = @"";
     _capacity = 0;
@@ -45,8 +66,8 @@
     
     self.startDate = [[NSDate alloc]init];
     self.endDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
-    self.applyEndDate = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
-    
+    self.deadline = [[NSDate alloc]initWithTimeIntervalSinceNow:86400];
+    */
     return self;
 }
 
@@ -60,14 +81,14 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString *startDateString = [formatter stringFromDate:_startDate];
     NSString *endDateString = [formatter stringFromDate:_endDate];
-    NSString *applyEndDateString = [formatter stringFromDate:_applyEndDate];
+    NSString *applyEndDateString = [formatter stringFromDate:_deadline];
     NSString *costsString = [NSString stringWithFormat:@"%ld", [_costs integerValue]];
     NSString *capacityString = [NSString stringWithFormat:@"%@", _capacity];
     
     [eventDic setValue:_title forKey:@"title"];
     [eventDic setValue:_subtitle forKey:@"subtitle"];
     [eventDic setValue:_content forKey:@"content"];
-    [eventDic setValue:_logoImageURLString forKey:@"img"];
+    [eventDic setValue:_logoImageURL forKey:@"img"];
     [eventDic setValue:_requirements forKey:@"requirement"];
     [eventDic setValue:startDateString forKey:@"start_time"];
     [eventDic setValue:endDateString forKey:@"end_time"];
@@ -90,7 +111,14 @@
     return [[AFLLZGEventsAPIClient sharedClient] GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (block) {
             NSArray *eventsArray = (NSArray *)responseObject;
-            block(eventsArray, nil);
+            NSMutableArray *mutableEvents = [NSMutableArray array];
+            for (NSDictionary *attributes in eventsArray) {
+                //NSLog(@"attributes dic:%@", attributes);
+                Event *event = [[Event alloc]initWithAttributes:attributes];
+                [mutableEvents addObject:event];
+            }
+            
+            block(mutableEvents, nil);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (block) {

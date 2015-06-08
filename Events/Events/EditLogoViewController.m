@@ -78,7 +78,7 @@
             //urlString = [urlString stringByAppendingString:server];
             //urlString = [urlString stringByAppendingString:file];
             NSLog(@"image url:%@", urlString);
-            _event.logoImageURLString = urlString;
+            _event.logoImageURL = [NSURL URLWithString:urlString];
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error:%@", error);

@@ -240,7 +240,7 @@
         
         _event.startDate = _startDate;
         _event.endDate = _endDate;
-        _event.applyEndDate = _applyEndDate;
+        _event.deadline = _applyEndDate;
         _event.address = _addressTextField.text;
         if (_capacitySegment.selectedSegmentIndex == 0) {
             _event.capacity = [NSNumber numberWithInt:0];

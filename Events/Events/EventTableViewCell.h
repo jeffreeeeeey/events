@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
-@interface EventListTableViewCell : UITableViewCell
+@interface EventTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) Event *event;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @end

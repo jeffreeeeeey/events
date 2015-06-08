@@ -23,7 +23,11 @@
     
     //Use AFNetwork
     NSURLSessionDataTask *task = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
-        if (error) {
+        if (!error) {
+            _topics = events;
+            NSLog(@"topics,%@", events);
+            [self.tableView reloadData];
+        }else {
             NSLog(@"network error:%@", error);
         }
     }];

@@ -21,13 +21,13 @@
     // Override point for customization after application launch.
     switch (ENV) {
         case 0:
-            NSLog(@"Develop Environment");
+            NSLog(@"Production Environment");
             break;
         case 1:
-            NSLog(@"issll Environment");
+            NSLog(@"Test Environment");
             break;
         case 2:
-            NSLog(@"Product Environment");
+            NSLog(@"Development Environment");
         default:
             break;
     }

@@ -89,11 +89,13 @@
     
     return [[AFLLZGEventsAPIClient sharedClient] GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (block) {
-            block([NSArray array], nil);
+            NSArray *eventsArray = (NSArray *)responseObject;
+            block(eventsArray, nil);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (block) {
             block([NSArray array], error);
+            NSLog(@"failure: get events URL:%@",eventList);
         }
     }];
     

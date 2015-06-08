@@ -70,7 +70,6 @@
         [formData appendPartWithFileData:imageData name:@"Filedata" fileName:@"logo.jpg" mimeType:@"image/jpeg"];
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Success:%@", responseObject);
-        NSError *jsonError;
 
         NSDictionary *dic = responseObject;
                     NSString *server = [dic valueForKey:@"server"];

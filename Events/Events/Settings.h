@@ -11,7 +11,7 @@
 
 // 0 for production, 1 for issll, 2 for development
 
-#define ENV 1
+#define ENV 2
 
 #if ENV==2
 #define BASE_URL @"http://192.168.1.80:9090/huodong"
@@ -35,7 +35,7 @@
 
 #define imagesServer @"http://image.issll.com/iserver/upload/mobile?key=abcdefghijklmn123456"
 #define createEvent [NSString stringWithFormat:@"%@/api/admin/activity", BASE_URL]
-#define eventList [NSString stringWithFormat:@"%/api/activity"]
+#define eventList [NSString stringWithFormat:@"%@/api/activity", BASE_URL]
 
 #define eventDetail [NSString stringWithFormat:@"%@/api/activity/", BASE_URL]
 #define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
@@ -50,7 +50,7 @@
 #define BASE_URL @"http://cbd.issll.com/event"
 
 #define createEvent [NSString stringWithFormat: @"%@/api/admin/activity", BASE_URL]
-#define eventList [NSString stringWithFormat: @"%@/api/activity", BASE_URL]
+#define eventList [NSString stringWithFormat:@"%@/api/activity", BASE_URL];
 #define eventDetail  [NSString stringWithFormat: @"%@/a/activity/", BASE_URL]
 #define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
 #define applications [NSString stringWithFormat: @"%@/api/admin/activity/\%\@/applies", BASE_URL]

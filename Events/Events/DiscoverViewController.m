@@ -24,8 +24,7 @@
     //Use AFNetwork
     NSURLSessionDataTask *task = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
         if (error) {
-            //UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[error localizedDescription] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            //[alert show];
+            NSLog(@"network error:%@", error);
         }
     }];
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];

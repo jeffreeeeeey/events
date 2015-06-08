@@ -12,9 +12,5 @@
 @interface EventTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) Event *event;
-@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @end

@@ -19,17 +19,7 @@ float contentWebViewHeight;
 @interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
 
 @property (nonatomic) NSDictionary *eventDic;
-//@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
-//@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
-//@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *costsLabel;
-//@property (weak, nonatomic) UITextView *introductionTextView;
-//@property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *applyBtn;
 
@@ -51,7 +41,6 @@ float contentWebViewHeight;
     NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)topicID]];
     NSLog(@"eventDetailURL:%@", eventDetail);
     NSLog(@"==========urlString:%@", urlString);
-    NSLog(@"get date:%@", _event.deadline);
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
@@ -59,8 +48,8 @@ float contentWebViewHeight;
     NSLog(@"content:%@", _event.content);
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
@@ -133,8 +122,6 @@ float contentWebViewHeight;
             UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
             normalCell.textLabel.text = @"报名截止";
             normalCell.detailTextLabel.text = [formatter stringFromDate:_event.deadline];
-            NSLog(@"date:%@", _event.deadline);
-            NSLog(@"date string:%@", [formatter stringFromDate:_event.deadline]);
             return normalCell;
             break;
         }
@@ -164,19 +151,13 @@ float contentWebViewHeight;
         }
         case 8: //content
         {
-            EventContentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"content" forIndexPath:indexPath];
+            EventContentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"content"];
             UIWebView *webView = cell.contentWebView;
-            [webView loadHTMLString:_event.content baseURL:[NSURL URLWithString:@"http://www.llzg.cn"]];
-            CGRect frame = webView.frame;
-            frame.size.height = 1;
-            webView.frame = frame;
-            frame.size = [webView sizeThatFits:CGSizeZero];
-            frame.size.height += 44.0f;
-            webView.frame = frame;
-        
-            float height = frame.size.height;
-            NSLog(@"return cell height:%f", height);
-            contentWebViewHeight = height;
+            
+            [webView loadHTMLString:_event.content baseURL:nil];
+            //UILabel *label = (UILabel *)[cell viewWithTag:0];
+            //label.text = @"content";
+            
             
             return cell;
             break;
@@ -186,6 +167,28 @@ float contentWebViewHeight;
             break;
     }
 
+    
+}
+
+#pragma -mark webView
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    CGRect frame = webView.frame;
+    frame.size.height = 1;
+    webView.frame = frame;
+    frame.size = [webView sizeThatFits:CGSizeZero];
+    frame.size.height += 44.0f;
+    webView.frame = frame;
+    
+    CGFloat height = frame.size.height;
+    
+    contentWebViewHeight = height;
+    
+    NSLog(@"get cell height:%f", height);
     
 }
 
@@ -199,10 +202,8 @@ float contentWebViewHeight;
     
     if (indexPath.section == 0 && indexPath.row == introductionRowCount) {
         
-        
         CGFloat height = [EventContentTableViewCell heightForCellWithContent:_event.content];
-        
-        NSLog(@"height for row:%lu, height:%f", indexPath.row,height);
+        NSLog(@"height for row:%f", height);
         return height;
 
     } else {

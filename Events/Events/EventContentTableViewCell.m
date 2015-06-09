@@ -31,7 +31,7 @@
 }
 
 + (CGFloat)heightForCellWithContent:(NSString *)content{
-    UIWebView *webView = [[UIWebView alloc]init];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 240.f, 100.f)];
     CGRect frame = webView.frame;
     frame.size.height = 1;
     
@@ -41,7 +41,7 @@
     webView.frame = frame;
     
     CGFloat height = frame.size.height;
-    NSLog(@"in cell, webView height:%f", height);
+
     return height;
 }
 

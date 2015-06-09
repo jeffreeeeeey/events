@@ -32,6 +32,9 @@
 		0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473E8501B09CA4E00590500 /* CapacityCell.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
 		047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CD1AF9B09500631FCE /* CreateEventViewController.m */; };
+		047E2A741B267FAF002E3E90 /* EventTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E2A731B267FAF002E3E90 /* EventTitleTableViewCell.m */; };
+		047E2A771B268326002E3E90 /* EventLogoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E2A761B268326002E3E90 /* EventLogoTableViewCell.m */; };
+		047E2A7B1B26840F002E3E90 /* EventContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E2A7A1B26840F002E3E90 /* EventContentTableViewCell.m */; };
 		048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* EventDetailsViewController.m */; };
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
@@ -107,6 +110,12 @@
 		047D91CA1AF9AF1E00631FCE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		047D91CC1AF9B09500631FCE /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
 		047D91CD1AF9B09500631FCE /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
+		047E2A721B267FAF002E3E90 /* EventTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTitleTableViewCell.h; sourceTree = "<group>"; };
+		047E2A731B267FAF002E3E90 /* EventTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTitleTableViewCell.m; sourceTree = "<group>"; };
+		047E2A751B268326002E3E90 /* EventLogoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLogoTableViewCell.h; sourceTree = "<group>"; };
+		047E2A761B268326002E3E90 /* EventLogoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLogoTableViewCell.m; sourceTree = "<group>"; };
+		047E2A791B26840F002E3E90 /* EventContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventContentTableViewCell.h; sourceTree = "<group>"; };
+		047E2A7A1B26840F002E3E90 /* EventContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventContentTableViewCell.m; sourceTree = "<group>"; };
 		0482829F1AFB5EA900249E24 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
 		048282A01AFB5EA900249E24 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -253,9 +262,25 @@
 			name = Apply;
 			sourceTree = "<group>";
 		};
+		047E2A781B2683EB002E3E90 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				043198D11B145D9D00D597B3 /* EventTableViewCell.h */,
+				043198D21B145D9D00D597B3 /* EventTableViewCell.m */,
+				047E2A751B268326002E3E90 /* EventLogoTableViewCell.h */,
+				047E2A761B268326002E3E90 /* EventLogoTableViewCell.m */,
+				047E2A721B267FAF002E3E90 /* EventTitleTableViewCell.h */,
+				047E2A731B267FAF002E3E90 /* EventTitleTableViewCell.m */,
+				047E2A791B26840F002E3E90 /* EventContentTableViewCell.h */,
+				047E2A7A1B26840F002E3E90 /* EventContentTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				047E2A781B2683EB002E3E90 /* Cells */,
 				04720ED11B16A989009D1B74 /* Apply */,
 				045DBEA41B05CA4D00D3581C /* CreateEvent */,
 				04F73D9C1B22CBD100EB1EED /* MyEventsTableViewController.h */,
@@ -272,8 +297,6 @@
 				048282A01AFB5EA900249E24 /* EventDetailsViewController.m */,
 				047D91C91AF9AF1E00631FCE /* LoginViewController.h */,
 				047D91CA1AF9AF1E00631FCE /* LoginViewController.m */,
-				043198D11B145D9D00D597B3 /* EventTableViewCell.h */,
-				043198D21B145D9D00D597B3 /* EventTableViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -480,6 +503,7 @@
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				04372B0E1B24281300D8623F /* AFLLZGEventsAPIClient.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
+				047E2A771B268326002E3E90 /* EventLogoTableViewCell.m in Sources */,
 				04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */,
@@ -493,6 +517,8 @@
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */,
+				047E2A7B1B26840F002E3E90 /* EventContentTableViewCell.m in Sources */,
+				047E2A741B267FAF002E3E90 /* EventTitleTableViewCell.m in Sources */,
 				04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,

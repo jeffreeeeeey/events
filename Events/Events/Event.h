@@ -15,8 +15,8 @@
 
 @interface Event : NSObject
 
-@property (nonatomic, strong) NSNumber *eventID;
-@property (nonatomic, strong) NSNumber *organizerID;
+@property (nonatomic, assign) NSUInteger eventID;
+@property (nonatomic, assign) NSUInteger organizerID;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *content;
@@ -28,8 +28,8 @@
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSDate *deadline;
 @property (nonatomic, strong) NSString *address;
-@property (nonatomic, strong) NSNumber *capacity;
-@property (nonatomic, strong) NSNumber *costs;
+@property (nonatomic, assign) NSUInteger capacity;
+@property (nonatomic, assign) float costs;
 @property (nonatomic, copy) NSString *requirements;  // factors need to provide when apply.
 @property (nonatomic, strong) NSDate *updateTime;
 

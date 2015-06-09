@@ -6,28 +6,30 @@
 //  Copyright (c) 2015 LLZG. All rights reserved.
 //
 #import "Settings.h"
-#import "NetworkServices.h"
 #import "EventDetailsViewController.h"
 #import "ApplyTableViewController.h"
 #import "ApplicationsTableViewController.h"
+#import "EventTitleTableViewCell.h"
+#import "EventLogoTableViewCell.h"
+#import "EventContentTableViewCell.h"
 
 #define introductionRowCount 8
-float introWebViewHeight;
+float contentWebViewHeight;
 
 @interface EventDetailsViewController () <NSURLSessionDataDelegate, UIWebViewDelegate, UITextViewDelegate>
 
 @property (nonatomic) NSDictionary *eventDic;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
-@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *closingDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) UITextView *introductionTextView;
-@property (strong, nonatomic) IBOutlet UIWebView *introWebView;
+//@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+//@property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+//@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *costsLabel;
+//@property (weak, nonatomic) UITextView *introductionTextView;
+//@property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *applyBtn;
 
@@ -42,88 +44,33 @@ float introWebViewHeight;
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
     self.navigationController.toolbarHidden = NO;
-    //Set the web view
-    _introWebView.delegate = self;
     
     //[self getEventDetail:self.topicDic];
     
-    NSNumber *topicID = _event.eventID;
-    NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%@", topicID]];
+    NSInteger topicID = _event.eventID;
+    NSString *urlString = [eventDetail stringByAppendingString:[NSString stringWithFormat:@"%ld", (long)topicID]];
     NSLog(@"eventDetailURL:%@", eventDetail);
     NSLog(@"==========urlString:%@", urlString);
-    
-    _titleLabel.text = _event.title;
-    _subtitleLabel.text = _event.subtitle;
-    [_eventImageView setImageWithURL:_event.logoImageURL placeholderImage:[UIImage imageNamed:@"logo.png"]];
-    
-
-//    [NetworkServices fetchData:urlString getData:^(NSData *data, NSError *error) {
-//        
-//        if (data) {
-//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"json:%@", dic);
-//            
-//            _eventDic = dic;
-//            
-//            _titleLabel.text = [_eventDic valueForKey:@"title"];
-//            _subtitleLabel.text = [_eventDic valueForKey:@"subtitle"];
-//            
-//            NSString *imageURLString = [_eventDic valueForKey:@"img"];
-//            NSLog(@"image url:%@", imageURLString);
-//            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
-//            _eventImageView.contentMode = UIViewContentModeScaleAspectFit;
-//            _eventImageView.image = image;
-//            
-//            _startDateLabel.text = [_eventDic valueForKey:@"start_time"];
-//            _endDateLabel.text = [_eventDic valueForKey:@"end_time"];
-//            _closingDateLabel.text = [_eventDic valueForKey:@"deadline"];
-//            _addressLabel.text =[_eventDic valueForKey:@"location"];
-//            _capacityLabel.text = [NSString stringWithFormat:@"%@",[_eventDic valueForKey:@"capacity"]];
-//            // Handle price
-//            NSNumber *priceNumber = [_eventDic valueForKey:@"price"];
-//            NSString *priceString;
-//            if ([priceNumber isEqualToNumber:[NSNumber numberWithInteger:0]]) {
-//                priceString = @"免费";
-//            } else {
-//                priceString = [NSString stringWithFormat:@"%@", priceNumber];
-//            }
-//            
-//            _priceLabel.text = priceString;
-//            
-//            // if no requirement for apply, remove the button
-//            NSString *requirement = [_eventDic valueForKey:@"requirement"];
-//            if (requirement.length == 0) {
-//                self.navigationItem.rightBarButtonItem = nil;
-//            }
-//            
-//            // caculate the height of UIWebView based on content
-//            NSString *intro = [_eventDic valueForKey:@"content"];
-//            [_introWebView loadHTMLString:intro baseURL:nil];
-//            
-//            /*
-//             //For TextView
-//            // Get the size of textView
-//            CGSize textViewSize = [_introductionTextView sizeThatFits:_introductionTextView.frame.size];
-//            //NSLog(@"size width: %f height:%f", textViewSize.width, textViewSize.height);
-//            
-//            _introductionTextViewHeight = [NSNumber numberWithFloat:textViewSize.height];
-//            //NSLog(@"revise height:%@",_introductionTextViewHeight);
-//             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionTextViewRow inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-//             
-//             [self.tableView reloadData];
-//             
-//             */
-//            
-//            //[self.activityIndicator stopAnimating];
-//
-//        }
-//        
-//    }];
-
+    NSLog(@"get date:%@", _event.deadline);
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
-    //self.introductionTextViewHeight = [NSNumber numberWithFloat:44.0];
+    
+    NSLog(@"content:%@", _event.content);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+- (NSDateFormatter *)setDateFormatter {
+    NSDateFormatter *visiableDateFormatter = [[NSDateFormatter alloc]init];
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    [visiableDateFormatter setTimeZone:timeZone];
+    [visiableDateFormatter setDateFormat:@"yyyy'-'MM'-'dd HH':'mm"];
+    return visiableDateFormatter;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,42 +78,117 @@ float introWebViewHeight;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - webView
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    if (error) {
-        NSLog(@"load webView error:%@", error);
-    }
+#pragma mark - tableView data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    CGRect frame = _introWebView.frame;
-    frame.size.height = 1;
-    _introWebView.frame = frame;
-    frame.size = [_introWebView sizeThatFits:CGSizeZero];
-    frame.size.height += 44.0f;
-    _introWebView.frame = frame;
-    
-    float height = frame.size.height;
-    introWebViewHeight = height;
-    
-    //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:introductionRowCount inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-
-    [self.tableView reloadData];
-    NSLog(@"webView finish load, frame height:%lf", height);
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 9;
 }
 
-#pragma mark - tableView
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
+    NSInteger row = indexPath.row;
     
+    NSDateFormatter *formatter = [self setDateFormatter];
     
-    return cell;
+    switch (row) {
+        case 0://title and subtitle
+        {
+            EventTitleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"title" forIndexPath:indexPath];
+            cell.titleLabel.text = _event.title;
+            cell.subtitleLabel.text = _event.subtitle;
+            return cell;
+
+            break;
+        }
+        case 1://logo image
+        {
+            EventLogoTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"logo" forIndexPath:indexPath];
+            [cell.LogoImageView setImageWithURL:_event.logoImageURL placeholderImage:[UIImage imageNamed:@"logo.png"]];
+            return cell;
+            break;
+        }
+        case 2://start date
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"开始时间";
+            normalCell.detailTextLabel.text = [formatter stringFromDate:_event.startDate];
+            return normalCell;
+            break;
+        }
+        case 3://end date
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"结束时间";
+            normalCell.detailTextLabel.text = [formatter stringFromDate:_event.endDate];
+            return normalCell;
+            break;
+        }
+        case 4://deadline
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"报名截止";
+            normalCell.detailTextLabel.text = [formatter stringFromDate:_event.deadline];
+            NSLog(@"date:%@", _event.deadline);
+            NSLog(@"date string:%@", [formatter stringFromDate:_event.deadline]);
+            return normalCell;
+            break;
+        }
+        case 5: //address
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"地址";
+            normalCell.detailTextLabel.text = _event.address;
+            return normalCell;
+            break;
+        }
+        case 6: //capacity
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"人数";
+            normalCell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", _event.capacity];
+            return normalCell;
+            break;
+        }
+        case 7: //costs
+        {
+            UITableViewCell *normalCell = [self.tableView dequeueReusableCellWithIdentifier:@"normal" forIndexPath:indexPath];
+            normalCell.textLabel.text = @"费用";
+            normalCell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", _event.costs];
+            return normalCell;
+            break;
+        }
+        case 8: //content
+        {
+            EventContentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"content" forIndexPath:indexPath];
+            UIWebView *webView = cell.contentWebView;
+            [webView loadHTMLString:_event.content baseURL:[NSURL URLWithString:@"http://www.llzg.cn"]];
+            CGRect frame = webView.frame;
+            frame.size.height = 1;
+            webView.frame = frame;
+            frame.size = [webView sizeThatFits:CGSizeZero];
+            frame.size.height += 44.0f;
+            webView.frame = frame;
+        
+            float height = frame.size.height;
+            NSLog(@"return cell height:%f", height);
+            contentWebViewHeight = height;
+            
+            return cell;
+            break;
+        }
+        default:
+            return nil;
+            break;
+    }
+
+    
 }
-*/
+
 - (void)textViewDidChange:(UITextView *)textView theCell:(UITableViewCell *)cell {
     
 //    [self.tableView reloadData];
@@ -176,9 +198,12 @@ float introWebViewHeight;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0 && indexPath.row == introductionRowCount) {
-
-        NSLog(@"height for row:%f", introWebViewHeight);
-        return introWebViewHeight;
+        
+        
+        CGFloat height = [EventContentTableViewCell heightForCellWithContent:_event.content];
+        
+        NSLog(@"height for row:%lu, height:%f", indexPath.row,height);
+        return height;
 
     } else {
     

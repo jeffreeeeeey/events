@@ -8,6 +8,12 @@
 
 #import "Event.h"
 
+@interface Event ()
+
+
+
+@end
+
 
 @implementation Event
 
@@ -17,24 +23,29 @@
         return nil;
     }
 
-    self.eventID = [attributes valueForKey:@"id"];
-    self.organizerID = [attributes valueForKey:@"organizer_id"];
+    self.eventID = [[attributes valueForKey:@"id"] integerValue];
+    self.organizerID = [[attributes valueForKey:@"organizer_id"] integerValue];
     self.title = [attributes valueForKey:@"title"];
     self.subtitle = [attributes valueForKey:@"subtitle"];
     self.logoImageURL = [NSURL URLWithString:[attributes valueForKey:@"img"]];
     self.address = [attributes valueForKey:@"location"];
     self.requirements = [attributes valueForKey:@"attributes"];
-    self.capacity = [attributes valueForKey:@"capacity"];
+    self.capacity = [[attributes valueForKey:@"capacity"] integerValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"en_us_POSIX"];
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    [formatter setLocale:locale];
     [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
+    
+    
     
     self.startDate = [formatter dateFromString:[attributes valueForKey:@"start_time"]];
+    //NSLog(@"start time date:%@", self.startDate);
     self.endDate = [formatter dateFromString:[attributes valueForKey:@"end_time"]];
     self.deadline = [formatter dateFromString:[attributes valueForKey:@"start_time"]];
-    self.costs = [attributes valueForKey:@"price"];
+    self.costs = [[attributes valueForKey:@"price"] floatValue];
     self.content = [attributes valueForKey:@"content"];
     self.updateTime = [attributes valueForKey:@"update_time"];
     
@@ -82,8 +93,8 @@
     NSString *startDateString = [formatter stringFromDate:_startDate];
     NSString *endDateString = [formatter stringFromDate:_endDate];
     NSString *applyEndDateString = [formatter stringFromDate:_deadline];
-    NSString *costsString = [NSString stringWithFormat:@"%ld", [_costs integerValue]];
-    NSString *capacityString = [NSString stringWithFormat:@"%@", _capacity];
+    NSString *costsString = [NSString stringWithFormat:@"%.2f", _costs];
+    NSString *capacityString = [NSString stringWithFormat:@"%lu", _capacity];
     
     [eventDic setValue:_title forKey:@"title"];
     [eventDic setValue:_subtitle forKey:@"subtitle"];

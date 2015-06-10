@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EventDetailsViewController.h"
+#import "DTAttributedTextCell.h"
 
-@interface EventContentTableViewCell : UITableViewCell <UIWebViewDelegate>
-@property (nonatomic, assign) float height;
-@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
+@interface EventContentTableViewCell : DTAttributedTextCell <UIWebViewDelegate>
 
-+ (CGFloat)heightForCellWithContent:(NSString *)content;
+
 
 @end

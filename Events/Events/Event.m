@@ -119,7 +119,11 @@
 + (NSURLSessionDataTask *)getEventsWithBlock:(void (^)(NSArray *events, NSError *error))block {
     //Use NSURLSession
     
-    return [[AFLLZGEventsAPIClient sharedClient] GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
+    return [manager GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (block) {
             NSArray *eventsArray = (NSArray *)responseObject;
             NSMutableArray *mutableEvents = [NSMutableArray array];

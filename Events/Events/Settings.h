@@ -27,6 +27,7 @@
 #define applications @"http://192.168.1.80:9090/huodong/api/admin/activity/%@/applies"
 #define getUser [NSString stringWithFormat:@"%@/api/admin/activity/userinfo", BASE_URL];
 #define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
+#define loginURL_LLZG @"http://mpc.issll.com/llzgmri/m/p/user/login?accountName=%@&pwd=%@"
 
 
 #elif ENV==1
@@ -43,6 +44,7 @@
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
 #define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
+#define loginURL_LLZG @"http://mpc.issll.com/llzgmri/m/p/user/login"
 
 
 #elif ENV==0
@@ -57,8 +59,10 @@
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
 #define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];
+#define loginURL_LLZG @"http://llzg.com/llzgmri/m/p/user/login?accountName=%@&pwd=%@"
 //图片服务器
 #define imagesServer @"http://image.llzg.cn/iserver/upload/mobile?key=abcdefghijklmn123456"
+
 
 
 #endif

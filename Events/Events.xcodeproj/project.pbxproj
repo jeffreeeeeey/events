@@ -40,6 +40,8 @@
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
+		04C99AB11B27DC9700742B71 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C99AB01B27DC9700742B71 /* SettingsTableViewController.m */; };
+		04C99AB41B27E46A00742B71 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C99AB31B27E46A00742B71 /* AboutTableViewController.m */; };
 		04F73D941B22866500EB1EED /* avatar1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04F73D921B22866500EB1EED /* avatar1.jpeg */; };
 		04F73D951B22866500EB1EED /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F73D931B22866500EB1EED /* avatar2.png */; };
 		04F73D971B22BD0300EB1EED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F73D961B22BD0300EB1EED /* Security.framework */; };
@@ -126,6 +128,10 @@
 		04B82F0D1B0B05A9006ED7A4 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		04B82F0E1B0B20E7006ED7A4 /* setApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setApplicationsTableViewController.h; sourceTree = "<group>"; };
 		04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setApplicationsTableViewController.m; sourceTree = "<group>"; };
+		04C99AAF1B27DC9700742B71 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		04C99AB01B27DC9700742B71 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		04C99AB21B27E46A00742B71 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		04C99AB31B27E46A00742B71 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		04F73D921B22866500EB1EED /* avatar1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpeg; sourceTree = "<group>"; };
 		04F73D931B22866500EB1EED /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		04F73D961B22BD0300EB1EED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -280,6 +286,10 @@
 		048282A51AFB5F8B00249E24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04C99AAF1B27DC9700742B71 /* SettingsTableViewController.h */,
+				04C99AB01B27DC9700742B71 /* SettingsTableViewController.m */,
+				04C99AB21B27E46A00742B71 /* AboutTableViewController.h */,
+				04C99AB31B27E46A00742B71 /* AboutTableViewController.m */,
 				047E2A781B2683EB002E3E90 /* Cells */,
 				04720ED11B16A989009D1B74 /* Apply */,
 				045DBEA41B05CA4D00D3581C /* CreateEvent */,
@@ -520,12 +530,14 @@
 				047E2A7B1B26840F002E3E90 /* EventContentTableViewCell.m in Sources */,
 				047E2A741B267FAF002E3E90 /* EventTitleTableViewCell.m in Sources */,
 				04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */,
+				04C99AB41B27E46A00742B71 /* AboutTableViewController.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,
 				045A513A1B087DA50075E811 /* setDateViewController.m in Sources */,
+				04C99AB11B27DC9700742B71 /* SettingsTableViewController.m in Sources */,
 				047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

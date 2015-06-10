@@ -9,6 +9,7 @@
 #import "Settings.h"
 #import "AppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "DTCoreText.h"
 
 @interface AppDelegate ()
 
@@ -31,6 +32,12 @@
         default:
             break;
     }
+    
+    NSString *html = @"<p>Some Text</p>";
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data documentAttributes:NULL];
+    NSLog(@"%@", attrString);
     //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     return YES;

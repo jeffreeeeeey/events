@@ -9,8 +9,8 @@
 #import "MySpaceViewController.h"
 #import "MyEventsTableViewController.h"
 #import "LoginViewController.h"
-#import "User.h"
 #import "Settings.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MySpaceViewController ()
 
@@ -29,10 +29,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.toolbarHidden = YES;
 
-    
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleLogin:) name:@"login" object:nil];
-    NSDictionary *currentUser = [User getCurrentUser];
+    User *currentUser = [User getCurrentUser];
     if (currentUser) {
         _user = currentUser;
         [self setUserInfo];
@@ -48,30 +45,28 @@
     [super viewWillAppear:animated];
 }
 
-- (void)handleLogin:(NSNotification *)sender {
-    //NSLog(@"\n=======got it========\n%@", sender);
-    
-    // Sender is the object from notification, userInfo is the dictionary in it.
-    self.user = sender.userInfo;
-    NSLog(@"user:%@", self.user);
-    [self setUserInfo];
-    
-}
+//- (void)handleLogin:(NSNotification *)sender {
+//    //NSLog(@"\n=======got it========\n%@", sender);
+//    
+//    // Sender is the object from notification, userInfo is the dictionary in it.
+//    self.user = sender.userInfo;
+//    NSLog(@"user:%@", self.user);
+//    [self setUserInfo];
+//    
+//}
 
 //set the user info
 
 - (void)setUserInfo {
-    NSString *imageString = [_user objectForKey:@"avatar"];
-    if (imageString == nil) {
-        
-    }
+    NSString *imageString = _user.avatarURLString;
+    [_avatarImageView setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"avatar1.jpeg"]];
     
    //UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
    // _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
    // _avatarImageView.image = avatarImage;
     
     
-    self.userNameLabel.text = [_user objectForKey:@"nickname"];
+    self.userNameLabel.text = _user.nickName;
     self.loginButton.hidden = true;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
 
@@ -162,6 +157,21 @@
 
 }
 */
+
+
+#pragma -mark navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"login"]) {
+        // If the current user is no logout, no need to login
+        self.user = [User getCurrentUser];
+        if (self.user) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"participatedEvents"]) {
@@ -189,26 +199,13 @@
     
     if ([segue.identifier isEqualToString:@"login"]) {
         LoginViewController *vc = (LoginViewController *)[segue.destinationViewController topViewController];
-        vc.loginDismissBlock = ^(NSDictionary *dic){
-            self.user = dic;
+        vc.loginDismissBlock = ^(User *user){
+            self.user = user;
             NSLog(@"block get user:%@", self.user);
             [self setUserInfo];
 
         };
     }
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    /*
-    if ([identifier isEqualToString:@"myEvents"]) {
-        self.user = [User getCurrentUser];
-        if (self.user) {
-            return true;
-        }
-        return false;
-    }
-     */
-    return true;
 }
 
 

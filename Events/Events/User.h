@@ -10,14 +10,17 @@
 
 @interface User : NSObject
 
-@property (nonatomic) NSNumber *userID;
+@property (nonatomic, assign) NSInteger userID;
 @property (nonatomic) NSString *userName;
+@property (nonatomic) NSString *nickName;
 @property (nonatomic) NSNumber *phoneNumber;
 @property (nonatomic) NSString *avatarURLString;
+@property (nonatomic) NSString * identity; // Use identity to seperate user and manager.
 
-+ (void)setUser:(NSDictionary *)userDic;
+- (void)setUserWithAttributes:(NSDictionary *)attributes;
+- (void)setUserToDefault;
 
-+ (NSDictionary *)getCurrentUser;
++ (User *)getCurrentUser;
 
 + (void)logoutCurrentUser;
 

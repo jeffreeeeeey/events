@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+
 
 @interface LoginViewController : UIViewController
 
-@property (nonatomic, copy) void (^loginDismissBlock)(NSDictionary *userDic);
+@property (nonatomic, copy) void (^loginDismissBlock)(User *user);
 
 @end

@@ -19,6 +19,7 @@ static NSString * const AFAppDotNetAPIBaseURLString = BASE_URL;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[AFLLZGEventsAPIClient alloc] init];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        
     });
     //NSLog(@"base url:%@", AFAppDotNetAPIBaseURLString);
     

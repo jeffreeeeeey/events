@@ -32,7 +32,7 @@ float contentWebViewHeight;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"活动详情";
+    self.navigationItem.rightBarButtonItem = nil;
     self.navigationController.toolbarHidden = NO;
     
     //[self getEventDetail:self.topicDic];
@@ -152,12 +152,10 @@ float contentWebViewHeight;
         case 8: //content
         {
             EventContentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"content"];
-            UIWebView *webView = cell.contentWebView;
+            cell.hasFixedRowHeight = NO;
             
-            [webView loadHTMLString:_event.content baseURL:nil];
-            //UILabel *label = (UILabel *)[cell viewWithTag:0];
-            //label.text = @"content";
-            
+            //EventContentTableViewCell *cell = [[EventContentTableViewCell alloc]initWithReuseIdentifier:@"content"];
+            [cell setHTMLString:_event.content];
             
             return cell;
             break;
@@ -176,22 +174,6 @@ float contentWebViewHeight;
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    CGRect frame = webView.frame;
-    frame.size.height = 1;
-    webView.frame = frame;
-    frame.size = [webView sizeThatFits:CGSizeZero];
-    frame.size.height += 44.0f;
-    webView.frame = frame;
-    
-    CGFloat height = frame.size.height;
-    
-    contentWebViewHeight = height;
-    
-    NSLog(@"get cell height:%f", height);
-    
-}
-
 - (void)textViewDidChange:(UITextView *)textView theCell:(UITableViewCell *)cell {
     
 //    [self.tableView reloadData];
@@ -202,8 +184,13 @@ float contentWebViewHeight;
     
     if (indexPath.section == 0 && indexPath.row == introductionRowCount) {
         
-        CGFloat height = [EventContentTableViewCell heightForCellWithContent:_event.content];
-        NSLog(@"height for row:%f", height);
+        EventContentTableViewCell *cell = [[EventContentTableViewCell alloc]init];
+        [cell setHTMLString:_event.content];
+        CGFloat height = [cell requiredRowHeightInTableView:self.tableView];
+        NSLog(@"content height:%f", height);
+        if (height < 44.0) {
+            height = 44.0f;
+        }
         return height;
 
     } else {

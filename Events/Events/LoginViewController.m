@@ -10,8 +10,9 @@
 #import "LoginViewController.h"
 #import "Settings.h"
 #import "NetworkServices.h"
-#import "User.h"
 #import "JNKeychain.h"
+#import "AFNetworking.h"
+#import "AFLLZGEventsAPIClient.h"
 
 
 
@@ -20,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *registeBtn;
 
+@property (weak, nonatomic) IBOutlet UISwitch *typeSwitch;
 
 @end
 
@@ -45,9 +48,58 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     
-    NSDictionary *paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"username", _passwordTextField.text, @"password", nil];
-    NSString *urlString = loginURL;
+    NSDictionary *paramsDic;
+    NSString *urlString = @"";
     
+    if (_typeSwitch.state == YES) {
+        // admin login
+        paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"username", _passwordTextField.text, @"password", nil];
+        urlString = loginURL;
+        AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+        NSURLSessionDataTask *task = [manager POST:urlString parameters:paramsDic success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"Success:%@", responseObject);
+            NSLog(@"error:%@", responseObject[@"errorMessage"]);
+            
+            if ([responseObject[@"isSuccess"] intValue] == 1) {
+                NSDictionary *dic = responseObject[@"user"];
+                NSMutableDictionary *attributeDic = [[NSMutableDictionary alloc]init];
+                [attributeDic setObject:dic[@"id"] forKey:@"userID"];
+                [attributeDic setObject:dic[@"username"] forKey:@"userName"];
+                [attributeDic setObject:dic[@"nickname"] forKey:@"nickName"];
+                [attributeDic setObject:@"admin" forKey:@"identity"];
+                User *user = [[User alloc]init];
+                [user setUserWithAttributes:attributeDic];
+                [user setUserToDefault];
+                
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                    _loginDismissBlock(user);
+                }];
+            }
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"error:%@", error);
+            
+        }];
+        [task resume];
+        
+    }else {
+        // Users login
+        urlString = loginURL_LLZG;
+        paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"accountName", _passwordTextField.text, @"pwd", nil];
+        AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+        NSURLSessionDataTask *task = [manager POST:urlString parameters:paramsDic success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"Success:%@", responseObject);
+            NSLog(@"error:%@", responseObject[@"errorMessage"]);
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"error:%@", error);
+            
+        }];
+        [task resume];
+    }
+    
+    
+    /*
     [NetworkServices postData:urlString setParam:paramsDic getData:^(NSData *data, NSError *error) {
         //NSLog(@"login return data:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
         

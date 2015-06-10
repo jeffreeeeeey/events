@@ -87,56 +87,6 @@
         [alert show];
     }];
     [task resume];
-    
-    
-    
-    /*
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]init];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
-    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-    AFHTTPRequestOperation *operation = [manager POST:imagesServer parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:imageData name:@"Filedata" fileName:@"logo.jpg" mimeType:@"image/jpeg"];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success:%@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error:%@", error);
-    }];
-    */
-    
-    /*
-    [NetworkServices postInfo:imagesServer sendImage:image sendParams:nil getblock:^(NSData *data, NSError *error) {
-        //NSLog(@"imageServer:%@", imagesServer);
-        if (data) {
-            //NSLog(@"returned:%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSString *urlString = @"";
-            BOOL n = [dic valueForKey:@"success"];
-            
-            if (n) {
-                NSString *server = [dic valueForKey:@"server"];
-                NSString *file = [dic valueForKey:@"file"];
-                urlString = [urlString stringByAppendingString:server];
-                urlString = [urlString stringByAppendingString:file];
-                //NSLog(@"image url:%@", _event.logoImageURLString);
-                _event.logoImageURLString = urlString;
-            }else {
-                NSLog(@"failed to upload image, error:%@", error);
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"图片上传失败，请重新上传" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    
-                }];
-                [alert addAction:action];
-                [self presentViewController:alert animated:YES completion:^{
-                    
-                }];
-            }
-        }else {
-            NSLog(@"get no image data");
-            
-        }
-        
-    }];
-     */
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

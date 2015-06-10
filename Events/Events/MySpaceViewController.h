@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface MySpaceViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) NSDictionary *user;
+@property (nonatomic) User *user;
 
 @end
 

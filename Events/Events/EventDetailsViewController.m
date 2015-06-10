@@ -12,6 +12,7 @@
 #import "EventTitleTableViewCell.h"
 #import "EventLogoTableViewCell.h"
 #import "EventContentTableViewCell.h"
+#import "User.h"
 
 #define introductionRowCount 8
 float contentWebViewHeight;
@@ -33,7 +34,7 @@ float contentWebViewHeight;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.toolbarHidden = NO;
+    
     
     //[self getEventDetail:self.topicDic];
     
@@ -48,10 +49,27 @@ float contentWebViewHeight;
     NSLog(@"content:%@", _event.content);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+    self.navigationController.toolbarHidden = NO;
+    User *user = [User getCurrentUser];
+    NSLog(@"user identity:%@", user.identity);
+    
+    if (user && [user.identity isEqualToString:@"admin"]) {
+        self.navigationController.toolbarHidden = NO;
+        NSLog(@"show tool bar");
+    }
+    else {
+        self.navigationController.toolbarHidden = YES;
+        NSLog(@"hide tool bar");
+    }
+
+    
 }
 
 - (NSDateFormatter *)setDateFormatter {

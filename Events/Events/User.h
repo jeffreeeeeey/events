@@ -17,7 +17,7 @@
 @property (nonatomic) NSString *avatarURLString;
 @property (nonatomic) NSString * identity; // Use identity to seperate user and manager.
 
-- (void)setUserWithAttributes:(NSDictionary *)attributes;
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
 - (void)setUserToDefault;
 
 + (User *)getCurrentUser;

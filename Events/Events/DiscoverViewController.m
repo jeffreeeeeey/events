@@ -26,7 +26,7 @@ static NSString *cellIdentifier = @"eventCell";
     NSURLSessionDataTask *task = [Event getEventsWithBlock:^(NSArray *events, NSError *error) {
         if (!error) {
             _eventsArray = events;
-            NSLog(@"topics,%@", events);
+            //NSLog(@"topics,%@", events);
             [self.tableView reloadData];
         }else {
             NSLog(@"network error:%@", error);

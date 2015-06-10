@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "Settings.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIAlertView+AFNetworking.h"
 
 @interface MySpaceViewController ()
 
@@ -27,22 +28,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController.toolbarHidden = YES;
-
-    User *currentUser = [User getCurrentUser];
-    if (currentUser) {
-        _user = currentUser;
-        [self setUserInfo];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
-    } else {
-
-        self.navigationItem.rightBarButtonItem = nil;
-        self.loginButton.hidden = false;
-    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = YES;
+    
+    self.user = [User getCurrentUser];
+    if (self.user) {
+        [self setUserInfo];
+        
+    } else {
+        
+        [self clearUserInfo];
+    }
 }
 
 //- (void)handleLogin:(NSNotification *)sender {
@@ -58,25 +58,27 @@
 //set the user info
 
 - (void)setUserInfo {
+    
     NSString *imageString = _user.avatarURLString;
     [_avatarImageView setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"avatar1.jpeg"]];
-    
-   //UIImage *avatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageString]]];
-   // _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
-   // _avatarImageView.image = avatarImage;
-    
-    
-    self.userNameLabel.text = _user.nickName;
-    self.loginButton.hidden = true;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"退出" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+    
+    _userNameLabel.text = _user.nickName;
+}
 
+- (void)clearUserInfo {
+    self.user = nil;
+    self.navigationItem.rightBarButtonItem = nil;
+    [_avatarImageView setImage:[UIImage imageNamed:@"avatar2.png"]];
+    _userNameLabel.text = @"点击头像登录";
 }
 
 - (void)logout {
-    [User logoutCurrentUser];
-    self.user = nil;
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"您已退出登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
     
-    [self viewDidLoad];
+    [User logoutCurrentUser];
+    [self clearUserInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -174,7 +176,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"participatedEvents"]) {
+    if ([[segue identifier] isEqualToString:@"participated"]) {
 
         self.user = [User getCurrentUser];
         if (!self.user) {

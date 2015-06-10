@@ -33,14 +33,7 @@
             break;
     }
     
-    NSString *html = @"<p>Some Text</p>";
-    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data documentAttributes:NULL];
-    NSLog(@"%@", attrString);
-    //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    
-    return YES;
+        return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

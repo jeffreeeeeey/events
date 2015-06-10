@@ -33,23 +33,33 @@
     [mutableDic setObject:[NSNumber numberWithInteger:self.userID] forKey:@"userID"];
     [mutableDic setObject:self.userName forKey:@"userName"];
     [mutableDic setObject:self.nickName forKey:@"nickName"];
-    [mutableDic setObject:self.avatarURLString forKey:@"avatarURLString"];
+    if (self.avatarURLString) {
+        [mutableDic setObject:self.avatarURLString forKey:@"avatarURLString"];
+    }
+    [mutableDic setObject:self.identity forKey:@"identity"];
     
     [stdDefaults setObject:mutableDic forKey:@"user"];
 }
 
 
-+ (NSDictionary *)getCurrentUser {
++ (User *)getCurrentUser {
     NSDictionary *attributes = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
-    User *user = [[User alloc]init];
+    if (attributes) {
+        NSLog(@"get user from default");
+        User *user = [[User alloc]initWithAttributes:attributes];
+        
+//        user.userID = [[attributes valueForKey:@"userID"] integerValue];
+//        user.userName = [attributes valueForKey:@"userName"];
+//        user.nickName = [attributes valueForKey:@"nickName"];
+//        user.avatarURLString = [attributes valueForKey:@"avatarURLString"];
+//        user.identity = [attributes valueForKey:@"identity"];
+        
+        return user;
+    }else {
+        NSLog(@"not get user from default");
+        return nil;
+    }
     
-    user.userID = [[attributes valueForKey:@"userID"] integerValue];
-    user.userName = [attributes valueForKey:@"userName"];
-    user.nickName = [attributes valueForKey:@"nickName"];
-    user.avatarURLString = [attributes valueForKey:@"avatarURLString"];
-    user.identity = [attributes valueForKey:@"identity"];
-    
-    return user;
 }
 
 + (void)logoutCurrentUser {

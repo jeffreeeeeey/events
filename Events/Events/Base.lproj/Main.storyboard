@@ -1506,7 +1506,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="4lT-mq-xQd" kind="showDetail" id="Wr5-Op-YQX"/>
+                                            <segue destination="1EY-tn-v5r" kind="show" identifier="participated" id="9ab-fb-wgZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1618,6 +1618,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="71R-y0-PUB">
                                 <rect key="frame" x="16" y="246" width="51" height="31"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="T1B-IQ-zll" eventType="valueChanged" id="AX3-Za-7kK"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="我是管理员" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24q-z9-nlv">
                                 <rect key="frame" x="89" y="256" width="85" height="21"/>
@@ -1945,27 +1948,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="参与的活动" id="vGa-kl-NwT"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gH-6M-W8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3214" y="1799"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="KeL-t1-9X5">
-            <objects>
-                <navigationController id="4lT-mq-xQd" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ukm-ks-s4L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="1EY-tn-v5r" kind="relationship" relationship="rootViewController" id="vgG-LO-p63"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gQg-Xu-hOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2394" y="1799"/>
+            <point key="canvasLocation" x="2394" y="1815"/>
         </scene>
         <!--我的-->
         <scene sceneID="VWa-P4-ALE">

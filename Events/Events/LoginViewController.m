@@ -45,17 +45,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)switchChanged:(id)sender {
+    //NSLog(@"switch changed");
+}
 
 - (IBAction)loginButtonPressed:(id)sender {
     
     NSDictionary *paramsDic;
     NSString *urlString = @"";
     
-    if (_typeSwitch.state == YES) {
+    if ([_typeSwitch isOn]) {
+        NSLog(@"admin login");
         // admin login
         paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"username", _passwordTextField.text, @"password", nil];
         urlString = loginURL;
         AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain",@"application/json",nil];
         NSURLSessionDataTask *task = [manager POST:urlString parameters:paramsDic success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"Success:%@", responseObject);
             NSLog(@"error:%@", responseObject[@"errorMessage"]);
@@ -67,8 +72,7 @@
                 [attributeDic setObject:dic[@"username"] forKey:@"userName"];
                 [attributeDic setObject:dic[@"nickname"] forKey:@"nickName"];
                 [attributeDic setObject:@"admin" forKey:@"identity"];
-                User *user = [[User alloc]init];
-                [user setUserWithAttributes:attributeDic];
+                User *user = [[User alloc] initWithAttributes:attributeDic];
                 [user setUserToDefault];
                 
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
@@ -84,9 +88,11 @@
         
     }else {
         // Users login
+        NSLog(@"user login");
         urlString = loginURL_LLZG;
         paramsDic = [[NSDictionary alloc]initWithObjectsAndKeys:_userNameTextField.text, @"accountName", _passwordTextField.text, @"pwd", nil];
         AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"application/json", nil];
         NSURLSessionDataTask *task = [manager POST:urlString parameters:paramsDic success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"Success:%@", responseObject);
             NSLog(@"error:%@", responseObject[@"errorMessage"]);

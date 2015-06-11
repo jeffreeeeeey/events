@@ -28,11 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
     
     self.user = [User getCurrentUser];
@@ -43,6 +38,12 @@
         
         [self clearUserInfo];
     }
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 }
 
 //- (void)handleLogin:(NSNotification *)sender {

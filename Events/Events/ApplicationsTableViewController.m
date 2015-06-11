@@ -8,6 +8,7 @@
 
 #import "ApplicationsTableViewController.h"
 #import "Settings.h"
+#import "UIAlertView+AFNetworking.h"
 
 @interface ApplicationsTableViewController () <NSURLSessionDelegate, NSURLSessionDataDelegate>
 
@@ -25,7 +26,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSNumber *eventID = [_eventDic valueForKey:@"id"];
+    //NSNumber *eventID = [_eventDic valueForKey:@"id"];
+    NSInteger eventID = _event.eventID;
     [self getEventApplications:eventID];
     
 }
@@ -33,6 +35,45 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)getEventApplications:(NSInteger)eventID
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%lu%@", applications, eventID, @"/applies"];
+    NSLog(@"get applications:%@", urlString);
+    NSURLSessionDataTask *task = [[AFLLZGEventsAPIClient sharedClient] GET:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"sucess, %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error, %@", error);
+    }];
+    
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    
+    
+//    __block NSArray *array;
+//    __block NSDictionary *dic;
+//    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+//    
+//    
+//    NSLog(@"%@",urlString);
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    
+//    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (data.length > 0 && error == nil) {
+//            array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            NSLog(@"array:%@", array);
+//            
+//            self.applicationsArray = array;
+//            [self.tableView reloadData];
+//        } else if(error) {
+//            NSLog(@"error:%@",error);
+//        } else {
+//            NSLog(@"get nothing");
+//        }
+//    }];
+//    [dataTask resume];
 }
 
 #pragma mark - Table view data source
@@ -121,32 +162,5 @@
 */
 
 
-- (void)getEventApplications:(NSNumber *)eventID
-{
-
-    __block NSArray *array;
-    __block NSDictionary *dic;
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSString *urlString = [NSString stringWithFormat:applications, eventID];
-    NSLog(@"%@",urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (data.length > 0 && error == nil) {
-            array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"array:%@", array);
-            
-            self.applicationsArray = array;
-            [self.tableView reloadData];
-        } else if(error) {
-            NSLog(@"error:%@",error);
-        } else {
-            NSLog(@"get nothing");
-        }
-    }];
-    [dataTask resume];
-}
 
 @end

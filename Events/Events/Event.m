@@ -22,14 +22,14 @@
     if (!self) {
         return nil;
     }
-
+    //NSLog(@"%@", attributes);
     self.eventID = [[attributes valueForKey:@"id"] integerValue];
     self.organizerID = [[attributes valueForKey:@"organizer_id"] integerValue];
     self.title = [attributes valueForKey:@"title"];
     self.subtitle = [attributes valueForKey:@"subtitle"];
     self.logoImageURL = [NSURL URLWithString:[attributes valueForKey:@"img"]];
     self.address = [attributes valueForKey:@"location"];
-    self.requirements = [attributes valueForKey:@"attributes"];
+    self.requirements = [attributes valueForKey:@"requirement"];
     self.capacity = [[attributes valueForKey:@"capacity"] integerValue];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];

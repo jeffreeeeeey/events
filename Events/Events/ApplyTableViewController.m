@@ -11,12 +11,14 @@
 #import "Event.h"
 #import "AgeTableViewCell.h"
 #import "GenderTableViewCell.h"
+#import "UIAlertView+AFNetworking.h"
 
 #define rowsCount (int)10
 
 @interface ApplyTableViewController () <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
 @property (nonatomic) NSArray *requirementsArray;
+@property (nonatomic) NSArray *numberOfRequirements;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
@@ -44,8 +46,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 144.0;
-    NSString *require = [_EventDic valueForKey:@"requirement"];
-    NSLog(@"%@",require);
+    NSString *require = _event.requirements;
+    NSLog(@"requirements%@",require);
     
     if (require.length > 0) {
         NSMutableArray *requireMutableArray = [[NSMutableArray alloc]init];
@@ -59,7 +61,6 @@
         for (NSString *requireString in array) {
             if ([requireString isEqualToString:@"username"]) {
                 n = 0;
-                
             }else if ([requireString isEqualToString:@"gender"]) {
                 n = 1;
             }else if ([requireString isEqualToString:@"age"]) {
@@ -98,6 +99,9 @@
         
         
         _requirementsArray = requiredCellsMutableArray;
+        _numberOfRequirements = requireMutableArray;
+    }else {
+        NSLog(@"no requirement for apply");
     }
     
     _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
@@ -115,11 +119,26 @@
 }
 
 - (IBAction)submitBtnPressed:(UIBarButtonItem *)sender {
-    NSString *eventID = [_EventDic valueForKey:@"id"];
+    NSString *eventID = [NSString stringWithFormat:@"%lu", _event.eventID];
     NSString *username = _usernameTextfield.text;
     NSString *age = _ageTextField.text;
     NSString *gender = @"男";
     NSString *idcard = _idcardTextField.text;
+    
+    NSMutableDictionary *paramDic = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i < _numberOfRequirements.count; i++) {
+        NSNumber *n = _numberOfRequirements[i];
+        NSString *key = applicationFactorsName[[n intValue]];
+
+    }
+    
+    
+    
+    NSURLSessionDataTask *task = [[AFLLZGEventsAPIClient sharedClient] POST:apply parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"success, %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure, %@", error);
+    }];
 
     NSURL *url = [NSURL URLWithString:apply];
     NSString *params = [NSString stringWithFormat:@"activityId=%@&username=%@&age=%@",eventID, username, age];

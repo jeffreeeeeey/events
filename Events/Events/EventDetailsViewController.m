@@ -33,8 +33,21 @@ float contentWebViewHeight;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = nil;
+    //self.navigationItem.rightBarButtonItem = nil;
+    // Set the bottom bar
+    self.navigationController.toolbarHidden = NO;
+    User *user = [User getCurrentUser];
+    NSLog(@"user identity:%@", user.identity);
+    NSLog(@"event requirements:%@", _event.requirements);
     
+    if (user && [user.identity isEqualToString:@"admin"]) {
+        self.navigationController.toolbarHidden = NO;
+        NSLog(@"show tool bar");
+    }
+    else {
+        self.navigationController.toolbarHidden = YES;
+        NSLog(@"hide tool bar");
+    }
     
     //[self getEventDetail:self.topicDic];
     
@@ -56,18 +69,7 @@ float contentWebViewHeight;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationController.toolbarHidden = NO;
-    User *user = [User getCurrentUser];
-    NSLog(@"user identity:%@", user.identity);
     
-    if (user && [user.identity isEqualToString:@"admin"]) {
-        self.navigationController.toolbarHidden = NO;
-        NSLog(@"show tool bar");
-    }
-    else {
-        self.navigationController.toolbarHidden = YES;
-        NSLog(@"hide tool bar");
-    }
 
     
 }
@@ -226,11 +228,12 @@ float contentWebViewHeight;
     
     if ([segue.identifier isEqualToString:@"apply"]) {
         ApplyTableViewController *vc = (ApplyTableViewController *)[segue.destinationViewController topViewController];
-        vc.EventDic = self.eventDic;
+        vc.event = self.event;
     } else {
         if ([segue.identifier isEqualToString:@"applications"]) {
             ApplicationsTableViewController *vc = [segue destinationViewController];
             vc.eventDic = self.eventDic;
+            vc.event = self.event;
         }
     }
 }

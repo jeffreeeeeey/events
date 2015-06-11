@@ -40,7 +40,7 @@
 
 #define eventDetail [NSString stringWithFormat:@"%@/api/activity/", BASE_URL]
 #define apply  [NSString stringWithFormat: @"%@/api/activity/apply", BASE_URL]
-#define applications [NSString stringWithFormat:@"http://cbd.issll.com/event/api/admin/activity/%@/applies"]
+#define applications [NSString stringWithFormat:@"%@/api/admin/activity/", BASE_URL]
 
 #define getUser [NSString stringWithFormat: @"%@/api/admin/activity/userinfo", BASE_URL]
 #define loginURL [NSString stringWithFormat:@"%@/api/user/login", BASE_URL];

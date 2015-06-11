@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
 @interface ApplicationsTableViewController : UITableViewController
 @property (nonatomic, strong) NSDictionary *eventDic;
+@property (nonatomic, strong) Event *event;
 
 @end

@@ -1305,7 +1305,11 @@
                         <barButtonItem title="编辑活动" id="fFi-wN-sdG"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="活动详情" id="Ywk-UZ-Gq4">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="报名" id="fCI-g2-iZZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="报名" id="fCI-g2-iZZ">
+                            <connections>
+                                <segue destination="cZV-9z-XsB" kind="presentation" identifier="apply" id="x64-0m-oCI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -1488,7 +1492,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle=" " id="tC9-2t-SNu">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="participated" textLabel="xRK-xK-dgG" style="IBUITableViewCellStyleDefault" id="aRX-o0-mAp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="participated" textLabel="xRK-xK-dgG" style="IBUITableViewCellStyleDefault" id="aRX-o0-mAp">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRX-o0-mAp" id="dXW-AF-Bh1">
@@ -1513,7 +1517,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle=" " id="kKE-iy-f8m">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settings" textLabel="RlS-8I-mKC" style="IBUITableViewCellStyleDefault" id="eoy-R3-09D">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settings" textLabel="RlS-8I-mKC" style="IBUITableViewCellStyleDefault" id="eoy-R3-09D">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eoy-R3-09D" id="asn-wV-UK6">
@@ -1531,7 +1535,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="39E-UK-6fV" kind="showDetail" id="F8B-ss-ELt"/>
+                                            <segue destination="39E-UK-6fV" kind="show" identifier="settings" id="F8B-ss-ELt"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1837,7 +1841,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="bef-eO-3yq" kind="showDetail" id="e41-Bu-MYM"/>
+                                            <segue destination="bef-eO-3yq" kind="show" identifier="about" id="e41-Bu-MYM"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1850,12 +1854,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="dGs-DT-DVB"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RW7-SX-Qhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1108" y="1429"/>
         </scene>
-        <!--About Table View Controller-->
+        <!--关于我们-->
         <scene sceneID="HrT-v2-M4f">
             <objects>
                 <tableViewController id="bef-eO-3yq" customClass="AboutTableViewController" sceneMemberID="viewController">
@@ -1899,10 +1904,11 @@
                             <outlet property="delegate" destination="bef-eO-3yq" id="6Cg-p4-8iR"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="关于我们" id="xLf-1E-7CO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwo-HQ-WRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="2230"/>
+            <point key="canvasLocation" x="1108" y="2237"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fsw-4s-lUz">

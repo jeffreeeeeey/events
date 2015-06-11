@@ -7,7 +7,7 @@
 //
 
 #import "Event.h"
-
+#import "Tools.h"
 @interface Event ()
 
 
@@ -32,14 +32,7 @@
     self.requirements = [attributes valueForKey:@"requirement"];
     self.capacity = [[attributes valueForKey:@"capacity"] integerValue];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    NSLocale *locale = [[NSLocale alloc]initWithLocaleIdentifier:@"en_us_POSIX"];
-    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-    [formatter setLocale:locale];
-    [formatter setTimeZone:timeZone];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
-    
-    
+    NSDateFormatter *formatter = [Tools inVisiableFormatter];
     
     self.startDate = [formatter dateFromString:[attributes valueForKey:@"start_time"]];
     //NSLog(@"start time date:%@", self.startDate);

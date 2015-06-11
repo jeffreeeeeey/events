@@ -84,9 +84,16 @@
         NSError *e;
         NSDictionary *infoDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&e];
         
-        NSLog(@"%@",infoDic[@"username"]);
-        cell.textLabel.text = infoDic[@"username"];
-        cell.detailTextLabel.text = dic[@"create_time"];
+        //NSLog(@"%@",infoDic[@"username"]);
+        NSArray *keysArray = [infoDic allKeys];
+        if (keysArray.count > 0) {
+            NSString *firstKey = [keysArray objectAtIndex:0];
+            cell.textLabel.text = infoDic[firstKey];
+            NSString *timeString = dic[@"create_time"];
+            
+            cell.detailTextLabel.text = dic[@"create_time"];
+        }
+        
     } else {
         NSLog(@"nil dic");
     }

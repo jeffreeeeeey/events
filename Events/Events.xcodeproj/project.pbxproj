@@ -49,6 +49,7 @@
 		04ADC66F1B294C8C0045B36B /* RemarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC66E1B294C8C0045B36B /* RemarkTableViewCell.m */; };
 		04ADC6721B2953A80045B36B /* ApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6711B2953A80045B36B /* ApplyTableViewCell.m */; };
 		04ADC6761B2971080045B36B /* ApplicationDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6751B2971080045B36B /* ApplicationDetailTableViewController.m */; };
+		04ADC6791B29826A0045B36B /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6781B29826A0045B36B /* Tools.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
@@ -159,6 +160,8 @@
 		04ADC6731B2956BC0045B36B /* ApplyCellsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyCellsDelegate.h; sourceTree = "<group>"; };
 		04ADC6741B2971080045B36B /* ApplicationDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDetailTableViewController.h; sourceTree = "<group>"; };
 		04ADC6751B2971080045B36B /* ApplicationDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDetailTableViewController.m; sourceTree = "<group>"; };
+		04ADC6771B29826A0045B36B /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		04ADC6781B29826A0045B36B /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLogoViewController.h; sourceTree = "<group>"; };
 		04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLogoViewController.m; sourceTree = "<group>"; };
 		04B82F0B1B0AE3C9006ED7A4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -408,6 +411,8 @@
 		04F73D981B22C1DF00EB1EED /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				04ADC6771B29826A0045B36B /* Tools.h */,
+				04ADC6781B29826A0045B36B /* Tools.m */,
 				046AD6E61B1D4397008791FE /* NetworkServices.h */,
 				04372B0C1B24281300D8623F /* AFLLZGEventsAPIClient.h */,
 				04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */,
@@ -598,6 +603,7 @@
 				043198D31B145D9D00D597B3 /* EventTableViewCell.m in Sources */,
 				04F73D9B1B22C1FD00EB1EED /* JNKeychain.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
+				04ADC6791B29826A0045B36B /* Tools.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
 				04ADC66C1B2943830045B36B /* IDCardTableViewCell.m in Sources */,
 				046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */,

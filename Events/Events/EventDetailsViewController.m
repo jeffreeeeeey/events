@@ -13,6 +13,7 @@
 #import "EventLogoTableViewCell.h"
 #import "EventContentTableViewCell.h"
 #import "User.h"
+#import "Tools.h"
 
 #define introductionRowCount 8
 float contentWebViewHeight;
@@ -80,14 +81,6 @@ float contentWebViewHeight;
     
 }
 
-- (NSDateFormatter *)setDateFormatter {
-    NSDateFormatter *visiableDateFormatter = [[NSDateFormatter alloc]init];
-    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-    [visiableDateFormatter setTimeZone:timeZone];
-    [visiableDateFormatter setDateFormat:@"yyyy'-'MM'-'dd HH':'mm"];
-    return visiableDateFormatter;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -108,7 +101,7 @@ float contentWebViewHeight;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     
-    NSDateFormatter *formatter = [self setDateFormatter];
+    NSDateFormatter *formatter = [Tools visiableFormatter];
     
     switch (row) {
         case 0://title and subtitle

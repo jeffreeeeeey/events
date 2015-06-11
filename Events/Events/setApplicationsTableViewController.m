@@ -69,10 +69,10 @@
     NSString *startTime = [dic valueForKey:@"start_time"];
     NSString *endTime = [dic valueForKey:@"end_time"];
     NSString *deadline = [dic valueForKey:@"deadline"];
-    NSString *price = [dic valueForKey:@"price"];
+    NSInteger price =  [[dic valueForKey:@"price"] integerValue];
     NSString *location = [dic valueForKey:@"location"];
-    NSString *capacity = [dic valueForKey:@"capacity"];
-    NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&img=%@&requirement=%@&start_time=%@&end_time=%@&deadline=%@&price=%@&location=%@&capacity=%@", title, subtitle, content, img, requirement, startTime, endTime, deadline, price, location, capacity];
+    NSInteger capacity = [[dic valueForKey:@"capacity"] integerValue];
+    NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&img=%@&requirement=%@&start_time=%@&end_time=%@&deadline=%@&price=%lu&location=%@&capacity=%lu", title, subtitle, content, img, requirement, startTime, endTime, deadline, price, location, capacity];
     //for test fail condition
     //NSString *params = [NSString stringWithFormat:@"title=%@&subtitle=%@&content=%@&img=%@&requirement=%@&start_time=%@&end_time=%@&deadline=%@&location=%@&capacity=%@", title, subtitle, content, img, requirement, startTime, endTime, deadline, location, capacity];
     

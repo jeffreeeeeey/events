@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  PhoneTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "PhoneTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation PhoneTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"phone";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,13 +27,8 @@
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _phoneTextField.text;
 }
+
 
 @end

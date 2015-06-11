@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  CompanyTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "CompanyTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation CompanyTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"company";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,13 +27,7 @@
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _companyTextField.text;
 }
 
 @end

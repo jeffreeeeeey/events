@@ -27,7 +27,6 @@
 		046FB8CE1B019C5C00C339AE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FB8CD1B019C5C00C339AE /* User.m */; };
 		04720ECD1B16A3D4009D1B74 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECC1B16A3D4009D1B74 /* Application.m */; };
 		04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */; };
-		04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */; };
 		04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */; };
 		0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473E8501B09CA4E00590500 /* CapacityCell.m */; };
 		047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D91CA1AF9AF1E00631FCE /* LoginViewController.m */; };
@@ -37,6 +36,19 @@
 		047E2A7B1B26840F002E3E90 /* EventContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E2A7A1B26840F002E3E90 /* EventContentTableViewCell.m */; };
 		048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A01AFB5EA900249E24 /* EventDetailsViewController.m */; };
 		048282A41AFB5F7100249E24 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 048282A31AFB5F7100249E24 /* Event.m */; };
+		04ADC64E1B29374E0045B36B /* UserNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC64D1B29374E0045B36B /* UserNameTableViewCell.m */; };
+		04ADC6511B2937CC0045B36B /* GenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6501B2937CC0045B36B /* GenderTableViewCell.m */; };
+		04ADC6651B2943830045B36B /* ImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6561B2943830045B36B /* ImageTableViewCell.m */; };
+		04ADC6661B2943830045B36B /* JobTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6581B2943830045B36B /* JobTitleTableViewCell.m */; };
+		04ADC6671B2943830045B36B /* CompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC65A1B2943830045B36B /* CompanyTableViewCell.m */; };
+		04ADC6681B2943830045B36B /* IndustryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC65C1B2943830045B36B /* IndustryTableViewCell.m */; };
+		04ADC6691B2943830045B36B /* QQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC65E1B2943830045B36B /* QQTableViewCell.m */; };
+		04ADC66A1B2943830045B36B /* PhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6601B2943830045B36B /* PhoneTableViewCell.m */; };
+		04ADC66B1B2943830045B36B /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6621B2943830045B36B /* AddressTableViewCell.m */; };
+		04ADC66C1B2943830045B36B /* IDCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6641B2943830045B36B /* IDCardTableViewCell.m */; };
+		04ADC66F1B294C8C0045B36B /* RemarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC66E1B294C8C0045B36B /* RemarkTableViewCell.m */; };
+		04ADC6721B2953A80045B36B /* ApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6711B2953A80045B36B /* ApplyTableViewCell.m */; };
+		04ADC6761B2971080045B36B /* ApplicationDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC6751B2971080045B36B /* ApplicationDetailTableViewController.m */; };
 		04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */; };
 		04B82F0C1B0AE3C9006ED7A4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B82F0B1B0AE3C9006ED7A4 /* logo.png */; };
 		04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B82F0F1B0B20E7006ED7A4 /* setApplicationsTableViewController.m */; };
@@ -102,8 +114,6 @@
 		04720ECC1B16A3D4009D1B74 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
 		04720ECE1B16A975009D1B74 /* AgeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeTableViewCell.h; sourceTree = "<group>"; };
 		04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeTableViewCell.m; sourceTree = "<group>"; };
-		04720ED21B16AFC9009D1B74 /* GenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderTableViewCell.h; sourceTree = "<group>"; };
-		04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderTableViewCell.m; sourceTree = "<group>"; };
 		04720ED51B16E26F009D1B74 /* ApplicationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationsTableViewController.h; sourceTree = "<group>"; };
 		04720ED61B16E26F009D1B74 /* ApplicationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationsTableViewController.m; sourceTree = "<group>"; };
 		0473E84F1B09CA4E00590500 /* CapacityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapacityCell.h; sourceTree = "<group>"; };
@@ -122,6 +132,33 @@
 		048282A01AFB5EA900249E24 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		048282A21AFB5F7100249E24 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		048282A31AFB5F7100249E24 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		04ADC64C1B29374E0045B36B /* UserNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNameTableViewCell.h; sourceTree = "<group>"; };
+		04ADC64D1B29374E0045B36B /* UserNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameTableViewCell.m; sourceTree = "<group>"; };
+		04ADC64F1B2937CC0045B36B /* GenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6501B2937CC0045B36B /* GenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6551B2943830045B36B /* ImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6561B2943830045B36B /* ImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6571B2943830045B36B /* JobTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTitleTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6581B2943830045B36B /* JobTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobTitleTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6591B2943830045B36B /* CompanyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyTableViewCell.h; sourceTree = "<group>"; };
+		04ADC65A1B2943830045B36B /* CompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyTableViewCell.m; sourceTree = "<group>"; };
+		04ADC65B1B2943830045B36B /* IndustryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustryTableViewCell.h; sourceTree = "<group>"; };
+		04ADC65C1B2943830045B36B /* IndustryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustryTableViewCell.m; sourceTree = "<group>"; };
+		04ADC65D1B2943830045B36B /* QQTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQTableViewCell.h; sourceTree = "<group>"; };
+		04ADC65E1B2943830045B36B /* QQTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQTableViewCell.m; sourceTree = "<group>"; };
+		04ADC65F1B2943830045B36B /* PhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6601B2943830045B36B /* PhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6611B2943830045B36B /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6621B2943830045B36B /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6631B2943830045B36B /* IDCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6641B2943830045B36B /* IDCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardTableViewCell.m; sourceTree = "<group>"; };
+		04ADC66D1B294C8C0045B36B /* RemarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarkTableViewCell.h; sourceTree = "<group>"; };
+		04ADC66E1B294C8C0045B36B /* RemarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarkTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6701B2953A80045B36B /* ApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTableViewCell.h; sourceTree = "<group>"; };
+		04ADC6711B2953A80045B36B /* ApplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTableViewCell.m; sourceTree = "<group>"; };
+		04ADC6731B2956BC0045B36B /* ApplyCellsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyCellsDelegate.h; sourceTree = "<group>"; };
+		04ADC6741B2971080045B36B /* ApplicationDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDetailTableViewController.h; sourceTree = "<group>"; };
+		04ADC6751B2971080045B36B /* ApplicationDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDetailTableViewController.m; sourceTree = "<group>"; };
 		04B82F071B0AE0DC006ED7A4 /* EditLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLogoViewController.h; sourceTree = "<group>"; };
 		04B82F081B0AE0DC006ED7A4 /* EditLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLogoViewController.m; sourceTree = "<group>"; };
 		04B82F0B1B0AE3C9006ED7A4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -258,12 +295,11 @@
 		04720ED11B16A989009D1B74 /* Apply */ = {
 			isa = PBXGroup;
 			children = (
-				04720ED21B16AFC9009D1B74 /* GenderTableViewCell.h */,
-				04720ED31B16AFC9009D1B74 /* GenderTableViewCell.m */,
-				04720ECE1B16A975009D1B74 /* AgeTableViewCell.h */,
-				04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */,
+				04ADC64B1B29373A0045B36B /* ApplyCells */,
 				04FCC3911B1596D60053C8C3 /* ApplyTableViewController.h */,
 				04FCC3921B1596D60053C8C3 /* ApplyTableViewController.m */,
+				04ADC6741B2971080045B36B /* ApplicationDetailTableViewController.h */,
+				04ADC6751B2971080045B36B /* ApplicationDetailTableViewController.m */,
 			);
 			name = Apply;
 			sourceTree = "<group>";
@@ -322,6 +358,40 @@
 				046FB8CD1B019C5C00C339AE /* User.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		04ADC64B1B29373A0045B36B /* ApplyCells */ = {
+			isa = PBXGroup;
+			children = (
+				04ADC6731B2956BC0045B36B /* ApplyCellsDelegate.h */,
+				04ADC6701B2953A80045B36B /* ApplyTableViewCell.h */,
+				04ADC6711B2953A80045B36B /* ApplyTableViewCell.m */,
+				04ADC66D1B294C8C0045B36B /* RemarkTableViewCell.h */,
+				04ADC66E1B294C8C0045B36B /* RemarkTableViewCell.m */,
+				04720ECE1B16A975009D1B74 /* AgeTableViewCell.h */,
+				04720ECF1B16A975009D1B74 /* AgeTableViewCell.m */,
+				04ADC6551B2943830045B36B /* ImageTableViewCell.h */,
+				04ADC6561B2943830045B36B /* ImageTableViewCell.m */,
+				04ADC6571B2943830045B36B /* JobTitleTableViewCell.h */,
+				04ADC6581B2943830045B36B /* JobTitleTableViewCell.m */,
+				04ADC6591B2943830045B36B /* CompanyTableViewCell.h */,
+				04ADC65A1B2943830045B36B /* CompanyTableViewCell.m */,
+				04ADC65B1B2943830045B36B /* IndustryTableViewCell.h */,
+				04ADC65C1B2943830045B36B /* IndustryTableViewCell.m */,
+				04ADC65D1B2943830045B36B /* QQTableViewCell.h */,
+				04ADC65E1B2943830045B36B /* QQTableViewCell.m */,
+				04ADC65F1B2943830045B36B /* PhoneTableViewCell.h */,
+				04ADC6601B2943830045B36B /* PhoneTableViewCell.m */,
+				04ADC6611B2943830045B36B /* AddressTableViewCell.h */,
+				04ADC6621B2943830045B36B /* AddressTableViewCell.m */,
+				04ADC6631B2943830045B36B /* IDCardTableViewCell.h */,
+				04ADC6641B2943830045B36B /* IDCardTableViewCell.m */,
+				04ADC64C1B29374E0045B36B /* UserNameTableViewCell.h */,
+				04ADC64D1B29374E0045B36B /* UserNameTableViewCell.m */,
+				04ADC64F1B2937CC0045B36B /* GenderTableViewCell.h */,
+				04ADC6501B2937CC0045B36B /* GenderTableViewCell.m */,
+			);
+			name = ApplyCells;
 			sourceTree = "<group>";
 		};
 		04B82F0A1B0AE3B3006ED7A4 /* images */ = {
@@ -508,36 +578,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B82F091B0AE0DC006ED7A4 /* EditLogoViewController.m in Sources */,
+				04ADC6671B2943830045B36B /* CompanyTableViewCell.m in Sources */,
 				04720ED01B16A975009D1B74 /* AgeTableViewCell.m in Sources */,
 				046AD6E81B1D4397008791FE /* NetworkServices.m in Sources */,
 				046FB8CE1B019C5C00C339AE /* User.m in Sources */,
 				04372B0E1B24281300D8623F /* AFLLZGEventsAPIClient.m in Sources */,
 				045DBEA71B05CAC500D3581C /* PerformanceTableViewController.m in Sources */,
+				04ADC6761B2971080045B36B /* ApplicationDetailTableViewController.m in Sources */,
 				047E2A771B268326002E3E90 /* EventLogoTableViewCell.m in Sources */,
-				04720ED41B16AFC9009D1B74 /* GenderTableViewCell.m in Sources */,
 				041347D51AF8B0AF0015E38E /* MySpaceViewController.m in Sources */,
 				04FCC3931B1596D60053C8C3 /* ApplyTableViewController.m in Sources */,
+				04ADC6681B2943830045B36B /* IndustryTableViewCell.m in Sources */,
 				047D91CE1AF9B09500631FCE /* CreateEventViewController.m in Sources */,
 				048282A41AFB5F7100249E24 /* Event.m in Sources */,
 				048282A11AFB5EA900249E24 /* EventDetailsViewController.m in Sources */,
+				04ADC66B1B2943830045B36B /* AddressTableViewCell.m in Sources */,
 				046AD6E51B1D3E68008791FE /* AlertsViewController.m in Sources */,
 				04720ECD1B16A3D4009D1B74 /* Application.m in Sources */,
 				043198D31B145D9D00D597B3 /* EventTableViewCell.m in Sources */,
 				04F73D9B1B22C1FD00EB1EED /* JNKeychain.m in Sources */,
 				041347CF1AF8B0AF0015E38E /* AppDelegate.m in Sources */,
 				04B82F101B0B20E7006ED7A4 /* setApplicationsTableViewController.m in Sources */,
+				04ADC66C1B2943830045B36B /* IDCardTableViewCell.m in Sources */,
 				046164E01B1AEF9000D72B6F /* DiscoverContainerViewController.m in Sources */,
 				047E2A7B1B26840F002E3E90 /* EventContentTableViewCell.m in Sources */,
 				047E2A741B267FAF002E3E90 /* EventTitleTableViewCell.m in Sources */,
+				04ADC6651B2943830045B36B /* ImageTableViewCell.m in Sources */,
 				04F73D9E1B22CBD100EB1EED /* MyEventsTableViewController.m in Sources */,
+				04ADC64E1B29374E0045B36B /* UserNameTableViewCell.m in Sources */,
 				04C99AB41B27E46A00742B71 /* AboutTableViewController.m in Sources */,
+				04ADC66A1B2943830045B36B /* PhoneTableViewCell.m in Sources */,
+				04ADC6661B2943830045B36B /* JobTitleTableViewCell.m in Sources */,
+				04ADC6721B2953A80045B36B /* ApplyTableViewCell.m in Sources */,
 				041347D21AF8B0AF0015E38E /* DiscoverViewController.m in Sources */,
 				04720ED71B16E26F009D1B74 /* ApplicationsTableViewController.m in Sources */,
 				0473E8511B09CA4E00590500 /* CapacityCell.m in Sources */,
+				04ADC6511B2937CC0045B36B /* GenderTableViewCell.m in Sources */,
+				04ADC66F1B294C8C0045B36B /* RemarkTableViewCell.m in Sources */,
 				045D119E1B033666009FCF89 /* ChooseClassificationViewController.m in Sources */,
 				041347CC1AF8B0AF0015E38E /* main.m in Sources */,
 				045A513A1B087DA50075E811 /* setDateViewController.m in Sources */,
 				04C99AB11B27DC9700742B71 /* SettingsTableViewController.m in Sources */,
+				04ADC6691B2943830045B36B /* QQTableViewCell.m in Sources */,
 				047D91CB1AF9AF1E00631FCE /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

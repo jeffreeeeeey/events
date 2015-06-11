@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ApplyTableViewCell.h"
 
-@interface AgeTableViewCell : UITableViewCell
+@interface AgeTableViewCell : ApplyTableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *ageTextField;
+
+@property (weak, nonatomic) IBOutlet UISlider *ageSlider;
 
 
 

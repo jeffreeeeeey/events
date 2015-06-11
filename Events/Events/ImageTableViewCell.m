@@ -1,18 +1,19 @@
 //
-//  GenderTableViewCell.m
+//  ImageTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "ImageTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation ImageTableViewCell
+@dynamic imageView;
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"img";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,13 +28,7 @@
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return @"";
 }
 
 @end

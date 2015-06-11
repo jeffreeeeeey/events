@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  residencesTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "AddressTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation AddressTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"address";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,13 +27,8 @@
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _addressTextField.text;
 }
+
 
 @end

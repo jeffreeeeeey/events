@@ -1,22 +1,18 @@
 //
-//  ApplicationsTableViewController.m
-//  Events
+//  ApplicationDetailTableViewController.m
+//  
 //
-//  Created by mac on 5/28/15.
-//  Copyright (c) 2015 LLZG. All rights reserved.
+//  Created by mac on 6/11/15.
+//
 //
 
-#import "ApplicationsTableViewController.h"
-#import "Settings.h"
-#import "UIAlertView+AFNetworking.h"
+#import "ApplicationDetailTableViewController.h"
 
-@interface ApplicationsTableViewController () <NSURLSessionDelegate, NSURLSessionDataDelegate>
-
-@property (nonatomic) NSArray *applicationsArray;
+@interface ApplicationDetailTableViewController ()
 
 @end
 
-@implementation ApplicationsTableViewController
+@implementation ApplicationDetailTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,10 +22,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //NSNumber *eventID = [_eventDic valueForKey:@"id"];
-    NSInteger eventID = _event.eventID;
-    [self getEventApplications:eventID];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,64 +29,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)getEventApplications:(NSInteger)eventID
-{
-    NSString *urlString = [NSString stringWithFormat:@"%@%lu%@", applications, eventID, @"/applies"];
-    NSLog(@"get applications:%@", urlString);
-    NSURLSessionDataTask *task = [[AFLLZGEventsAPIClient sharedClient] GET:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"sucess, %@", responseObject);
-        _applicationsArray = responseObject;
-        [self.tableView reloadData];
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"error, %@", error);
-    }];
-    
-    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return _applicationsArray.count;
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"application" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *dic = [_applicationsArray objectAtIndex:indexPath.row];
-    if (dic) {
-        NSLog(@"======this one=======:%@",dic);
-        NSString *info = [dic objectForKey:@"info"];
-        //NSDictionary *infoDic = [NSJSONSerialization JSONObjectWithData:info options:NSJSONReadingAllowFragments error:nil];
-        
-        //NSString *username = [info objectForKey:@"username"];
-        NSData *jsonData = [info dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *e;
-        NSDictionary *infoDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&e];
-        
-        NSLog(@"%@",infoDic[@"username"]);
-        cell.textLabel.text = infoDic[@"username"];
-        cell.detailTextLabel.text = dic[@"create_time"];
-    } else {
-        NSLog(@"nil dic");
-    }
-    
     
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -139,7 +96,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
 
 @end

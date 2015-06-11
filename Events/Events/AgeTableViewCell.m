@@ -9,9 +9,8 @@
 #import "AgeTableViewCell.h"
 
 @interface AgeTableViewCell ()
-@property (weak, nonatomic) IBOutlet UILabel *ageLabel;
-@property (weak, nonatomic) IBOutlet UITextField *ageTextField;
-@property (weak, nonatomic) IBOutlet UISlider *ageSlider;
+
+
 
 
 @end
@@ -22,6 +21,7 @@
 - (void)awakeFromNib {
     // Initialization code
     _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
+    keyString = @"age";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,11 +29,24 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)editAge:(id)sender {
+    NSInteger n =  [_ageTextField.text intValue];
+    [_ageSlider setValue:n animated:YES];
+}
 
 - (IBAction)ageSliderValueChanged:(UISlider *)sender {
     NSNumber *value = [NSNumber numberWithFloat:sender.value];
     _ageTextField.text = [NSString stringWithFormat:@"%d",[value intValue]];
     
+}
+
+- (NSString *)getKeyString {
+    
+    return keyString;
+}
+
+- (NSString *)getValueString {
+    return _ageTextField.text;
 }
 
 

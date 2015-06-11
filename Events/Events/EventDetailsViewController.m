@@ -23,6 +23,7 @@ float contentWebViewHeight;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *applyBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *applicationsBtn;
 
 @property (strong,nonatomic) NSNumber *introductionTextViewHeight;
 
@@ -36,6 +37,11 @@ float contentWebViewHeight;
     //self.navigationItem.rightBarButtonItem = nil;
     // Set the bottom bar
     self.navigationController.toolbarHidden = NO;
+    if (_event.requirements.length == 0) {
+        _applyBtn.enabled = false;
+        _applicationsBtn.enabled = false;
+    }
+    
     User *user = [User getCurrentUser];
     NSLog(@"user identity:%@", user.identity);
     NSLog(@"event requirements:%@", _event.requirements);

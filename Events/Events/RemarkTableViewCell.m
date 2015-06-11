@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  RemarkTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "RemarkTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation RemarkTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"remark";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -27,13 +27,7 @@
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _remarkTextField.text;
 }
 
 @end

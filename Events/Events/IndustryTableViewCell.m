@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  IndustryTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "IndustryTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation IndustryTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"industry";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,20 +20,13 @@
 
     // Configure the view for the selected state
 }
-
 - (NSString *)getKeyString {
     
     return keyString;
 }
 
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _industryLabel.text;
 }
 
 @end

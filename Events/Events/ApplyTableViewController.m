@@ -10,8 +10,22 @@
 #import "Settings.h"
 #import "Event.h"
 #import "AgeTableViewCell.h"
-#import "GenderTableViewCell.h"
+
 #import "UIAlertView+AFNetworking.h"
+
+#import "ApplyTableViewCell.h"
+#import "UserNameTableViewCell.h"
+#import "GenderTableViewCell.h"
+#import "AgeTableViewCell.h"
+#import "IDCardTableViewCell.h"
+#import "AddressTableViewCell.h"
+#import "PhoneTableViewCell.h"
+#import "QQTableViewCell.h"
+#import "IndustryTableViewCell.h"
+#import "CompanyTableViewCell.h"
+#import "JobTitleTableViewCell.h"
+#import "ImageTableViewCell.h"
+#import "RemarkTableViewCell.h"
 
 #define rowsCount (int)10
 
@@ -20,17 +34,17 @@
 @property (nonatomic) NSArray *requirementsArray;
 @property (nonatomic) NSArray *numberOfRequirements;
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
-@property (weak, nonatomic) IBOutlet UITextField *ageTextField;
-@property (weak, nonatomic) IBOutlet UISlider *ageSlider;
-@property (weak, nonatomic) IBOutlet UITextField *idcardTextField;
-@property (weak, nonatomic) IBOutlet UILabel *residenceLabel;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
-@property (weak, nonatomic) IBOutlet UITextField *qqTextField;
-@property (weak, nonatomic) IBOutlet UILabel *industryLabel;
-@property (weak, nonatomic) IBOutlet UITextField *companyTextField;
-@property (weak, nonatomic) IBOutlet UITextField *positionTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
+//@property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegment;
+//@property (weak, nonatomic) IBOutlet UITextField *ageTextField;
+//@property (weak, nonatomic) IBOutlet UISlider *ageSlider;
+//@property (weak, nonatomic) IBOutlet UITextField *idcardTextField;
+//@property (weak, nonatomic) IBOutlet UILabel *residenceLabel;
+//@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *qqTextField;
+//@property (weak, nonatomic) IBOutlet UILabel *industryLabel;
+//@property (weak, nonatomic) IBOutlet UITextField *companyTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *positionTextField;
 
 @end
 
@@ -53,65 +67,63 @@
         NSMutableArray *requireMutableArray = [[NSMutableArray alloc]init];
         NSMutableArray *requiredCellsMutableArray = [[NSMutableArray alloc]init];
         
-        NSArray *array = [require componentsSeparatedByString:@","];
+        _requirementsArray= [require componentsSeparatedByString:@","];
         //NSLog(@"array count:%lul", (unsigned long)array.count);
         
-        int n = 0;
-        
-        for (NSString *requireString in array) {
-            if ([requireString isEqualToString:@"username"]) {
-                n = 0;
-            }else if ([requireString isEqualToString:@"gender"]) {
-                n = 1;
-            }else if ([requireString isEqualToString:@"age"]) {
-                n = 2;
-            }else if ([requireString isEqualToString:@"idcard"]) {
-                n = 3;
-            }else if ([requireString isEqualToString:@"address"]) {
-                n = 4;
-            }else if ([requireString isEqualToString:@"phone"]) {
-                n = 5;
-            }else if ([requireString isEqualToString:@"qq"]) {
-                n = 6;
-            }else if ([requireString isEqualToString:@"industry"]) {
-                n = 7;
-            }else if ([requireString isEqualToString:@"company"]) {
-                n = 8;
-            }else if ([requireString isEqualToString:@"position"]) {
-                n = 9;
-            }else {
-                n = 0;
-            }
-            //NSLog(@"n=%d", n);
-            [requireMutableArray addObject:[NSNumber numberWithInt:n]];
-            
-            // Why need user super to get the cell?
-            UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:n inSection:0]];
-            if (cell) {
-                [requiredCellsMutableArray addObject:cell];
-                //NSLog(@"add cell to array:%@", cell.reuseIdentifier);
-            } else {
-                NSLog(@"cell is nil");
-            }
-            
-            //cell.hidden = false;
-        }
-        
-        
-        _requirementsArray = requiredCellsMutableArray;
-        _numberOfRequirements = requireMutableArray;
+//        int n = 0;
+//        
+//        for (NSString *requireString in array) {
+//            if ([requireString isEqualToString:@"username"]) {
+//                n = 0;
+//            }else if ([requireString isEqualToString:@"gender"]) {
+//                n = 1;
+//            }else if ([requireString isEqualToString:@"age"]) {
+//                n = 2;
+//            }else if ([requireString isEqualToString:@"idcard"]) {
+//                n = 3;
+//            }else if ([requireString isEqualToString:@"address"]) {
+//                n = 4;
+//            }else if ([requireString isEqualToString:@"phone"]) {
+//                n = 5;
+//            }else if ([requireString isEqualToString:@"qq"]) {
+//                n = 6;
+//            }else if ([requireString isEqualToString:@"industry"]) {
+//                n = 7;
+//            }else if ([requireString isEqualToString:@"company"]) {
+//                n = 8;
+//            }else if ([requireString isEqualToString:@"position"]) {
+//                n = 9;
+//            }else {
+//                n = 0;
+//            }
+//            //NSLog(@"n=%d", n);
+//            [requireMutableArray addObject:[NSNumber numberWithInt:n]];
+//            
+//            // Why need user super to get the cell?
+//            UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:n inSection:0]];
+//            if (cell) {
+//                [requiredCellsMutableArray addObject:cell];
+//                //NSLog(@"add cell to array:%@", cell.reuseIdentifier);
+//            } else {
+//                NSLog(@"cell is nil");
+//            }
+//            
+//            //cell.hidden = false;
+//        }
+//        
+//        
+//        _requirementsArray = requiredCellsMutableArray;
+//        _numberOfRequirements = requireMutableArray;
+//    }else {
+//        NSLog(@"no requirement for apply");
+//    }
+//    
+//    _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
     }else {
-        NSLog(@"no requirement for apply");
+        self.navigationItem.rightBarButtonItem.enabled = false;
     }
-    
-    _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 # pragma mark - cancel or submit form
 - (IBAction)cancelBtnPressed:(id)sender {
@@ -120,27 +132,33 @@
 
 - (IBAction)submitBtnPressed:(UIBarButtonItem *)sender {
     NSString *eventID = [NSString stringWithFormat:@"%lu", _event.eventID];
-    NSString *username = _usernameTextfield.text;
-    NSString *age = _ageTextField.text;
-    NSString *gender = @"男";
-    NSString *idcard = _idcardTextField.text;
+    //NSString *username = _usernameTextfield.text;
+//    NSString *age = _ageTextField.text;
+//    NSString *gender = @"男";
+//    NSString *idcard = _idcardTextField.text;
     
     NSMutableDictionary *paramDic = [[NSMutableDictionary alloc]init];
-    for (int i = 0; i < _numberOfRequirements.count; i++) {
-        NSNumber *n = _numberOfRequirements[i];
-        NSString *key = applicationFactorsName[[n intValue]];
-
+    for (int i = 0; i < _requirementsArray.count; i++) {
+        ApplyTableViewCell *cell = (ApplyTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        //NSLog(@"cell key:%@ value:%@",[cell getKeyString], [cell getValueString]);
+        [paramDic setObject:[cell getValueString] forKey:[cell getKeyString]];
     }
+    // Have to add id of the event
+    [paramDic setObject:eventID forKey:@"activityId"];
     
-    
-    
-    NSURLSessionDataTask *task = [[AFLLZGEventsAPIClient sharedClient] POST:apply parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSURLSessionDataTask *task = [[AFLLZGEventsAPIClient sharedClient] POST:apply parameters:paramDic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"success, %@", responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"failure, %@", error);
+        NSLog(@"resonse:%@", task.taskDescription);
     }];
-
+    
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+     
+/*
     NSURL *url = [NSURL URLWithString:apply];
+    
+
     NSString *params = [NSString stringWithFormat:@"activityId=%@&username=%@&age=%@",eventID, username, age];
 
     NSLog(@"%@ %@", url, params);
@@ -175,7 +193,7 @@
             NSLog(@"no data");
         }
     }];
-    
+    */
 }
 /*
  // Fix json data keys without quotes
@@ -200,14 +218,14 @@
     return b;
 }
 */
-# pragma mark - set buttons
+//# pragma mark - set buttons
 
-- (IBAction)ageSliderValueChanged:(id)sender {
-    _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
-}
-- (IBAction)ageTextFieldValueChanged:(UITextField *)sender {
-    [_ageSlider setValue: [sender.text floatValue] animated:YES];
-}
+//- (IBAction)ageSliderValueChanged:(id)sender {
+//    _ageTextField.text = [NSString stringWithFormat:@"%d", (int)_ageSlider.value];
+//}
+//- (IBAction)ageTextFieldValueChanged:(UITextField *)sender {
+//    [_ageSlider setValue: [sender.text floatValue] animated:YES];
+//}
 
 
 #pragma mark - Table view data source
@@ -221,41 +239,78 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return rowsCount;
+    return _requirementsArray.count;
 }
 
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
+//    
+//    if ([_requirementsArray containsObject:cell])  {
+//        CGFloat height = [super tableView:tableView heightForRowAtIndexPath:indexPath];
+//        //NSLog(@"contain the cell:%d, height:%d", (int)indexPath.row, (int)height);
+//        return height;
+//    }else {
+//        //NSLog(@"do not contain cell:%@", cell.reuseIdentifier);
+//        return 0;
+//    }
+//}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([_requirementsArray containsObject:cell])  {
-        CGFloat height = [super tableView:tableView heightForRowAtIndexPath:indexPath];
-        //NSLog(@"contain the cell:%d, height:%d", (int)indexPath.row, (int)height);
-        return height;
-    }else {
-        //NSLog(@"do not contain cell:%@", cell.reuseIdentifier);
-        return 0;
-    }
-}
 
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = [_requirementsArray objectAtIndex:indexPath.row];
     
-    if ([cellIdentifier isEqualToString:@"gender"]) {
-        GenderTableViewCell *genderCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        return genderCell;
-    } else if ([cellIdentifier isEqualToString:@"age"]) {
-        AgeTableViewCell *ageCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        return ageCell;
-    } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if ([cellIdentifier isEqualToString:@"username"]) {
+        UserNameTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+    } else if ([cellIdentifier isEqualToString:@"gender"]) {
+        GenderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+    } else if ([cellIdentifier isEqualToString:@"age"]){
+        AgeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         return cell;
 
+    } else if ([cellIdentifier isEqualToString:@"idcard"]){
+        IDCardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"address"]){
+        AddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"qq"]){
+        QQTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"phone"]){
+        PhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"industry"]){
+        IndustryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"company"]){
+        CompanyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"position"]){
+        JobTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"img"]){
+        ImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
+    } else if ([cellIdentifier isEqualToString:@"remark"]){
+        RemarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        return cell;
+        
     }
+    return nil;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

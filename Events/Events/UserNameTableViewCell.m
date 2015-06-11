@@ -1,18 +1,18 @@
 //
-//  GenderTableViewCell.m
+//  UserNameTableViewCell.m
 //  
 //
 //  Created by mac on 6/11/15.
 //
 //
 
-#import "GenderTableViewCell.h"
+#import "UserNameTableViewCell.h"
 
-@implementation GenderTableViewCell
+@implementation UserNameTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    keyString = @"gender";
+    keyString = @"username";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,20 +20,14 @@
 
     // Configure the view for the selected state
 }
-
 - (NSString *)getKeyString {
-    
+
     return keyString;
 }
 
+
 - (NSString *)getValueString {
-    NSString *genderString = @"";
-    if (_genderSegment.selectedSegmentIndex == 0) {
-        genderString = @"male";
-    }else{
-        genderString = @"female";
-    }
-    return genderString;
+    return _userNameTextField.text;
 }
 
 @end

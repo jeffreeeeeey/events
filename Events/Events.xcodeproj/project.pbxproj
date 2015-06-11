@@ -93,7 +93,6 @@
 		041347E81AF8B0AF0015E38E /* EventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsTests.m; sourceTree = "<group>"; };
 		043198D11B145D9D00D597B3 /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
 		043198D21B145D9D00D597B3 /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
-		043198D51B1469F700D597B3 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = "../../../../Downloads/BaiduMap_IOSSDK_v2/BaiduMap_IOSSDK_v2.7.0_Lib/Release-iphonesimulator/BaiduMapAPI.framework"; sourceTree = "<group>"; };
 		04372B0A1B23F20D00D8623F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		04372B0C1B24281300D8623F /* AFLLZGEventsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFLLZGEventsAPIClient.h; sourceTree = "<group>"; };
 		04372B0D1B24281300D8623F /* AFLLZGEventsAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFLLZGEventsAPIClient.m; sourceTree = "<group>"; };
@@ -212,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				04F73D961B22BD0300EB1EED /* Security.framework */,
-				043198D51B1469F700D597B3 /* BaiduMapAPI.framework */,
 				041347C81AF8B0AF0015E38E /* Events */,
 				041347E51AF8B0AF0015E38E /* EventsTests */,
 				041347C71AF8B0AF0015E38E /* Products */,

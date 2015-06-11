@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *applyEndDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *costsTextField;
 
 @end
 
@@ -90,7 +91,7 @@
 #pragma mark - TableView delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -101,8 +102,13 @@
             break;
         case 1:
             n = 1;
+            break;
         case 2:
             n = 1;
+            break;
+        case 3:
+            n = 1;
+            break;
         default:
             break;
     }
@@ -192,11 +198,13 @@
             if ([formatter numberFromString:_capacityLimitTextField.text]) {
                 if ([formatter numberFromString:_capacityLimitTextField.text] == 0) {
                     [self showAlert:@"参与人数不能为零"];
+                    shouldPerform = false;
                 } else {
                     
                 }
             }else {
                 [self showAlert:@"请填写正确的人数"];
+                shouldPerform = false;
             }
             
         }
@@ -242,13 +250,13 @@
         _event.endDate = _endDate;
         _event.deadline = _applyEndDate;
         _event.address = _addressTextField.text;
+        _event.costs = [_costsTextField.text integerValue];
+        
         if (_capacitySegment.selectedSegmentIndex == 0) {
-            _event.capacity = [[NSNumber numberWithInt:0] integerValue];
+            _event.capacity = 0;
         } else {
             NSString *capacityString = _capacityLimitTextField.text;
-            double doublaValue = [capacityString doubleValue];
-            int intValue = ceil(doublaValue);
-            _event.capacity = [[NSNumber numberWithInt:intValue] integerValue];
+            _event.capacity = [capacityString integerValue];
             
         }
         

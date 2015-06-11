@@ -74,7 +74,7 @@
         NSDictionary *dic = responseObject;
                     NSString *server = [dic valueForKey:@"server"];
             NSString *file = [dic valueForKey:@"file"];
-            NSString *urlString = [NSString stringWithFormat:@"%@,%@",server,file];
+            NSString *urlString = [NSString stringWithFormat:@"%@%@",server,file];
             //urlString = [urlString stringByAppendingString:server];
             //urlString = [urlString stringByAppendingString:file];
             NSLog(@"image url:%@", urlString);

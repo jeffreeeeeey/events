@@ -45,6 +45,7 @@
     self.subtitleLabel.text = _event.subtitle;
     self.addressLabel.text = _event.address;
     [self.eventImageView setImageWithURL:_event.logoImageURL placeholderImage:[UIImage imageNamed:@"logo.png"]];
+    NSLog(@"image url:%@", _event.logoImageURL);
     
     [self setNeedsDisplay];
 }

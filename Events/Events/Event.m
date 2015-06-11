@@ -115,7 +115,7 @@
     AFLLZGEventsAPIClient *manager = [AFLLZGEventsAPIClient sharedClient];
     //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"application/json", nil];
     return [manager GET:eventList parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (block) {
             NSArray *eventsArray = (NSArray *)responseObject;

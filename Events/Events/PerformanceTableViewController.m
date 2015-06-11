@@ -243,12 +243,12 @@
         _event.deadline = _applyEndDate;
         _event.address = _addressTextField.text;
         if (_capacitySegment.selectedSegmentIndex == 0) {
-            _event.capacity = [NSNumber numberWithInt:0];
+            _event.capacity = [[NSNumber numberWithInt:0] integerValue];
         } else {
             NSString *capacityString = _capacityLimitTextField.text;
             double doublaValue = [capacityString doubleValue];
             int intValue = ceil(doublaValue);
-            _event.capacity = [NSNumber numberWithInt:intValue];
+            _event.capacity = [[NSNumber numberWithInt:intValue] integerValue];
             
         }
         
